@@ -1,50 +1,56 @@
 import PropTypes from 'prop-types';
-import { StarIcon, ClockIcon, CalendarDaysIcon } from '@heroicons/react/20/solid';
+import { StarIcon, ClockIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
+import { Button } from './foundations/Button';
+import { Heading } from './foundations/Heading';
+import { BodyText } from './foundations/BodyText';
 
-const ActivityCard = ({ name, level, description, duration, benefits, schedule, icon, onSignUp, onViewCalendar }) => {
+const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, benefits, schedule, icon, onSignUp, onViewCalendar }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 hover:shadow-xl transition-shadow">
-      <div className="bg-gray-100 rounded-lg p-1 w-fit">{icon}</div>
+    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col space-y-8">
       <div className="flex items-center space-x-4">
-        <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
+        <div className={`rounded-lg p-1 flex-shrink-0 ${bgColor}`}>{icon}</div>
+        <Heading level={4}>{name}</Heading>
       </div>
 
-      <div className="text-sm text-gray-600 space-y-4">
-        <p>{description}</p>
-         <div className="flex items-center space-x-2 mt-2">
-          <StarIcon className="text-gray-600 w-5 h-5" />
-          <span className="font-medium text-gray-700">{level}</span>
-        </div>
+      <div className="flex-1 space-y-6">
+        <BodyText variant="paragraph" className="h-32">{description}</BodyText>
+        <div className="space-y-4">
 
-        <div className="flex items-center space-x-2">
-          <ClockIcon className="text-gray-600 w-5 h-5" />
-          <span>{duration}</span>
-        </div>
+          <div className="flex items-center space-x-2">
+            <StarIcon className="text-neutral-600 w-5 h-5" />
+            <BodyText variant="label">{level}</BodyText>
+          </div>
 
-        <div className="flex items-center space-x-2">
-          <CalendarDaysIcon className="text-gray-600 w-5 h-5" />
-          <span>{schedule}</span>
+          <div className="flex items-center space-x-2">
+            <ClockIcon className="text-neutral-600 w-5 h-5" />
+            <BodyText variant="label">{duration}</BodyText>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <CalendarDaysIcon className="text-neutral-600 w-5 h-5" />
+            <BodyText variant="label">{schedule}</BodyText>
+          </div>
         </div>
-        <ul className="list-disc list-inside space-y-1 mt-2">
+        {/* <ul className="list-disc list-inside space-y-1">
           {benefits.map((benefit, index) => (
-            <li key={index} className="text-gray-600">{benefit}</li>
+            <li key={index} className="text-neutral-700">{benefit}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
 
-      <div className="flex space-x-8 items-center pt-8">
-        <button
+      <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
+        <Button
           onClick={onViewCalendar}
-          className="text-neutral-900 hover:underline"
+          variant="leadingIcon"
+          label="Voir le calendrier"
         >
-          Voir le calendrier
-        </button>
-        <button
+          <CalendarDaysIcon className="w-5 h-5 mr-2" />
+        </Button>
+        <Button
           onClick={onSignUp}
-          className="bg-neutral-900 text-white py-2 px-4 rounded-full hover:bg-neutral-800 transition-colors"
-        >
-          S'inscrire
-        </button>
+          variant="secondary"
+          label="S'inscrire"
+        />
       </div>
     </div>
   );

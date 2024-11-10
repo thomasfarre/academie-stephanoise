@@ -3,7 +3,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
 const ButtonVariants = {
   primary: {
-    className: 'bg-stone-900 font-semibold shadow text-white hover:bg-stone-700 focus:ring-stone-900 py-2 px-4',
+    className: 'bg-neutral-900 font-semibold shadow text-white hover:bg-neutral-700 focus:ring-neutral-900 py-2 px-4',
     content: ({ label }) => (
       <>
         {label}
@@ -11,7 +11,7 @@ const ButtonVariants = {
     ),
   },
   secondary: {
-    className: 'text-stone-900 border font-semibold border-stone-900 bg-white rounded-md shadow hover:bg-stone-100 focus:ring-stone-900 py-2 px-4',
+    className: 'text-neutral-900 border font-semibold border-neutral-900 bg-white rounded-md shadow hover:bg-neutral-100 focus:ring-neutral-900 py-2 px-4',
     content: ({ label }) => (
       <>
         {label}
@@ -19,7 +19,7 @@ const ButtonVariants = {
     ),
   },
   tertiary: {
-    className: 'text-stone-900 font-semibold hover:text-stone-700 py-2 focus:ring-transparent flex items-center',
+    className: 'text-neutral-900 font-semibold hover:text-neutral-700 py-2 focus:ring-transparent flex items-center',
     content: ({ label }) => (
       <>
         {label}
@@ -28,8 +28,17 @@ const ButtonVariants = {
     ),
   },
   icon: {
-    className: 'text-stone-700 hover:text-stone-500 focus:ring-transparent rounded-full p-2',
+    className: 'text-neutral-700 hover:text-neutral-500 focus:ring-transparent rounded-full p-2',
     content: ({ children }) => children,
+  },
+  leadingIcon: {
+    className: 'text-neutral-900 border font-semibold border-neutral-900 bg-white rounded-md shadow hover:bg-neutral-100 focus:ring-neutral-900 py-2 px-4 flex items-center',
+    content: ({ label, children }) => (
+      <>
+        {children}
+        {label}
+      </>
+    ),
   },
 };
 
@@ -52,7 +61,7 @@ Button.propTypes = {
   label: PropTypes.string,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'icon', 'tertiary']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'icon', 'tertiary', 'leadingIcon']),
   children: PropTypes.node,
 };
 

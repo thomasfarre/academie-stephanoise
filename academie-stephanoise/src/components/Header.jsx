@@ -1,4 +1,8 @@
 import PropTypes from 'prop-types';
+import Heading from './foundations/Heading';
+import BodyText from './foundations/BodyText';
+import Button from './foundations/Button';
+import Link from './foundations/Link';
 
 const Header = () => {
 
@@ -20,10 +24,10 @@ const Header = () => {
             </a>
           </div>
           <div className="flex space-x-2 lg:gap-x-12">
-            <a href="#" className="text-sm lg:text-base font-semibold text-neutral-900">Activités</a>
-            <a href="#" className="text-sm lg:text-base font-semibold text-neutral-900">Calendrier</a>
-            <a href="#" className="text-sm lg:text-base font-semibold text-neutral-900">S'inscrire</a>
-            <a href="#" className="text-sm lg:text-base font-semibold text-neutral-900">Contact</a>
+            <Link href="#" label="Activités" />
+            <Link href="#" label="Calendrier" />
+            <Link href="#" label="S'inscrire" />
+            <Link href="#" label="Contact" />
           </div>
         </nav>
       </header>
@@ -62,22 +66,27 @@ const Header = () => {
             <div className="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
               <div className="mx-auto max-w-2xl gap-x-28 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                 <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-                  <h1 className="text-pretty text-5xl font-semibold tracking-tight text-neutral-900 sm:text-7xl font-montserrat">
-                    Academie Stephanoise
-                  </h1>
-                  <p className="mt-8 text-pretty text-lg font-medium text-neutral-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                  <Heading level={1} className="text-pretty font-montserrat">
+                    Académie Stéphanoise
+                  </Heading>
+                  <BodyText variant="headline" className="mt-8 text-pretty sm:max-w-md lg:max-w-none">
                     Un espace de sport et de convivialité à Saint-Etienne, dédié aux arts martiaux et au fitness. Un lieu où débutants et compétiteurs, enfants et adultes, se retrouvent pour partager leur passion et atteindre leurs objectifs ensemble.
-                  </p>
-                  <div className="mt-10 flex items-center gap-x-6">
-                    <a
-                      href="#"
-                      className="rounded-md bg-neutral-900 px-3.5 py-2.5 font-semibold text-white shadow-sm hover:bg-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-700"
+                  </BodyText>
+                  <div className="mt-20 flex items-center gap-x-6">
+                    <Button
+                      variant="primary"
+                      onClick={() => {}}
+                      className="px-3.5 py-2.5"
+                      label="S'inscrire"
+                    />
+                    <Button
+                      variant="tertiary"
+                      onClick={() => {}}
+                      className="font-semibold text-neutral-900"
+                      label="En savoir plus"
                     >
-                      S'inscrire
-                    </a>
-                    <a href="#" className="font-semibold text-neutral-900">
-                      En savoir plus <span aria-hidden="true">→</span>
-                    </a>
+                      <span aria-hidden="true">→</span>
+                    </Button>
                   </div>
                 </div>
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
