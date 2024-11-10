@@ -2,8 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import LandingPage from "./LandingPage.jsx";
 
+const title =
+  "Académie Stéphanoise - Arts Martiaux, Fitness et Bien-Être pour Tous";
+const description =
+  "Découvrez l'Académie Stéphanoise, un lieu unique à Saint-Étienne dédié aux arts martiaux, au fitness et au bien-être. Rejoignez-nous pour des cours de Krav Maga, MMA, Luta Livre, CrossFit, Pilates, et plus encore. Ouvert à tous, débutants comme compétiteurs.";
+const keywords =
+  "Académie Stéphanoise, Saint-Étienne, arts martiaux, fitness, Krav Maga, MMA, Luta Livre, CrossFit, Pilates, remise en forme";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={title} description={description} keywords={keywords}>
   <LandingPage />
 </Layout>
