@@ -1,34 +1,30 @@
 import PropTypes from 'prop-types';
+import { AcademicCapIcon } from '@heroicons/react/24/outline';
 import { Heading } from './foundations/Heading';
-import { BodyText } from './foundations/BodyText';
 
-const CoachCard = ({ name, disciplines, bio, qualifications, recordLink, photo }) => {
+const CoachCard = ({ name, disciplines, bio, qualifications, photo }) => {
   return (
-    <div className="bg-neutral-700 rounded-lg shadow-md p-6 flex flex-col items-center space-y-4">
-      <img src={photo} alt={`Photo de ${name}`} className="w-32 h-32 rounded-full object-cover" />
-      <Heading level={4} white="true">{name}</Heading>
-      <BodyText variant="paragraph" className="text-sm text-neutral-50">Disciplines : {disciplines}</BodyText>
-      <BodyText variant="paragraph" className="text-neutral-50 text-center">{bio}</BodyText>
-
-      <div className="w-full mt-4 space-y-2">
-        <Heading level={5} white="true">Qualifications</Heading>
-        <ul className="list-disc list-inside text-neutral-50 space-y-1">
-          {qualifications.map((qualification, index) => (
-            <li key={index}>{qualification}</li>
-          ))}
-        </ul>
+    <div className="bg-neutral-800 rounded-lg shadow-md flex flex-col items-center space-y-4">
+      <img src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-lg h-[21rem] w-full saturate-0 object-[10%_23%]" />
+      <div className="flex flex-col items-start px-6 space-y-4 pt-4 h-[23rem]">
+        <Heading level={2} white="true">{name}</Heading>
+        <div className="flex items-center space-x-2">
+          <AcademicCapIcon className="size-6 text-neutral-400" />
+          <span className="text-sm uppercase font-semibold text-white tracking-wider">{disciplines}</span>
+        </div>
+        <p className="text-lg text-neutral-100">{bio}</p>
       </div>
 
-      {recordLink && (
-        <a
-          href={recordLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white hover:underline mt-4"
-        >
-          Voir le palmarès complet
-        </a>
-      )}
+      <div className="w-full px-6 pt-6 pb-8 space-y-2">
+        <span className="text-sm uppercase font-semibold text-neutral-400 tracking-wider">Qualifications</span>
+        <div className="grid grid-cols-2 gap-2 w-full">
+          {qualifications.map((qualification, index) => (
+            <div key={index} className="bg-neutral-700 text-neutral-50 text-center py-1 px-2 rounded-full text-sm flex items-center justify-center">
+              {qualification}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,8 @@ import ActivityCard from "../components/ActivityCard";
 import { Heading } from "../components/foundations/Heading";
 import AboutSection from "../components/AboutSection";
 import CoachCard from "../components/CoachCard";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
 const LandingPage = () => {
   const handleSignUp = () => {
     console.log("S'inscrire au cours");
@@ -71,8 +73,8 @@ const LandingPage = () => {
   return (
     <div>
       <Header />
-      <div className="bg-neutral-100 pt-64 pb-48 -mt-64">
-        <div className="max-w-7xl mx-auto">
+      <div className="bg-neutral-100 pt-40 pb-48 -mt-40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Heading level={2}>Nos activités</Heading>
           <div className="pt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ActivityCard
@@ -185,8 +187,8 @@ const LandingPage = () => {
       <div className="">
         <AboutSection />
       </div>
-      {/* <div className="bg-neutral-800 py-40">
-        <div className="max-w-7xl mx-auto">
+      <div className="bg-neutral-900 pt-28 pb-96">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Heading level={2} white="true">
             Nos coachs
           </Heading>
@@ -194,7 +196,7 @@ const LandingPage = () => {
             <CoachCard
               name="Luc Hernandez"
               disciplines="Luta Livre, MMA"
-              bio="Passionné d'arts martiaux depuis sa tendre enfance, devenu pédagogue hors pair, Luc a un don pour vous faire aimer le combat au sol et le MMA. Son CV sportif parle pour lui :"
+              bio="Passionné d'arts martiaux depuis sa plus tendre enfance, Luc Hernandez a consacré sa vie à l'entraînement, au perfectionnement et à la transmission de ses connaissances. Devenu un pédagogue hors pair, il possède un talent unique pour faire aimer le combat au sol et le MMA, en instillant à ses élèves confiance, technique et discipline. Doté d'une grande patience et d'une pédagogie naturelle, il sait motiver et guider chaque pratiquant, quel que soit son niveau, vers une progression constante. Son CV sportif parle pour lui :"
               qualifications={[
                 "Ceinture noire de Luta Livre",
                 "1er Dan de Luta Livre",
@@ -204,28 +206,60 @@ const LandingPage = () => {
                 "BPJEPS sport de combat",
                 "BF2 MMA",
                 "Mitaine noire CNMMA",
-                "Médaillé tournoi international Marseille jujitsu combat",
+                "Médaillé tournoi jujitsu combat",
                 "Brevet d'état Judo-jujitsu",
               ]}
-              recordLink="http://www.sherdog.com/fighter/Luc-Hernandez-72905"
               photo="/assets/luc_hernandez.jpg"
             />
             <CoachCard
               name="Nori Berramdane"
               disciplines="Boxe Pied Poing"
-              bio="L'équipe du Fclub est heureuse de compter Nori parmi le staff enseignant ! Initié très tôt à la pratique martiale, il obtiendra une ceinture marron en full contact et plusieurs titres de champion de la Loire. Amoureux de sports de combat, c'est tout naturellement que Nori s'oriente vers le MMA et la Luta Livre où il obtient le grade de ceinture jaune. Les petit plus ? Nori est un enseignant efficace qui n'a pas oublié d'être drôle."
+              bio="L'équipe de l'Académie Stéphanoise est heureuse de compter Nori parmi le staff enseignant ! Initié très tôt à la pratique martiale, il obtiendra une ceinture marron en full contact et plusieurs titres de champion de la Loire. Amoureux de sports de combat, c'est tout naturellement que Nori s'oriente vers le MMA et la Luta Livre où il obtient le grade de ceinture jaune. Les petit plus ? Nori est un enseignant efficace qui n'a pas oublié d'être drôle."
               qualifications={[
                 "Ceinture marron de Full Contact",
                 "Titulaire d'un BMF2 FFKMDA",
                 "Pratiquant de Luta Livre et de judo",
                 "Gant noir de Kick-Boxing",
+                                "Ceinture marron de Full Contact",
+                "Titulaire d'un BMF2 FFKMDA",
+                "Pratiquant de Luta Livre et de judo",
+                "Gant noir de Kick-Boxing",
               ]}
-              recordLink=""
               photo="/assets/nori_berramdane.jpg"
             />
           </div>
         </div>
-      </div> */}
+      </div>
+      <div className="max-w-7xl mx-auto pb-40 px-6 lg:px-8 -mt-52">
+        <CallToActionSection />
+      </div>
+      <div className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <Heading level={2} className="">
+            Nos actualités
+          </Heading>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <img
+              src="/assets/academie_stephanoise_1.jpg"
+              alt="Actualité 1"
+              className="w-full h-96 object-cover rounded-md shadow-md saturate-0"
+            />
+            <img
+              src="/assets/academie_stephanoise_2.jpg"
+              alt="Actualité 2"
+              className="w-full h-96 object-cover rounded-md shadow-md saturate-0"
+            />
+            <img
+              src="/assets/academie_stephanoise_3.jpg"
+              alt="Actualité 3"
+              className="w-full h-96 object-cover rounded-md shadow-md saturate-0"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="-mt-64">
+        <Footer />
+      </div>
     </div>
   );
 };
