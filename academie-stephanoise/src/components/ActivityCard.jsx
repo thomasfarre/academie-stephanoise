@@ -3,12 +3,13 @@ import { StarIcon, ClockIcon, CalendarDaysIcon } from '@heroicons/react/24/outli
 import { Button } from './foundations/Button';
 import { Heading } from './foundations/Heading';
 import { BodyText } from './foundations/BodyText';
+import { UserPlusIcon } from '@heroicons/react/24/outline';
 
-const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, benefits, schedule, icon, onSignUp, onViewCalendar }) => {
+const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, schedule, icon, onSignUp, onViewCalendar }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md flex flex-col space-y-8">
+    <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col space-y-8">
       <div className="flex items-center space-x-4">
-        <div className={`rounded-lg p-1 flex-shrink-0 ${bgColor}`}>{icon}</div>
+        <div className={`rounded-2xl p-1 flex-shrink-0 ${bgColor}`}>{icon}</div>
         <Heading level={4}>{name}</Heading>
       </div>
 
@@ -42,15 +43,19 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
         <Button
           onClick={onViewCalendar}
           variant="leadingIcon"
-          label="Voir le calendrier"
+          label="Planning"
+          className="w-1/2"
         >
-          <CalendarDaysIcon className="w-5 h-5 mr-2" />
+          <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
         </Button>
         <Button
           onClick={onSignUp}
-          variant="secondary"
+          variant="leadingIcon"
           label="S'inscrire"
-        />
+          className="w-1/2"
+        >
+          <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-600" />
+        </Button>
       </div>
     </div>
   );

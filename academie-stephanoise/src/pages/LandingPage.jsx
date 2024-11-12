@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import ActivityCard from "../components/ActivityCard";
 import { Heading } from "../components/foundations/Heading";
 import AboutSection from "../components/AboutSection";
@@ -18,14 +17,6 @@ const LandingPage = () => {
     <img
       src="/assets/icons/krav_picto.png"
       alt="Krav Maga Icon"
-      className="h-20 w-20"
-    />
-  );
-
-  const selfDefenseIcon = (
-    <img
-      src="/assets/icons/selfdef_picto.png"
-      alt="Self Defense Icon"
       className="h-20 w-20"
     />
   );
@@ -72,16 +63,15 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Header />
-      <div className="bg-neutral-100 pt-40 pb-48 -mt-40">
+      <div className="bg-neutral-50 pt-32 pb-24 lg:pb-48 -mt-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Heading level={2}>Nos activités</Heading>
-          <div className="pt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Heading level={3}>Nos activités</Heading>
+          <div className="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ActivityCard
               name="Boxe"
               bgColor="bg-orange-100"
               level="Intermédiaire"
-              description="Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases tout en profitant d'un entraînement intensif."
+              description="Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases."
               duration="1 heure"
               benefits={[
                 "Amélioration de la condition physique",
@@ -189,10 +179,10 @@ const LandingPage = () => {
       </div>
       <div className="bg-neutral-900 pt-28 pb-96">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Heading level={2} white="true">
+          <Heading level={3} white="true">
             Nos coachs
           </Heading>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
             <CoachCard
               name="Luc Hernandez"
               disciplines="Luta Livre, MMA"
@@ -230,15 +220,15 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto pb-40 px-6 lg:px-8 -mt-52">
+      <div className="max-w-7xl mx-auto pb-28 px-6 lg:px-8 -mt-52">
         <CallToActionSection />
       </div>
-      <div className="bg-white py-24">
+      <div className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Heading level={2} className="">
-            Nos actualités
+          <Heading level={3} className="">
+            Notre instagram
           </Heading>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
             <img
               src="/assets/academie_stephanoise_1.jpg"
               alt="Actualité 1"

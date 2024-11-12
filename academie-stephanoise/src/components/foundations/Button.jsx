@@ -3,7 +3,7 @@ import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
 const ButtonVariants = {
   primary: {
-    className: 'bg-neutral-900 font-semibold shadow text-white hover:bg-neutral-700 focus:ring-neutral-900 py-2 px-4',
+    className: 'bg-emerald-800 font-semibold shadow text-white hover:bg-emerald-600 focus:ring-emerald-800 py-2 px-4',
     content: ({ label }) => (
       <>
         {label}

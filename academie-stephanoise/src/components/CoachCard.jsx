@@ -4,15 +4,15 @@ import { Heading } from './foundations/Heading';
 
 const CoachCard = ({ name, disciplines, bio, qualifications, photo }) => {
   return (
-    <div className="bg-neutral-800 rounded-lg shadow-md flex flex-col items-center space-y-4">
-      <img src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-lg h-[21rem] w-full saturate-0 object-[10%_23%]" />
-      <div className="flex flex-col items-start px-6 space-y-4 pt-4 h-[23rem]">
+    <div className="bg-neutral-800 rounded-2xl shadow-md flex flex-col items-center space-y-4">
+      <img src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-2xl h-[21rem] w-full saturate-0 object-[10%_23%]" />
+      <div className="flex flex-col items-start px-6 space-y-4 pt-4">
         <Heading level={2} white="true">{name}</Heading>
         <div className="flex items-center space-x-2">
           <AcademicCapIcon className="size-6 text-neutral-400" />
           <span className="text-sm uppercase font-semibold text-white tracking-wider">{disciplines}</span>
         </div>
-        <p className="text-lg text-neutral-100">{bio}</p>
+        <p className="text-lg text-neutral-100  h-[25rem] md:h-[30rem] xl:h-[15rem]">{bio}</p>
       </div>
 
       <div className="w-full px-6 pt-6 pb-8 space-y-2">

@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LandingPage from "./LandingPage.jsx";
-
+import Header from "../components/Header.jsx";
 const title =
   "Académie Stéphanoise - Arts Martiaux, Fitness et Bien-Être pour Tous";
 const description =
@@ -11,5 +11,6 @@ const keywords =
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
+  <Header client:only="react"/>
   <LandingPage />
 </Layout>

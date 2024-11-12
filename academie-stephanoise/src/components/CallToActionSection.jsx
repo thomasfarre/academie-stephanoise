@@ -4,8 +4,8 @@ import { BodyText } from "./foundations/BodyText";
 
 export default function CallToActionSection() {
   return (
-    <div className="bg-white rounded-lg shadow-lg max-w-4xl mx-auto">
-      <div className="px-6 py-8 sm:px-6 sm:py-16 lg:px-8">
+    <div className="bg-white rounded-2xl shadow-lg max-w-4xl mx-auto">
+      <div className="px-6 py-8 sm:px-6 sm:py-16 xl:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Heading level={2} className="text-balance">
             Prêt à essayer ? Réservez votre première séance !
