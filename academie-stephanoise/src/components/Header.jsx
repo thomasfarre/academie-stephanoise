@@ -33,7 +33,7 @@ const Header = () => {
               />
             </a>
           </div>
-          <div className="flex xl:hidden">
+          <div className="flex lg:hidden">
             <Button onClick={toggleMenu} variant="icon" className="-m-2.5">
               <span className="sr-only">Open main menu</span>
               {menuOpen ? (
@@ -43,7 +43,7 @@ const Header = () => {
               )}
             </Button>
           </div>
-          <div className="hidden xl:flex xl:flex-row space-x-2 xl:gap-x-12">
+          <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
             <Link href="#" label="Activités" />
             <Link href="#" label="Calendrier" />
             <Link href="#" label="S'inscrire" />
@@ -52,7 +52,7 @@ const Header = () => {
           </div>
         </nav>
         {menuOpen && (
-          <div className="xl:hidden" role="dialog" aria-modal="true">
+          <div className="lg:hidden" role="dialog" aria-modal="true">
             <div onClick={toggleMenu} className="fixed inset-0 bg-neutral-900 opacity-80 z-50"></div>
             <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-neutral-900/10">
               <div className="flex items-center justify-between">
