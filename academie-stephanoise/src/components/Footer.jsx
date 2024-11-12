@@ -112,7 +112,7 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-              <div>
+              <div className="mt-8 lg:mt-0">
                 <h3 className="text-sm/6 font-semibold text-white">Nous rejoindre</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.join.map((item) => (
