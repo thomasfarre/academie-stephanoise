@@ -21,7 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           cd academie-stephanoise
-          npm install  # Install any dependencies if needed
+          if [ -f package.json ]; then
+            npm install  # Install any dependencies if needed
+          else
+            echo "package.json not found, skipping npm install"
+          fi
 
       - name: Fetch Instagram Data
         env:
