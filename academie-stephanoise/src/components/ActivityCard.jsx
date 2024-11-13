@@ -7,9 +7,9 @@ import { UserPlusIcon } from '@heroicons/react/24/outline';
 
 const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, schedule, icon, onSignUp, onViewCalendar }) => {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col space-y-8">
-      <div className="flex items-center space-x-4">
-        <div className={`rounded-2xl p-1 flex-shrink-0 ${bgColor}`}>
+    <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col space-y-4">
+      <div className="space-y-3">
+        <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
           <img src={icon} alt={`${name} Icon`} className="h-20 w-20" />
         </div>
         <Heading level={4}>{name}</Heading>
@@ -34,11 +34,6 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
             <BodyText variant="label">{schedule}</BodyText>
           </div>
         </div>
-        {/* <ul className="list-disc list-inside space-y-1">
-          {benefits.map((benefit, index) => (
-            <li key={index} className="text-neutral-700">{benefit}</li>
-          ))}
-        </ul> */}
       </div>
 
       <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
