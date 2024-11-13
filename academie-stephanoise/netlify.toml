@@ -7,7 +7,9 @@
 [functions]
   # Specify the directory for serverless functions
   node_bundler = "esbuild"
-  node_version = "18"
   directory = "netlify/functions"
   # Define the function name directly
-  fetchInstagram = { schedule = "*/5 * * * *", external_node_modules = ["fetch-blob", "formdata-polyfill"] } # Runs every 5 minutes
+  fetchInstagram = { schedule = "*/5 * * * *" } # Runs every 5 minutes
+
+[functions.node_version]
+external_node_modules = ["fetch-blob", "formdata-polyfill"]
