@@ -23,7 +23,7 @@ export default function CallToActionSection() {
           <div className="mt-12 flex items-center justify-center gap-x-6">
             <Button
               variant="primary"
-              className="px-3.5 py-2.5 text-sm font-semibold"
+              className="px-3.5 py-2.5"
               label="Contactez-nous"
               onClick={() => console.log("Get started clicked")}
             />
