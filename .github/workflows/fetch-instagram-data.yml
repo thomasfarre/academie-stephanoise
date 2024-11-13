@@ -18,11 +18,6 @@ jobs:
         with:
           node-version: '18'  # Specify the Node.js version
 
-      - name: Install dependencies
-        run: |
-          cd academie-stephanoise
-          npm install  # Install any dependencies if needed
-
       - name: Fetch Instagram Data
         env:
           PUBLIC_INSTAGRAM_ACCESS_TOKEN: ${{ secrets.PUBLIC_INSTAGRAM_ACCESS_TOKEN }}  # Use GitHub Secrets for sensitive data
