@@ -111,7 +111,7 @@ const Header = () => {
         )}
       </header>
       <main>
-        <div className="relative isolate pt-16 xl:pt-0">
+        <div className="relative isolate pt-16 xl:pt-0 overflow-hidden">
           <svg
             className="absolute inset-x-0 top-20 translate-x-40 -z-10 h-[64rem] w-full stroke-neutral-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
             aria-hidden="true"
@@ -163,7 +163,12 @@ const Header = () => {
 
                     <Button
                       variant="tertiary"
-                      onClick={() => {}}
+                      onClick={() => {
+                        const section = document.getElementById('about-section');
+                        if (section) {
+                          section.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
                       className="font-semibold text-neutral-900"
                       label="En savoir plus"
                     >
