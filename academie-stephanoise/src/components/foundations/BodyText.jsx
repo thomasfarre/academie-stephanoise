@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 /**
  * BodyText component for displaying paragraphs, blockquotes, and other body text elements.
  */
-export const BodyText = ({ variant, children, className, ...props }) => {
+export const BodyText = ({ variant, children, className, whiteText = false, ...props }) => {
   const variantStyle = {
-    headline: "md:text-xl text-lg text-neutral-800",
-    paragraph: 'text-neutral-700',
-    small: 'text-sm text-neutral-700',
-    label: 'text-xs uppercase font-semibold text-neutral-700 tracking-wider',
+    headline: `md:text-xl text-lg ${whiteText ? 'text-neutral-50' : 'text-neutral-800'}`,
+    paragraph: `${whiteText ? 'text-neutral-100' : 'text-neutral-700'}`,
+    small: `text-sm ${whiteText ? 'text-neutral-100' : 'text-neutral-700'}`,
+    label: `text-xs uppercase font-semibold ${whiteText ? 'text-neutral-200' : 'text-neutral-700'} tracking-wider`,
   };
 
   return (
@@ -27,11 +27,15 @@ BodyText.propTypes = {
   /**
    * Content to display inside the BodyText component
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Additional classes for styling
    */
   className: PropTypes.string,
+  /**
+   * Option to render text in white
+   */
+  whiteText: PropTypes.bool,
 };
 
 export default BodyText;

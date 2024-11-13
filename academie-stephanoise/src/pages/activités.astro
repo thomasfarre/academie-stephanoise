@@ -3,7 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar";
 import Heading from "../components/foundations/Heading";
 import BodyText from "../components/foundations/BodyText";
-
+import ActivityBlock from "../components/ActivityBlock";
+import ActivityLogo from "../components/ActivityLogo";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
 const title = "Activités - Académie Stéphanoise";
 const description =
   "En savoir plus sur l'Académie Stéphanoise, un lieu dédié aux arts martiaux et au fitness à Saint-Étienne.";
@@ -12,118 +15,243 @@ const keywords =
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar />
-  <div>
+  <Navbar client:only="react" />
+  <div class="bg-neutral-900">
     <div class="max-w-7xl mx-auto pt-20 px-6 lg:px-8">
-      <Heading level={2}> La liste de nos activités </Heading>
-      <BodyText variant="headline" className="mt-4">
-        Découvrez nos activités sportives et de remise en forme.
+      <Heading level={2} white> La liste de nos activités </Heading>
+      <BodyText variant="headline" whiteText class="mt-4 max-w-prose">
+        Découvrez nos activités sportives et de remise en forme en détail.
+        Consultez notre planning pour trouver les horaires qui vous conviennent,
+        inscrivez-vous directement en ligne, ou contactez-nous pour venir tester
+        nos cours avant de vous inscrire définitivement. Nous serons ravis de
+        vous accueillir et de vous aider à atteindre vos objectifs de fitness et
+        de bien-être.
       </BodyText>
     </div>
   </div>
-  <div class="bg-neutral-900 mt-20 py-8 sm:py-12">
+  <div class="bg-neutral-900 py-8 sm:py-12">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div
         class="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3"
       >
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-orange-100"
-            src="/assets/icons/boxe_picto.png"
-            alt="Boxe"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            Boxe pieds-poings
-          </Heading>
-        </div>
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-yellow-100"
-            src="/assets/icons/crosstraining_picto.png"
-            alt="Cross Training"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            Cross Training
-          </Heading>
-        </div>
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-blue-100"
-            src="/assets/icons/krav_picto.png"
-            alt="Krav Maga"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            Krav Maga
-          </Heading>
-        </div>
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-red-100"
-            src="/assets/icons/lutalivre_picto.png"
-            alt="Luta Livre"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            Luta Livre
-          </Heading>
-        </div>
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-green-100"
-            src="/assets/icons/mma_picto.png"
-            alt="MMA"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            MMA
-          </Heading>
-        </div>
-        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
-          <img
-            class="max-h-12 w-fit object-contain rounded-full bg-purple-100"
-            src="/assets/icons/tolpar_picto.png"
-            alt="Tolpar"
-            width="158"
-            height="48"
-          />
-          <Heading level={4} white>
-            Tolpar
-          </Heading>
-        </div>
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-orange-100"
+          imgSrc="/assets/icons/boxe_picto.png"
+          imgAlt="Boxe"
+          headingText="Boxe pieds-poings"
+          targetId="boxe"
+        />
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-blue-100"
+          imgSrc="/assets/icons/krav_picto.png"
+          imgAlt="Krav Maga"
+          headingText="Krav Maga"
+          targetId="krav-maga"
+        />
+
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-green-100"
+          imgSrc="/assets/icons/mma_picto.png"
+          imgAlt="MMA"
+          headingText="MMA"
+          targetId="mma"
+        />
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-purple-100"
+          imgSrc="/assets/icons/tolpar_picto.png"
+          imgAlt="Tolpar"
+          headingText="Tolpar"
+          targetId="tolpar"
+        />
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-red-100"
+          imgSrc="/assets/icons/lutalivre_picto.png"
+          imgAlt="Luta Livre"
+          headingText="Luta Livre"
+          targetId="luta-livre"
+        />
+        <ActivityLogo
+          client:only="react"
+          bgColor="bg-yellow-100"
+          imgSrc="/assets/icons/crosstraining_picto.png"
+          imgAlt="Cross Training"
+          headingText="Cross Training"
+          targetId="cross-training"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="space-y-24 xl:space-y-48">
+        <ActivityBlock
+          targetId="boxe"
+          iconSrc="/assets/icons/boxe_picto.png"
+          iconAlt="Boxe"
+          iconColor="bg-orange-100"
+          headingText="Boxe pieds poing"
+          paragraphs={[
+            "Le Full Contact, la boxe thaï, la boxe française et le kick boxing sont autant de disciplines regroupées sous l’appellation de boxes pied-poing. Ces sports de combat allient frappes des poings et des pieds, offrant une palette technique riche et variée, adaptée à différents styles et objectifs.",
+            "Alliance parfaite entre physique et mental, ces disciplines demandent bien plus que de la force brute. Elles sollicitent agilité, maîtrise de soi, intelligence stratégique, courage et une excellente condition physique.",
+            "A l'Académie Stéphanoise, nous vous accompagnons dans l’apprentissage des bases indispensables de la boxe pied-poing, que ce soit pour vous préparer à la compétition, compléter vos compétences en MMA, ou améliorer votre pratique de la self-défense.",
+          ]}
+          duration="1h"
+          level="Débutant"
+          schedule="Plusieurs fois par semaine"
+          features={[
+            { text: "Développement physique complet" },
+            { text: "Confiance en soi et maîtrise de soi" },
+            { text: "Respect et valeurs sportives" },
+            { text: "Gestion du stress" },
+            { text: "Défoulement et discipline" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://images.unsplash.com/photo-1610859875432-59b4c246808f?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          imageAlt="Boxe pieds poing"
+        />
+        <ActivityBlock
+          targetId="krav-maga"
+          iconSrc="/assets/icons/krav_picto.png"
+          iconAlt="Krav-Maga"
+          iconColor="bg-blue-100"
+          headingText="Krav-Maga"
+          invert
+          duration="1h"
+          level="Débutant"
+          schedule="Quotidiennement"
+          paragraphs={[
+            "Le Krav-Maga se compose en deux parties :",
+            "La self-défense. Elle renferme des techniques variées visant à permettre aux initiés de se défendre contre une attaque, éviter les blessures et venir à bout d’un assaillant. Cette partie contient des parades contre une grande diversité d’attaques armées ou non et dans des positions de base différentes : debout, assis, couché.",
+            "Le combat au corps à corps, qui constitue une phase plus avancée du Krav-Maga. Il regroupe des éléments ayant trait au combat proprement dit : les tactiques, les feintes, la combinaison d’attaques différentes, la dimension psychologique du combat... et autant d’exercices permettant de renforcer son esprit et de développer une capacité à gérer des confrontations violentes dans un état de stress.",
+          ]}
+          features={[
+            { text: "Techniques variées pour se défendre" },
+            { text: "Parades contre les attaques armées et non armées" },
+            { text: "Développement de la dimension psychologique" },
+            { text: "Renforcement de l'esprit face au stress" },
+            { text: "Capacité à gérer les confrontations violentes" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://www.kravmaga34.com/wp-content/uploads/2018/02/krav-maga-self-defense-training.jpg"
+          imageAlt="Krav-Maga"
+        />
+        <ActivityBlock
+          targetId="mma"
+          iconSrc="/assets/icons/mma_picto.png"
+          iconAlt="MMA"
+          iconColor="bg-green-100"
+          invert
+          headingText="Mixed Martial Arts (MMA)"
+          duration="1h30"
+          level="Intermédiaire à avancé"
+          schedule="Hebdomadaire"
+          paragraphs={[
+            "Le mixed martial arts (MMA), littéralement « arts martiaux mixtes », est un sport de combat complet associant pugilat et lutte au corps à corps dans lequel les deux combattants peuvent utiliser de nombreuses techniques.",
+            "Selon les fédérations, sont autorisées des techniques de percussion telles que coups de pied, de poing, de genou et de coude, des techniques de projections et de soumission (Luta Livre) et parfois certaines techniques de percussion au sol.",
+            "Le combat libre existe en réalité depuis fort longtemps et on en retrouve des traces dans de nombreux arts anciens.",
+          ]}
+          features={[
+            {
+              text: "Combinaison de techniques variées (pied, poing, projections, soumissions)",
+            },
+            { text: "Adapté au combat debout et au sol" },
+            { text: "Héritage de nombreux arts martiaux anciens" },
+            { text: "Idéal pour développer force, agilité et stratégie" },
+            { text: "Rigueur et contrôle dans les combats" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://www.bougerabordeaux.com/wp-content/uploads/2024/10/Dojo-Form.jpeg"
+          imageAlt="MMA"
+        />
+        <ActivityBlock
+          targetId="tolpar"
+          iconSrc="/assets/icons/tolpar_picto.png"
+          iconAlt="Tolpar"
+          iconColor="bg-purple-100"
+          headingText="Tolpar"
+          duration="1h30"
+          level="Tous niveaux"
+          schedule="Hebdomadaire"
+          paragraphs={[
+            "Le Tolpar est un sport de combat moderne qui puise son origine dans les duels ancestraux à l’arme blanche.",
+            "Le système enseigné au F-club s’appuie sur le travail de l’école russe TOLPAR.",
+            "L’élève peut en toute sécurité apprendre le maniement du couteau et s’affronter avec différents partenaires. Le Tolpar revêt un aspect ludique adapté à tous les physiques.",
+          ]}
+          features={[
+            { text: "Apprentissage sécurisé du maniement du couteau" },
+            { text: "Basé sur les techniques de l'école TOLPAR" },
+            { text: "Adapté à tous les physiques" },
+            { text: "Développement des compétences tactiques" },
+            { text: "Aspect ludique pour une pratique agréable" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://www.tolpar-france.fr/wp-content/uploads/2022/12/AM3A3229-scaled.jpg"
+          imageAlt="Tolpar"
+        />
+        <ActivityBlock
+          targetId="luta-livre"
+          iconSrc="/assets/icons/lutalivre_picto.png"
+          iconAlt="Luta Livre"
+          iconColor="bg-red-100"
+          headingText="Luta Livre"
+          duration="1h"
+          level="Tous niveaux"
+          schedule="Hebdomadaire"
+          paragraphs={[
+            "La Luta Livre est un style de lutte venant du Brésil. Elle consiste à amener son adversaire au sol pour le faire abandonner grâce à des finalisations comme des clés de bras, clés d’épaules, étranglements, clés de chevilles, compressions musculaires, et bien d’autres.",
+            "C’est un sport indispensable pour se perfectionner au sol pour les pratiquants de MMA et de Krav Maga.",
+            "C’est aussi un sport extrêmement ludique pour commencer les sports de combats car les frappes sont absentes. Les enfants et les adolescents en raffolent également !",
+            "Ce sport se pratique en rashguard, short ou pantalon.",
+          ]}
+          features={[
+            { text: "Perfectionnement au sol avec des techniques variées" },
+            { text: "Absence de frappes, idéal pour débutants et enfants" },
+            { text: "Pratique complémentaire pour le MMA et le Krav Maga" },
+            { text: "Ludique et accessible à tous" },
+            { text: "Équipement simple : rashguard et short ou pantalon" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://www.greggot.com/wp-content/uploads/2019/11/Vignette-LUTA-LIVRE-FKFC-ED2.png"
+          imageAlt="Luta Livre"
+        />
+        <ActivityBlock
+          targetId="cross-training"
+          iconSrc="/assets/icons/crosstraining_picto.png"
+          iconAlt="Cross Fit"
+          iconColor="bg-yellow-100"
+          headingText="Cross Fit"
+          invert
+          duration="1h"
+          level="Tous niveaux"
+          schedule="Plusieurs fois par semaine"
+          paragraphs={[
+            "Sessions de cross training mixtes pour renforcer votre corps et votre esprit. Section cross training 100% féminine pour une dynamique de groupe et un soutien mutuel.",
+            "Entraînements spécifiques pour les sports de combat : endurance, force, explosivité et techniques de combat.",
+            "Des conseils d'experts pour améliorer vos performances et repousser vos limites.",
+            "Que vous soyez novice ou athlète confirmé(e), notre programme est conçu pour vous challenger à chaque étape. Rejoignez-nous et faites passer votre préparation physique au niveau supérieur !",
+          ]}
+          features={[
+            { text: "Sessions mixtes pour renforcer corps et esprit" },
+            { text: "Section 100% féminine avec dynamique de groupe" },
+            { text: "Entraînements spécifiques pour les sports de combat" },
+            { text: "Conseils d'experts pour progresser" },
+            { text: "Adapté aux novices comme aux athlètes confirmés" },
+          ]}
+          buttonLabels={["Planning", "S'inscrire"]}
+          imageSrc="https://img.passeportsante.net/1200x675/2020-11-27/i97848-.webp"
+          imageAlt="Cross Training"
+        />
       </div>
     </div>
 
-  <div class="bg-neutral-50 py-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div>
-          <Heading level={3}>Boxe pieds poing</Heading>
-          <p class="mt-4 text-neutral-700">
-            Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases.
-          </p>
-          <ul class="mt-4 space-y-2">
-            <li><strong>Niveau:</strong> Intermédiaire</li>
-            <li><strong>Durée:</strong> 1 heure</li>
-            <li><strong>Horaires:</strong> Plusieurs fois par semaine</li>
-          </ul>
-        </div>
-        <div>
-          <img
-            class="w-full h-auto rounded-lg shadow-md"
-            src="/assets/icons/boxe_picto.png"
-            alt="Boxe pieds poing"
-          />
-        </div>
-      </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection />
     </div>
   </div>
-  </div>
+  <Footer />
 </Layout>

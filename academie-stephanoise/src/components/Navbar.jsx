@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-neutral-900">
       <header>
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between xl:justify-start xl:space-x-40 p-6 xl:px-8"
@@ -20,8 +20,8 @@ const Navbar = () => {
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Académie Stéphanoise</span>
               <img
-                className="h-28 w-auto"
-                src="/assets/logo.png"
+                className="h-28 py-5 px-1 bg-white w-auto rounded-full"
+                src="/favicon.png"
                 alt="Académie Stéphanoise Logo"
               />
             </a>
@@ -30,18 +30,18 @@ const Navbar = () => {
             <button onClick={toggleMenu} className="-m-2.5 p-2.5">
               <span className="sr-only">Open main menu</span>
               {menuOpen ? (
-                <XMarkIcon className="size-7" />
+                <XMarkIcon className="size-7 text-neutral-50" />
               ) : (
-                <Bars3Icon className="size-7" />
+                <Bars3Icon className="size-7 text-neutral-50" />
               )}
             </button>
           </div>
           <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
-            <Link href="/activity" label="Activités" />
-            <Link href="#" label="Calendrier" />
-            <Link href="#" label="S'inscrire" />
-            <Link href="#" label="Contact" />
-            <Link href="#" label="Blog" />
+            <Link whiteText href="/activités" label="Activités" />
+            <Link whiteText href="#" label="Calendrier" />
+            <Link whiteText href="#" label="S'inscrire" />
+            <Link whiteText href="#" label="Contact" />
+            <Link whiteText href="#" label="Blog" />
           </div>
         </nav>
         {menuOpen && (
