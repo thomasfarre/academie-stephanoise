@@ -9,7 +9,9 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col space-y-8">
       <div className="flex items-center space-x-4">
-        <div className={`rounded-2xl p-1 flex-shrink-0 ${bgColor}`}>{icon}</div>
+        <div className={`rounded-2xl p-1 flex-shrink-0 ${bgColor}`}>
+          <img src={icon} alt={`${name} Icon`} className="h-20 w-20" />
+        </div>
         <Heading level={4}>{name}</Heading>
       </div>
 
@@ -67,7 +69,7 @@ ActivityCard.propTypes = {
   description: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
   schedule: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.string.isRequired,
   onSignUp: PropTypes.func.isRequired,
   onViewCalendar: PropTypes.func.isRequired,
 };

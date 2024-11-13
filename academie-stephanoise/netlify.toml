@@ -1,0 +1,11 @@
+[build]
+  # Directory for the build output
+  publish = "dist"
+  # Command to build your project
+  command = "npm run build"
+
+[functions]
+  # Specify the directory for serverless functions
+  directory = "netlify/functions"
+  # Define the function name directly
+  fetchInstagram = { schedule = "0 0 * * *" } # Runs every day at midnight

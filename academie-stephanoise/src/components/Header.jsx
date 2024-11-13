@@ -44,7 +44,7 @@ const Header = () => {
             </Button>
           </div>
           <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
-            <Link href="#" label="Activités" />
+            <Link href="/activity" label="Activités" />
             <Link href="#" label="Calendrier" />
             <Link href="#" label="S'inscrire" />
             <Link href="#" label="Contact" />
