@@ -4,7 +4,7 @@ import path from "path";
 
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
-  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
+  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,timestamp&access_token=${ACCESS_TOKEN}`;
 
   try {
     const response = await fetch(url);
@@ -14,9 +14,10 @@ export const handler = async () => {
       throw new Error(`Instagram API error: ${JSON.stringify(data)}`);
     }
 
-    // Filter to get only the 3 most recent images
+    // Sort by timestamp to ensure the most recent images are selected
     const recentImages = data.data
       .filter(item => item.media_type === "IMAGE")
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
       .slice(0, 3);
 
     const filePath = path.join(process.cwd(), "public", "instagram.json");
