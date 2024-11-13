@@ -7,7 +7,13 @@ const InstagramFeed = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch('/instagram.json');
+        let response;
+        if (import.meta.env.PROD) {
+          response = await fetch('/tmp/instagram.json');
+        } else {
+          response = await fetch('/instagram.json');
+        }
+
         if (!response.ok) {
           throw new Error(`Error fetching Instagram data: ${response.statusText}`);
         }
