@@ -1,13 +1,30 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
-import os from "os";
 
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
   const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
+  const filePath = path.join(__dirname, "../public/instagram.json");
 
   try {
+    // Check if the file exists
+    let recentImages = [];
+    if (fs.existsSync(filePath)) {
+      const stats = fs.statSync(filePath);
+      const lastModified = new Date(stats.mtime);
+      const now = new Date();
+
+      // If the file was modified less than an hour ago, use the cached data
+      if (now - lastModified < 3600000) {
+        const cachedData = fs.readFileSync(filePath);
+        return {
+          statusCode: 200,
+          body: JSON.stringify({ message: "Instagram data updated successfully!" }),
+        };
+      }
+    }
+
     const response = await fetch(url);
     const data = await response.json();
 
@@ -16,14 +33,9 @@ export const handler = async () => {
     }
 
     // Filter to get only the 3 most recent images
-    const recentImages = data.data
+    recentImages = data.data
       .filter(item => item.media_type === "IMAGE")
       .slice(0, 3);
-
-    // Use a temporary directory to avoid permission issues
-    const tempDir = os.tmpdir();
-    const filePath = path.join(tempDir, "instagram.json");
-    console.log("Writing Instagram data to:", filePath);
 
     // Write the file
     fs.writeFileSync(filePath, JSON.stringify(recentImages, null, 2));
