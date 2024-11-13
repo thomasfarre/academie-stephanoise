@@ -1,23 +1,32 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
-  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,timestamp&access_token=${ACCESS_TOKEN}`;
+  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
 
   try {
     const response = await fetch(url);
-    const data = await response.json();
+
+    // Log the raw response for debugging
+    const textResponse = await response.text();
+    console.log("Raw response from Instagram API:", textResponse);
 
     if (!response.ok) {
-      throw new Error(`Instagram API error: ${JSON.stringify(data)}`);
+      throw new Error(`Instagram API error: ${response.status} - ${textResponse}`);
     }
 
-    // Sort by timestamp to ensure the most recent images are selected
+    // Attempt to parse the response as JSON
+    const data = JSON.parse(textResponse);
+
+    // Filter to get only the 3 most recent images
     const recentImages = data.data
       .filter(item => item.media_type === "IMAGE")
-      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
       .slice(0, 3);
 
     const filePath = path.join(process.cwd(), "public", "instagram.json");
@@ -41,3 +50,8 @@ export const handler = async () => {
     };
   }
 };
+
+// Invoke the handler function when the script is run
+handler().catch(error => {
+  console.error("Error executing handler:", error);
+});
