@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
-import os from "os";
 
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
@@ -20,10 +19,11 @@ export const handler = async () => {
       .filter(item => item.media_type === "IMAGE")
       .slice(0, 3);
 
-    // Use a temporary directory to avoid permission issues
-    const tempDir = os.tmpdir();
-    const filePath = path.join(tempDir, "instagram.json");
+    const filePath = path.join(process.cwd(), "public", "instagram.json");
     console.log("Writing Instagram data to:", filePath);
+
+    // Ensure the directory exists
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
     // Write the file
     fs.writeFileSync(filePath, JSON.stringify(recentImages, null, 2));
