@@ -6,7 +6,7 @@ import {
 
 const navigation = {
   discover: [
-    { name: "Activités", href: "#" },
+    { name: "Activités", href: "/activités" },
     { name: "Planning", href: "#" },
     { name: "Blog", href: "#" },
   ],
@@ -17,7 +17,7 @@ const navigation = {
   social: [
     {
       name: "Facebook",
-      href: "#",
+      href: "https://www.facebook.com/fclubstephanoise",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -30,7 +30,7 @@ const navigation = {
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/fclub42/",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -43,7 +43,7 @@ const navigation = {
     },
     {
       name: "YouTube",
-      href: "#",
+      href: "https://www.youtube.com/@fclubcontact47",
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path

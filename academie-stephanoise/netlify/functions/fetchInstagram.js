@@ -5,7 +5,7 @@ import path from "path";
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
   const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
-  const filePath = path.join(__dirname, "../public/instagram.json");
+  const filePath = path.join(__dirname, "../dist/instagram.json");
 
   try {
     // Check if the file exists
@@ -20,11 +20,15 @@ export const handler = async () => {
         const cachedData = fs.readFileSync(filePath);
         return {
           statusCode: 200,
-          body: JSON.stringify({ message: "Instagram data updated successfully!" }),
+          body: cachedData,
         };
+      } else {s
+        // If the file exists but is older than an hour, read it
+        recentImages = JSON.parse(fs.readFileSync(filePath));
       }
     }
 
+    // Fetch new data from Instagram API
     const response = await fetch(url);
     const data = await response.json();
 
@@ -37,7 +41,7 @@ export const handler = async () => {
       .filter(item => item.media_type === "IMAGE")
       .slice(0, 3);
 
-    // Write the file
+    // Write the file to the dist directory
     fs.writeFileSync(filePath, JSON.stringify(recentImages, null, 2));
 
     return {
