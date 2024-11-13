@@ -142,7 +142,7 @@ const Header = () => {
             ></rect>
           </svg>
           <div className="overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 pb-24 xl:pb-12 pt-36 sm:pt-60 xl:px-8 xl:pt-20">
+            <div className="mx-auto max-w-7xl px-6 pb-24 pt-36 sm:pt-60 xl:px-8 xl:pt-20">
               <div className="mx-auto max-w-2xl gap-x-28 xl:mx-0 xl:flex xl:max-w-none xl:items-center">
                 <div className="relative w-full xl:shrink-0 xl:max-w-xl">
                   <Heading level={1} className="">
