@@ -38,7 +38,7 @@ const InstagramFeed = () => {
               className="transition-transform transform hover:scale-105"
             >
               <img
-                className="w-full h-96 object-cover rounded-md shadow-md saturate-0"
+                className="w-full h-96 object-cover rounded-md shadow-md"
                 src={image.media_url}
                 alt="Instagram Post"
               />

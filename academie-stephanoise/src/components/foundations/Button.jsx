@@ -3,17 +3,19 @@ import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
 const ButtonVariants = {
   primary: {
-    className: 'bg-emerald-800 font-semibold shadow text-white hover:bg-emerald-600 focus:ring-emerald-800 py-3 px-5',
-    content: ({ label }) => (
+    className: 'bg-emerald-900 font-semibold shadow text-emerald-50 hover:bg-emerald-800 focus:ring-emerald-900 py-2 px-4 flex items-center',
+    content: ({ label, children }) => (
       <>
+        {children}
         {label}
       </>
     ),
   },
   secondary: {
-    className: 'text-neutral-900 border font-semibold border-neutral-900 bg-white rounded-md shadow hover:bg-neutral-100 focus:ring-neutral-900 py-2 px-4',
-    content: ({ label }) => (
+    className: 'bg-neutral-900 font-semibold shadow text-neutral-50 hover:bg-neutral-800 focus:ring-neutral-900 py-2 px-4',
+    content: ({ label, children }) => (
       <>
+        {children}
         {label}
       </>
     ),

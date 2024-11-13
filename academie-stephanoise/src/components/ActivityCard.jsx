@@ -7,7 +7,7 @@ import { UserPlusIcon } from '@heroicons/react/24/outline';
 
 const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, schedule, icon, onSignUp, onViewCalendar }) => {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col space-y-4">
+    <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
         <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
           <img src={icon} alt={`${name} Icon`} className="h-20 w-20" />
@@ -15,7 +15,7 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
         <Heading level={4}>{name}</Heading>
       </div>
 
-      <div className="flex-1 space-y-6">
+      <div className="flex-1 space-y-6 pt-4 pb-8">
         <BodyText variant="paragraph" className="h-32">{description}</BodyText>
         <div className="space-y-4">
 
@@ -47,11 +47,11 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
         </Button>
         <Button
           onClick={onSignUp}
-          variant="leadingIcon"
+          variant="secondary"
           label="S'inscrire"
           className="w-1/2"
         >
-          <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-600" />
+          <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
         </Button>
       </div>
     </div>

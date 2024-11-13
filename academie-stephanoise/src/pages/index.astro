@@ -28,9 +28,8 @@ const handleViewCalendar = () => {
 <Layout title={title} description={description} keywords={keywords}>
   <Header client:only="react" />
   <div>
-    <div class="bg-neutral-50 pt-32 pb-24 lg:pb-48 -mt-40">
+    <div class="bg-neutral-50 pt-32 pb-24 lg:pb-36 -mt-40">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <Heading level={3}>Nos activités</Heading>
         <div class="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ActivityCard
             name="Boxe pied poing"
@@ -88,7 +87,7 @@ const handleViewCalendar = () => {
             onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
-            name="Cross Training / Préparation Physique"
+            name="Cross Training / Prépa Physique"
             level="Tous niveaux"
             bgColor="bg-yellow-100"
             description="Améliorez votre condition physique avec des exercices fonctionnels, combinant cardio et renforcement musculaire. Idéal pour développer l’endurance, la force et l’agilité."
@@ -106,7 +105,7 @@ const handleViewCalendar = () => {
     </div>
     <div class="bg-neutral-900 pt-28 pb-96">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <Heading level={3} white={true}> Nos coachs </Heading>
+        <Heading level={2} white={true}> Nos coachs </Heading>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
           <CoachCard
             name="Luc Hernandez"
@@ -150,7 +149,7 @@ const handleViewCalendar = () => {
     </div>
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <Heading level={3}> Notre instagram </Heading>
+        <Heading level={2}> Notre instagram </Heading>
         <InstagramFeed client:only="react" />
       </div>
     </div>

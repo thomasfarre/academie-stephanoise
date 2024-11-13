@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { AcademicCapIcon } from '@heroicons/react/24/outline';
 import { Heading } from './foundations/Heading';
+import { BodyText } from './foundations/BodyText';
 
 const CoachCard = ({ name, disciplines, bio, qualifications, photo }) => {
   return (
     <div className="bg-neutral-800 rounded-2xl shadow-md flex flex-col items-center space-y-4">
-      <img src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-2xl h-[21rem] w-full saturate-0 object-[10%_23%]" />
+      <img src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-2xl h-[21rem] w-full object-[10%_23%]" />
       <div className="flex flex-col items-start px-6 space-y-4 pt-4">
-        <Heading level={2} white="true">{name}</Heading>
+        <span className="text-neutral-200 text-4xl tracking-tight font-semibold">{name}</span>
         <div className="flex items-center space-x-2">
           <AcademicCapIcon className="size-6 text-neutral-400" />
           <span className="text-sm uppercase font-semibold text-white tracking-wider">{disciplines}</span>

@@ -1,6 +1,7 @@
 import { Button } from "./foundations/Button";
 import { Heading } from "./foundations/Heading";
 import { BodyText } from "./foundations/BodyText";
+import { PhoneIcon } from "@heroicons/react/24/outline";
 
 export default function CallToActionSection() {
   return (
@@ -23,10 +24,12 @@ export default function CallToActionSection() {
           <div className="mt-12 flex items-center justify-center gap-x-6">
             <Button
               variant="primary"
-              className="px-3.5 py-2.5"
+              className="px-6 py-4"
               label="Contactez-nous"
               onClick={() => console.log("Get started clicked")}
-            />
+            >
+              <PhoneIcon className="size-6 mr-2 text-emerald-100" />
+            </Button>
           </div>
         </div>
       </div>

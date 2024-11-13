@@ -11,13 +11,13 @@ const Navbar = () => {
 
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header>
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between xl:justify-start xl:space-x-40 p-6 xl:px-8"
           aria-label="Global"
         >
           <div className="flex">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Académie Stéphanoise</span>
               <img
                 className="h-28 w-auto"

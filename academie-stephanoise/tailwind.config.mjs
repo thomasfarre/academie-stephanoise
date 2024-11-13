@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				montserrat: ['Montserrat', 'sans-serif'],
+				protestStrike: ['Protest Strike', 'sans-serif'],
 				openSans: ['Open Sans', 'sans-serif'],
 			},
 		},

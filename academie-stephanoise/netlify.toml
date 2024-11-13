@@ -8,4 +8,4 @@
   # Specify the directory for serverless functions
   directory = "netlify/functions"
   # Define the function name directly
-  fetchInstagram = { schedule = "0 0 * * *" } # Runs every day at midnight
+  fetchInstagram = { schedule = "0 * * * *" } # Runs every hour

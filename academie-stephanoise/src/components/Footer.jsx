@@ -76,7 +76,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm/6 font-semibold text-white">Découvrir</h3>
@@ -103,7 +103,7 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
+            <div className="">
               <div className="mt-10 md:mt-0 space-y-4">
                 <h3 className="text-sm font-semibold text-white">Coordonnées</h3>
                 <div className="flex items-center text-sm text-neutral-400 pt-4">
@@ -117,6 +117,29 @@ export default function Footer() {
                 <div className="flex items-start text-sm text-neutral-400">
                   <MapPinIcon className="size-5 mr-4 flex-shrink-0" aria-hidden="true" />
                   <span>27 B, rue de Terrenoire 42000 Saint Etienne</span>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-sm/6 font-semibold text-white">Permanence accueil</h3>
+              <div className="space-y-2 text-sm/6 text-neutral-400">
+                <div>
+                  <span className="font-semibold">Lundi:</span><span> 18h - 20h</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Mardi:</span><span> 18h30 - 19h30</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Mercredi:</span><span> 14h30 - 19h</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Jeudi:</span><span> 17h - 19h30</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Vendredi:</span><span> 17h - 19h</span>
+                </div>
+                <div>
+                  <span className="font-semibold">Samedi/Dimanche:</span><span> FERME</span>
                 </div>
               </div>
             </div>

@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+
+const title = "Activités - Académie Stéphanoise";
+const description =
+  "En savoir plus sur l'Académie Stéphanoise, un lieu dédié aux arts martiaux et au fitness à Saint-Étienne.";
+const keywords =
+  "Académie Stéphanoise, arts martiaux, fitness, Saint-Étienne, activités";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <Navbar />
+  <div>
+    <div class="max-w-7xl mx-auto pt-20 px-6 lg:px-8">
+      <Heading level={2}> La liste de nos activités </Heading>
+      <BodyText variant="headline" className="mt-4">
+        Découvrez nos activités sportives et de remise en forme.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-900 mt-20 py-8 sm:py-12">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        class="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3"
+      >
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-orange-100"
+            src="/assets/icons/boxe_picto.png"
+            alt="Boxe"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            Boxe pieds-poings
+          </Heading>
+        </div>
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-yellow-100"
+            src="/assets/icons/crosstraining_picto.png"
+            alt="Cross Training"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            Cross Training
+          </Heading>
+        </div>
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-blue-100"
+            src="/assets/icons/krav_picto.png"
+            alt="Krav Maga"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            Krav Maga
+          </Heading>
+        </div>
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-red-100"
+            src="/assets/icons/lutalivre_picto.png"
+            alt="Luta Livre"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            Luta Livre
+          </Heading>
+        </div>
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-green-100"
+            src="/assets/icons/mma_picto.png"
+            alt="MMA"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            MMA
+          </Heading>
+        </div>
+        <div class="bg-neutral-800 justify-center items-center flex flex-col space-y-4 p-4 sm:p-6 hover:bg-neutral-700 transition ease-out-300 cursor-pointer">
+          <img
+            class="max-h-12 w-fit object-contain rounded-full bg-purple-100"
+            src="/assets/icons/tolpar_picto.png"
+            alt="Tolpar"
+            width="158"
+            height="48"
+          />
+          <Heading level={4} white>
+            Tolpar
+          </Heading>
+        </div>
+      </div>
+    </div>
+
+  <div class="bg-neutral-50 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <Heading level={3}>Boxe pieds poing</Heading>
+          <p class="mt-4 text-neutral-700">
+            Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases.
+          </p>
+          <ul class="mt-4 space-y-2">
+            <li><strong>Niveau:</strong> Intermédiaire</li>
+            <li><strong>Durée:</strong> 1 heure</li>
+            <li><strong>Horaires:</strong> Plusieurs fois par semaine</li>
+          </ul>
+        </div>
+        <div>
+          <img
+            class="w-full h-auto rounded-lg shadow-md"
+            src="/assets/icons/boxe_picto.png"
+            alt="Boxe pieds poing"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</Layout>
