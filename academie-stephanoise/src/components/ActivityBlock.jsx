@@ -20,8 +20,8 @@ const ActivityBlock = ({
   targetId
 }) => {
   return (
-    <div id={targetId} className="grid grid-cols-1 lg:grid-cols-5 gap-20">
-      <div className={`flex flex-col lg:col-span-3 bg-white p-6 xl:p-8 ${invert ? 'lg:order-2' : ''}`}>
+    <div id={targetId} className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-20">
+      <div className={`flex flex-col max-w-3xl lg:col-span-3 bg-white p-6 xl:p-8 ${invert ? 'mr-auto lg:order-2' : 'ml-auto'}`}>
         <div className="space-y-3">
           <img
             src={iconSrc}
@@ -85,7 +85,7 @@ const ActivityBlock = ({
         </div>
 
       </div>
-      <div className={`lg:col-span-2 ${invert ? 'lg:order-1' : ''}`}>
+      <div className={`hidden lg:block lg:col-span-2 ${invert ? 'lg:order-1' : ''}`}>
         <img
           className="w-full h-3/4 object-cover rounded-lg shadow-md saturate-0"
           src={imageSrc}
