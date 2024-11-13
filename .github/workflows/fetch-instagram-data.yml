@@ -12,17 +12,29 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          submodules: true  # Include submodules if applicable
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'  # Specify the Node.js version
 
+      - name: Debug Directory
+        run: |
+          echo "Current directory: $(pwd)"
+          ls -la
+          ls -la academie-stephanoise
+
+      - name: Install dependencies
+        working-directory: academie-stephanoise
+        run: npm install
+
       - name: Fetch Instagram Data
+        working-directory: academie-stephanoise
         env:
           PUBLIC_INSTAGRAM_ACCESS_TOKEN: ${{ secrets.PUBLIC_INSTAGRAM_ACCESS_TOKEN }}  # Use GitHub Secrets for sensitive data
-        run: |
-          node academie-stephanoise/fetchInstagram.js  # Run your script to fetch and update instagram.json
+        run: node fetchInstagram.js  # Run your script to fetch and update instagram.json
 
       - name: Commit and push changes
         run: |
