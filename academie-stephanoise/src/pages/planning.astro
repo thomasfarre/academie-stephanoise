@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Calendar from "../components/Calendar.jsx";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+const title = "Planning - Académie Stéphanoise";
+const description = "Consultez le planning des activités de l'Académie Stéphanoise.";
+const keywords = "planning, calendrier, Académie Stéphanoise, activités, horaires";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <Navbar client:only="react" />
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <h1 class="text-3xl font-bold mb-4">Planning des Activités</h1>
+      <Calendar client:only="react" />
+    </div>
+  </div>
+  <Footer />
+</Layout>
+

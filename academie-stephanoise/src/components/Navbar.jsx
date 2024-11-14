@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
           <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
             <Link whiteText href="/activités" label="Activités" />
-            <Link whiteText href="#" label="Calendrier" />
+            <Link whiteText href="/planning" label="Planning" />
             <Link whiteText href="#" label="S'inscrire" />
             <Link whiteText href="#" label="Contact" />
             <Link whiteText href="#" label="Blog" />
@@ -73,8 +73,8 @@ const Navbar = () => {
                     </div>
                     <div>
                       <Link
-                      href="#"
-                        label="Calendrier"
+                        href="/planning"
+                        label="Planning"
                       />
                     </div>
                     <div>
