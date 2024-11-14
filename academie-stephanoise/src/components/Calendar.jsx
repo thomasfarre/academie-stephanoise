@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import frLocale from '@fullcalendar/core/locales/fr'; // Import French locale
 
 export default function Calendar() {
+  const calendarRef = useRef(null);
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [filters, setFilters] = useState({
@@ -51,6 +52,10 @@ export default function Calendar() {
               gender,
               ageGroup,
               level,
+              extendedProps: {
+              description: event.description,
+                activity: event.activity,
+              },
               color: activityColors[activity.toLowerCase()] || activityColors.default, // Assign color
             };
           })
@@ -95,7 +100,7 @@ export default function Calendar() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto lg:p-4">
       <div className="mb-4">
         {/* Filters */}
         <input
@@ -185,19 +190,32 @@ export default function Calendar() {
           </button>
         </div>
       </div>
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin]}
-        initialView="dayGridMonth"
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
-        events={filteredEvents}
-        eventColor="#2563eb"
-        height="auto"
-        locale={frLocale} // Set the locale to French
-      />
+      <div className="w-full overflow-x-auto">
+        <FullCalendar
+  ref={calendarRef}
+  plugins={[dayGridPlugin, timeGridPlugin]}
+  initialView="dayGridMonth"
+  headerToolbar={{
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+  }}
+  views={{
+    timeGridDay: {
+      slotMinTime: '08:00:00', // Start showing time slots at 8 AM
+      slotMaxTime: '24:00:00', // End showing time slots at midnight
+    },
+  }}
+  eventClick={(info) => {
+    const calendarApi = calendarRef.current.getApi();
+    calendarApi.changeView('timeGridDay', info.event.startStr);
+  }}
+  events={filteredEvents}
+  locale={frLocale}
+  height="auto"
+/>
+
+      </div>
     </div>
   );
 }
