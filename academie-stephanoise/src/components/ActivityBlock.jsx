@@ -15,6 +15,7 @@ const ActivityBlock = ({
   imageAlt,
   duration,
   level,
+  activityUrl,
   schedule,
   invert = false,
   targetId
@@ -66,14 +67,16 @@ const ActivityBlock = ({
         </div>
 
         <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
+          <a href={`/planning?activity=${encodeURIComponent(activityUrl)}`} className="w-1/2">
           <Button
             onClick={() => {}}
             variant="leadingIcon"
-            label={buttonLabels[0]}
-            className="w-1/2"
-          >
-            <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
-          </Button>
+              label={buttonLabels[0]}
+              className="w-full"
+            >
+              <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
+            </Button>
+          </a>
           <Button
             onClick={() => {}}
             variant="secondary"

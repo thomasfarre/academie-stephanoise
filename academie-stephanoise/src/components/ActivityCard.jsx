@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { StarIcon, ClockIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
+import { StarIcon, ClockIcon, CalendarDaysIcon, UserPlusIcon } from '@heroicons/react/24/outline';
 import { Button } from './foundations/Button';
 import { Heading } from './foundations/Heading';
 import { BodyText } from './foundations/BodyText';
-import { UserPlusIcon } from '@heroicons/react/24/outline';
 
-const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', duration, schedule, icon, onSignUp, onViewCalendar }) => {
+const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', activityUrl, duration, schedule, icon, onSignUp }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
@@ -37,14 +36,11 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', du
       </div>
 
       <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
-        <Button
-          onClick={onViewCalendar}
-          variant="leadingIcon"
-          label="Planning"
-          className="w-1/2"
-        >
-          <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
-        </Button>
+        <a href={`/planning?activity=${encodeURIComponent(activityUrl)}`} className="w-1/2">
+          <Button variant="leadingIcon" label="Planning">
+            <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
+          </Button>
+        </a>
         <Button
           onClick={onSignUp}
           variant="secondary"
@@ -66,7 +62,6 @@ ActivityCard.propTypes = {
   schedule: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
   onSignUp: PropTypes.func.isRequired,
-  onViewCalendar: PropTypes.func.isRequired,
 };
 
 export default ActivityCard;

@@ -20,9 +20,6 @@ const handleSignUp = () => {
   console.log("S'inscrire au cours");
 };
 
-const handleViewCalendar = () => {
-  console.log("Voir le calendrier");
-};
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
@@ -39,8 +36,8 @@ const handleViewCalendar = () => {
             duration="1 heure"
             schedule="Plusieurs fois par semaine"
             icon="/assets/icons/boxe_picto.png"
+            activityUrl="boxe-pied-poing"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
             name="Krav Maga"
@@ -50,8 +47,8 @@ const handleViewCalendar = () => {
             duration="1 heure"
             schedule="Une fois par semaine"
             icon="/assets/icons/krav_picto.png"
+            activityUrl="krav-maga"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
             name="MMA (Mixed Martial Arts)"
@@ -61,8 +58,8 @@ const handleViewCalendar = () => {
             duration="1 heure 30"
             schedule="Deux fois par semaine"
             icon="/assets/icons/mma_picto.png"
+            activityUrl="mma"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
             name="Tolpar (Escrime lame courte)"
@@ -72,8 +69,8 @@ const handleViewCalendar = () => {
             duration="1 heure"
             schedule="Hebdomadaire"
             icon="/assets/icons/tolpar_picto.png"
+            activityUrl="tolpar"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
             name="Luta Livre"
@@ -83,8 +80,8 @@ const handleViewCalendar = () => {
             duration="1 heure 30"
             schedule="Deux fois par semaine"
             icon="/assets/icons/lutalivre_picto.png"
+            activityUrl="lutalivre"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
           <ActivityCard
             name="Cross Training / Prépa Physique"
@@ -94,8 +91,8 @@ const handleViewCalendar = () => {
             duration="1 heure"
             schedule="Trois fois par semaine"
             icon="/assets/icons/crosstraining_picto.png"
+            activityUrl="cross-training"
             onSignUp={handleSignUp}
-            onViewCalendar={handleViewCalendar}
           />
         </div>
       </div>
