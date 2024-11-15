@@ -4,6 +4,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { Heading } from './foundations/Heading';
 import frLocale from '@fullcalendar/core/locales/fr'; // Import French locale
+import { Button } from './foundations/Button';
+import { BodyText } from './foundations/BodyText';
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 export default function Calendar() {
   const calendarRef = useRef(null);
@@ -24,22 +27,21 @@ export default function Calendar() {
 
   const [accordionOpen, setAccordionOpen] = useState({
     activity: true, // Default open
-    gender: true,   // Default open
-    ageGroup: true, // Default open
-    level: true,    // Default open
+    otherFilters: true, // Default open for other filters
   });
 
   const [drawerOpen, setDrawerOpen] = useState(false); // State for drawer
 
   const activityColors = {
-    'krav-maga': '#60a5fa', // bg-blue-300
-    'luta-livre': '#f87171', // bg-red-300
-    'boxe-pied-poing': '#fdba74', // bg-orange-300
-    tolpar: '#c084fc', // bg-purple-300
-    mma: '#86efac', // bg-green-300
-    'cross-training': '#fde047', // bg-yellow-300
-    default: '#485ed4',
+    'krav-maga': '#3b82f6', // bg-blue-500
+    'luta-livre': '#ef4444', // bg-red-500
+    'boxe-pied-poing': '#f97316', // bg-orange-500
+    tolpar: '#a855f7', // bg-purple-500
+    mma: '#22c55e', // bg-green-500
+    'cross-training': '#eab308', // bg-yellow-500
+    default: '#6366f1', // bg-neutral-500
   };
+
 
   useEffect(() => {
     fetch('/.netlify/functions/calendar')
@@ -135,227 +137,371 @@ export default function Calendar() {
 
   return (
     <>
+      <style>
+        {`
+          :root {
+            --fc-toolbar-title-font-size: 2rem;
+            --fc-toolbar-title-font-family: 'Protest Strike', sans-serif;
+          }
+          .fc .fc-toolbar-title {
+            font-size: var(--fc-toolbar-title-font-size);
+            font-family: var(--fc-toolbar-title-font-family);
+            max-width: var(--fc-toolbar-title-max-width);
+            white-space: nowrap;
+            overflow: hidden;
+            text-transform: capitalize;
+            text-overflow: ellipsis;
+          }
+          .fc .fc-event-time {
+            display: block;
+          }
+
+          :root {
+            @media (max-width: 1024px) {
+              .fc .fc-event-time {
+              display: none;
+            }
+            .fc-header-toolbar {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: auto auto;
+              gap: 1rem;
+            }
+            .fc-toolbar-chunk:first-child {
+              order: 2;
+              display: flex;
+              grid-column: span 1;
+            }
+            .fc-toolbar-chunk:nth-child(2) {
+              order: 1;
+              display: flex;
+              justify-content: center;
+              grid-column: span 2;
+            }
+            .fc-toolbar-chunk:last-child {
+              order: 3;
+              display: flex;
+              justify-content: flex-end;
+              grid-column: span 1;
+              }
+            }
+          }
+          }
+        `}
+      </style>
       <div className="flex space-x-4 items-center">
-        <button onClick={toggleDrawer} className="p-4 lg:hidden">
+        <button onClick={toggleDrawer} className="p-4 z-10 relative lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" className="size-7 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         </button>
-        <Heading level={3}>Planning des Activités</Heading>
+        {/* <Heading level={3}>Planning des Activités</Heading> */}
       </div>
       <div className="flex">
         {/* Drawer Button for Mobile */}
 
         {/* Drawer for Filters (Mobile) */}
         {drawerOpen && (
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 lg:hidden" onClick={toggleDrawer}>
-            <div className="bg-white w-64 p-4 absolute left-0 top-0 h-full">
-              <h2 className="text-lg font-bold mb-4">Filters</h2>
-              {/* Filters */}
-              <input
-                type="text"
-                name="searchTerm"
-                placeholder="Search by title..."
-                value={filters.searchTerm}
-                onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
-                className="p-2 border rounded mb-4 w-full"
-              />
-
-              {/* Activity Accordion */}
-              <div className="border rounded mb-2">
-                <h3 onClick={() => toggleAccordion('activity')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-                  Activité
-                </h3>
+          <>
+          <div className="fixed inset-0 bg-neutral-800 bg-opacity-50 z-10 lg:hidden" onClick={toggleDrawer}></div>
+          <div className="bg-white w-screen p-4 fixed z-20 left-0 top-0 h-full md:w-96">
+            <h2 className="text-lg font-bold mb-4">Filtres</h2>
+            {/* Activity Accordion */}
+            <div className="py-2 border border-neutral-200 rounded-xl">
+              <div>
+                <button
+                  onClick={() => toggleAccordion('activity')}
+                  className="px-6 flex items-center justify-between py-4 w-full focus:outline-none"
+                >
+                  <BodyText variant="headline" className="font-bold">Activité</BodyText>
+                  <span className={`transform duration-300 ease-out transition-transform ${accordionOpen.activity ? "rotate-180" : ""}`}>
+                    <ChevronDownIcon className="size-6 text-neutral-700" />
+                  </span>
+                </button>
+              </div>
+              <div
+                  style={{
+                    maxHeight: accordionOpen.activity ? '1000px' : '0px', // Adjust max height based on open state
+                  }}
+                  className={`overflow-hidden transition-max-height duration-300 ease-out px-6`}
+                >
                 {accordionOpen.activity && (
-                  <div className="p-2 bg-white border-t">
-                    {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'crossfit', 'événement'].map((activity) => (
-                      <label key={activity} className="block">
-                        <input
-                          type="checkbox"
-                          checked={filters.activity.includes(activity)}
-                          onChange={() => handleActivityFilterChange(activity)}
-                          className="mr-2"
-                        />
-                        {activity}
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Gender Accordion */}
-              <div className="border rounded mb-2">
-                <h3 onClick={() => toggleAccordion('gender')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-                  Genre
-                </h3>
-                {accordionOpen.gender && (
-                  <div className="p-2 bg-white border-t">
-                    {['femme', 'homme'].map(gender => (
-                      <label key={gender} className="block">
-                        <input
-                          type="checkbox"
-                          checked={filters.gender.includes(gender)}
-                          onChange={() => handleMultiSelectChange('gender', gender)}
-                          className="mr-2"
-                        />
-                        {gender}
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Age Group Accordion */}
-              <div className="border rounded mb-2">
-                <h3 onClick={() => toggleAccordion('ageGroup')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-                  Age Group
-                </h3>
-                {accordionOpen.ageGroup && (
-                  <div className="p-2 bg-white border-t">
-                    {['adulte', 'enfant'].map(age => (
-                      <label key={age} className="block">
-                        <input
-                          type="checkbox"
-                          checked={filters.ageGroup.includes(age)}
-                          onChange={() => handleMultiSelectChange('ageGroup', age)}
-                          className="mr-2"
-                        />
-                        {age}
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Level Accordion */}
-              <div className="border rounded mb-2">
-                <h3 onClick={() => toggleAccordion('level')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-                  Niveau
-                </h3>
-                {accordionOpen.level && (
-                  <div className="p-2 bg-white border-t">
-                    {['sparring', 'confirmé'].map(level => (
-                      <label key={level} className="block">
-                        <input
-                          type="checkbox"
-                          checked={filters.level.includes(level)}
-                          onChange={() => handleMultiSelectChange('level', level)}
-                          className="mr-2"
-                        />
-                        {level}
-                      </label>
-                    ))}
+                  <div className="py-2 text-neutral-700">
+                    <fieldset>
+                      <legend className="sr-only">Activités</legend>
+                      <div className="space-y-3">
+                        {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'événement'].map((activity) => (
+                          <div key={activity} className="relative flex items-center">
+                            <div className="flex h-6 items-center">
+                              <input
+                                id={activity}
+                                name={activity}
+                                type="checkbox"
+                                checked={filters.activity.includes(activity)}
+                                className={`size-4 rounded border-neutral-300 text-[${activityColors[activity.toLowerCase()] || activityColors.default}] focus:ring-[${activityColors[activity.toLowerCase()] || activityColors.default}] cursor`}
+                                onChange={() => handleActivityFilterChange(activity)}
+                              />
+                            </div>
+                            <div className="ml-3 text-sm/6 ">
+                              <BodyText htmlFor={activity} classnvariant="formLabel">{activity}</BodyText>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
                   </div>
                 )}
               </div>
             </div>
+
+            {/* Other Filters Accordion */}
+            <div className="py-2 border border-neutral-200 rounded-xl mt-4">
+              <div>
+                <button
+                  onClick={() => toggleAccordion('otherFilters')}
+                  className="px-6 flex items-center justify-between py-4 w-full focus:outline-none"
+                >
+                  <BodyText variant="headline" className="font-bold">Autres Filtres</BodyText>
+                  <span className={`transform duration-300 ease-out transition-transform ${accordionOpen.otherFilters ? "rotate-180" : ""}`}>
+                    <ChevronDownIcon className="size-6 text-neutral-700" />
+                  </span>
+                </button>
+              </div>
+              <div
+                  style={{
+                    maxHeight: accordionOpen.otherFilters ? '1000px' : '0px', // Adjust max height based on open state
+                  }}
+                  className={`overflow-hidden transition-max-height duration-300 ease-out px-6`}
+                >
+                {accordionOpen.otherFilters && (
+                  <div className="py-2 text-neutral-700 space-y-3">
+                    {/* Gender Filter */}
+                    <fieldset>
+                      <legend className="sr-only">Genre</legend>
+                      <div className="space-y-3">
+                        {['femme'].map(gender => (
+                          <div key={gender} className="relative flex items-center">
+                            <div className="flex h-6 items-center">
+                              <input
+                                type="checkbox"
+                                checked={filters.gender.includes(gender)}
+                                onChange={() => handleMultiSelectChange('gender', gender)}
+                                className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                              />
+                            </div>
+                            <div className="ml-4 text-sm/6">
+                              <BodyText htmlFor={gender} classnvariant="formLabel">{gender}</BodyText>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
+
+                    {/* Age Group Filter */}
+                    <fieldset>
+                      <legend className="sr-only">Groupe d'âge</legend>
+                      <div className="space-y-3">
+                        {['adulte', 'enfant'].map(age => (
+                          <div key={age} className="relative flex items-center">
+                            <div className="flex h-6 items-center">
+                              <input
+                                type="checkbox"
+                                checked={filters.ageGroup.includes(age)}
+                                onChange={() => handleMultiSelectChange('ageGroup', age)}
+                                className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                              />
+                            </div>
+                            <div className="ml-4 text-sm/6">
+                              <BodyText htmlFor={age} classnvariant="formLabel">{age}</BodyText>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
+
+                    {/* Level Filter */}
+                    <fieldset>
+                      <legend className="sr-only">Niveau</legend>
+                      <div className="space-y-3">
+                        {['sparring', 'confirmé'].map(level => (
+                          <div key={level} className="relative flex items-center">
+                            <div className="flex h-6 items-center">
+                              <input
+                                type="checkbox"
+                                checked={filters.level.includes(level)}
+                                onChange={() => handleMultiSelectChange('level', level)}
+                                className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                              />
+                            </div>
+                            <div className="ml-4 text-sm/6">
+                              <BodyText htmlFor={level} classnvariant="formLabel">{level}</BodyText>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="mt-4">
+              <Button variant="secondary" onClick={toggleDrawer}>Confirmer</Button>
+            </div>
           </div>
+          </>
         )}
 
         {/* Filters Column (Desktop) */}
-        <div className="hidden lg:block w-64 p-4 border-r">
-          <h2 className="text-lg font-bold mb-4">Filters</h2>
-          {/* Filters */}
-          <input
-            type="text"
-            name="searchTerm"
-            placeholder="Search by title..."
-            value={filters.searchTerm}
-            onChange={(e) => handleFilterChange('searchTerm', e.target.value)}
-            className="p-2 border rounded mb-4 w-full"
-          />
+        <div className="hidden lg:block w-64 flex-shrink-0 p-4">
 
           {/* Activity Accordion */}
-          <div className="border rounded mb-2">
-            <h3 onClick={() => toggleAccordion('activity')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-              Activité
-            </h3>
-            {accordionOpen.activity && (
-              <div className="p-2 bg-white border-t">
-                {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'crossfit', 'événement'].map((activity) => (
-                  <label key={activity} className="block">
-                    <input
-                      type="checkbox"
-                      checked={filters.activity.includes(activity)}
-                      onChange={() => handleActivityFilterChange(activity)}
-                      className="mr-2"
-                    />
-                    {activity}
-                  </label>
-                ))}
-              </div>
-            )}
+          <div className="py-2 border bg-white shadow border-neutral-200 rounded-xl">
+            <div>
+              <button
+                onClick={() => toggleAccordion('activity')}
+                className="px-6 flex items-center justify-between py-4 w-full focus:outline-none"
+              >
+                <BodyText variant="headline" className="font-bold">Activité</BodyText>
+                <span className={`transform duration-300 ease-out transition-transform ${accordionOpen.activity ? "rotate-180" : ""}`}>
+                  <ChevronDownIcon className="size-6 text-neutral-700" />
+                </span>
+              </button>
+            </div>
+            <div
+                style={{
+                  maxHeight: accordionOpen.activity ? '1000px' : '0px', // Adjust max height based on open state
+                }}
+                className={`overflow-hidden transition-max-height duration-300 ease-out px-6`}
+              >
+              {accordionOpen.activity && (
+                <div className="py-2 text-neutral-700">
+                  <fieldset>
+                    <legend className="sr-only">Activités</legend>
+                    <div className="space-y-3">
+                      {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'événement'].map((activity) => (
+                        <div key={activity} className="relative flex items-center">
+                          <div className="flex h-6 items-center">
+                            <input
+                              id={activity}
+                              name={activity}
+                              type="checkbox"
+                              checked={filters.activity.includes(activity)}
+                              onChange={() => handleActivityFilterChange(activity)}
+                              className={`size-4 rounded border-neutral-300 text-[${activityColors[activity.toLowerCase()] || activityColors.default}] focus:ring-[${activityColors[activity.toLowerCase()] || activityColors.default}] cursor-pointer`}
+                            />
+                          </div>
+                          <div className="ml-4 text-sm/6">
+                            <BodyText htmlFor={activity} className="cursor-pointer" variant="formLabel">{activity}</BodyText>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </fieldset>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Gender Accordion */}
-          <div className="border rounded mb-2">
-            <h3 onClick={() => toggleAccordion('gender')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-              Genre
-            </h3>
-            {accordionOpen.gender && (
-              <div className="p-2 bg-white border-t">
-                {['femme', 'homme'].map(gender => (
-                  <label key={gender} className="block">
-                    <input
-                      type="checkbox"
-                      checked={filters.gender.includes(gender)}
-                      onChange={() => handleMultiSelectChange('gender', gender)}
-                      className="mr-2"
-                    />
-                    {gender}
-                  </label>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Other Filters Accordion */}
+          <div className="py-2 border bg-white shadow border-neutral-200 rounded-xl mt-4">
+            <div>
+              <button
+                onClick={() => toggleAccordion('otherFilters')}
+                className="px-6 flex items-center justify-between py-4 w-full focus:outline-none"
+              >
+                <BodyText variant="headline" className="font-bold">Autres Filtres</BodyText>
+                <span className={`transform duration-300 ease-out transition-transform ${accordionOpen.otherFilters ? "rotate-180" : ""}`}>
+                  <ChevronDownIcon className="size-6 text-neutral-700" />
+                </span>
+              </button>
+            </div>
+            <div
+                style={{
+                  maxHeight: accordionOpen.otherFilters ? '1000px' : '0px', // Adjust max height based on open state
+                }}
+                className={`overflow-hidden transition-max-height duration-300 ease-out px-6`}
+              >
+              {accordionOpen.otherFilters && (
+                <div className="py-2 text-neutral-700 space-y-3">
+                  {/* Gender Filter */}
+                  <fieldset>
+                    <legend className="sr-only">Genre</legend>
+                    <div className="space-y-3">
+                      {['femme'].map(gender => (
+                        <div key={gender} className="relative flex items-center">
+                          <div className="flex h-6 items-center">
+                            <input
+                              id={gender}
+                              name={gender}
+                              type="checkbox"
+                              checked={filters.gender.includes(gender)}
+                              onChange={() => handleMultiSelectChange('gender', gender)}
+                              className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                            />
+                          </div>
+                          <div className="ml-4 text-sm/6">
+                            <BodyText htmlFor={gender} className="cursor-pointer" variant="formLabel">{gender}</BodyText>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </fieldset>
 
-          {/* Age Group Accordion */}
-          <div className="border rounded mb-2">
-            <h3 onClick={() => toggleAccordion('ageGroup')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-              Age Group
-            </h3>
-            {accordionOpen.ageGroup && (
-              <div className="p-2 bg-white border-t">
-                {['adulte', 'enfant'].map(age => (
-                  <label key={age} className="block">
-                    <input
-                      type="checkbox"
-                      checked={filters.ageGroup.includes(age)}
-                      onChange={() => handleMultiSelectChange('ageGroup', age)}
-                      className="mr-2"
-                    />
-                    {age}
-                  </label>
-                ))}
-              </div>
-            )}
-          </div>
+                  {/* Age Group Filter */}
+                  <fieldset>
+                    <legend className="sr-only">Groupe d'âge</legend>
+                    <div className="space-y-3">
+                      {['adulte', 'enfant'].map(age => (
+                        <div key={age} className="relative flex items-center">
+                          <div className="flex h-6 items-center">
+                            <input
+                              id={age}
+                              name={age}
+                              type="checkbox"
+                              checked={filters.ageGroup.includes(age)}
+                              onChange={() => handleMultiSelectChange('ageGroup', age)}
+                              className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                            />
+                          </div>
+                          <div className="ml-4 text-sm/6">
+                            <BodyText htmlFor={age} className="cursor-pointer" variant="formLabel">{age}</BodyText>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </fieldset>
 
-          {/* Level Accordion */}
-          <div className="border rounded mb-2">
-            <h3 onClick={() => toggleAccordion('level')} className="cursor-pointer bg-gray-200 p-2 hover:bg-gray-300 transition">
-              Niveau
-            </h3>
-            {accordionOpen.level && (
-              <div className="p-2 bg-white border-t">
-                {['sparring', 'confirmé'].map(level => (
-                  <label key={level} className="block">
-                    <input
-                      type="checkbox"
-                      checked={filters.level.includes(level)}
-                      onChange={() => handleMultiSelectChange('level', level)}
-                      className="mr-2"
-                    />
-                    {level}
-                  </label>
-                ))}
-              </div>
-            )}
+                  {/* Level Filter */}
+                  <fieldset>
+                    <legend className="sr-only">Niveau</legend>
+                    <div className="space-y-3">
+                      {['sparring', 'confirmé'].map(level => (
+                        <div key={level} className="relative flex items-center">
+                          <div className="flex h-6 items-center">
+                            <input
+                              id={level}
+                              name={level}
+                              type="checkbox"
+                              checked={filters.level.includes(level)}
+                              onChange={() => handleMultiSelectChange('level', level)}
+                              className="size-4 rounded border-neutral-300 text-neutral-600 focus:ring-neutral-600 cursor"
+                            />
+                          </div>
+                          <div className="ml-4 text-sm/6">
+                            <BodyText htmlFor={level} className="cursor-pointer" variant="formLabel">{level}</BodyText>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </fieldset>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Calendar Component */}
-        <div className="flex-1 lg:p-4">
+        <div className="-mt-12">
           <FullCalendar
             ref={calendarRef}
             plugins={[dayGridPlugin, timeGridPlugin]}

@@ -10,7 +10,16 @@ export const BodyText = ({ variant, children, className, whiteText = false, ...p
     paragraph: `${whiteText ? 'text-neutral-100' : 'text-neutral-700'}`,
     small: `text-sm ${whiteText ? 'text-neutral-100' : 'text-neutral-700'}`,
     label: `text-xs uppercase font-semibold ${whiteText ? 'text-neutral-200' : 'text-neutral-700'} tracking-wider`,
+    formLabel: `text-sm tracking-wider uppercase font-medium ${whiteText ? 'text-neutral-200' : 'text-neutral-700'}`,
   };
+
+  if (variant === 'formLabel') {
+    return (
+      <label className={`${variantStyle[variant]} ${className}`} {...props}>
+        {children}
+      </label>
+    );
+  }
 
   return (
     <p className={`${variantStyle[variant]} ${className}`} {...props}>
@@ -23,7 +32,7 @@ BodyText.propTypes = {
   /**
    * The type of body text to render
    */
-  variant: PropTypes.oneOf(['paragraph', 'small', 'label', 'headline']).isRequired,
+  variant: PropTypes.oneOf(['paragraph', 'small', 'label', 'headline', 'formLabel']).isRequired,
   /**
    * Content to display inside the BodyText component
    */
