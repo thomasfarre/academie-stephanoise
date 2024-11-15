@@ -8,7 +8,7 @@ dotenv.config();
 
 export const handler = async () => {
   const ACCESS_TOKEN = process.env.PUBLIC_INSTAGRAM_ACCESS_TOKEN;
-  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
+  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,permalink&access_token=${ACCESS_TOKEN}`;
 
   try {
     const response = await fetch(url);
@@ -24,10 +24,13 @@ export const handler = async () => {
     // Attempt to parse the response as JSON
     const data = JSON.parse(textResponse);
 
-    // Filter to get only the 3 most recent images
-    const recentImages = data.data
-      .filter(item => item.media_type === "IMAGE")
-      .slice(0, 3);
+    // Get the 3 most recent media items regardless of media_type
+    const recentMedia = data.data.slice(0, 3).map(item => ({
+      id: item.id,
+      media_type: item.media_type,
+      media_url: item.media_type === "VIDEO" ? item.thumbnail_url : item.media_url,
+      permalink: item.permalink
+    }));
 
     const filePath = path.join(process.cwd(), "public", "instagram.json");
     console.log("Writing Instagram data to:", filePath);
@@ -36,7 +39,7 @@ export const handler = async () => {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
     // Write the file
-    fs.writeFileSync(filePath, JSON.stringify(recentImages, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify(recentMedia, null, 2));
 
     return {
       statusCode: 200,

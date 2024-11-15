@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ContactSection from "../components/ContactSection.jsx";
+const title = "Contact - Académie Stéphanoise";
+const description =
+  "Contactez l'Académie Stéphanoise pour plus d'informations.";
+const keywords =
+  "contact, Académie Stéphanoise, informations, horaires";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <Navbar client:only="react" />
+  <div class="bg-neutral-50">
+    <div>
+      <ContactSection />
+    </div>
+  </div>
+  <Footer />
+</Layout>

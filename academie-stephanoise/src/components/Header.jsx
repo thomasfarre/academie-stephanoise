@@ -46,8 +46,8 @@ const Header = () => {
           <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
             <Link href="/activités" label="Activités" />
             <Link href="/planning" label="Planning" />
+            <Link href="/contact" label="Contact" />
             <Link href="#" label="S'inscrire" />
-            <Link href="#" label="Contact" />
             <Link href="#" label="Blog" />
           </div>
         </nav>
@@ -87,14 +87,14 @@ const Header = () => {
                     </div>
                     <div>
                       <Link
-                        href="#"
-                      label="S'inscrire"
+                        href="/contact"
+                        label="Contact"
                       />
                     </div>
                     <div>
                       <Link
                         href="#"
-                        label="Contact"
+                      label="S'inscrire"
                       />
                     </div>
                     <div>

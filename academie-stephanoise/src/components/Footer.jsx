@@ -7,12 +7,12 @@ import {
 const navigation = {
   discover: [
     { name: "Activités", href: "/activités" },
-    { name: "Planning", href: "#" },
+    { name: "Planning", href: "/planning" },
     { name: "Blog", href: "#" },
   ],
   join: [
     { name: "S'inscrire", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Contact", href: "/contact" },
   ],
   social: [
     {
