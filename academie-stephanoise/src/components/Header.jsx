@@ -47,7 +47,7 @@ const Header = () => {
             <Link href="/activités" label="Activités" />
             <Link href="/planning" label="Planning" />
             <Link href="/contact" label="Contact" />
-            <Link href="#" label="S'inscrire" />
+            <Link href="/inscription" label="S'inscrire" />
             <Link href="#" label="Blog" />
           </div>
         </nav>
@@ -93,8 +93,8 @@ const Header = () => {
                     </div>
                     <div>
                       <Link
-                        href="#"
-                      label="S'inscrire"
+                        href="/inscription"
+                        label="S'inscrire"
                       />
                     </div>
                     <div>

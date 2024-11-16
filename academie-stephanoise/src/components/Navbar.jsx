@@ -40,7 +40,7 @@ const Navbar = () => {
             <Link whiteText href="/activités" label="Activités" />
             <Link whiteText href="/planning" label="Planning" />
             <Link whiteText href="/contact" label="Contact" />
-            <Link whiteText href="#" label="S'inscrire" />
+            <Link whiteText href="/inscription" label="S'inscrire" />
             <Link whiteText href="#" label="Blog" />
           </div>
         </nav>
@@ -85,7 +85,7 @@ const Navbar = () => {
                     </div>
                     <div>
                       <Link
-                        href="#"
+                        href="/inscription"
                         label="S'inscrire"
                       />
                     </div>

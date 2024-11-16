@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Heading from "../components/foundations/Heading.jsx";
+import BodyText from "../components/foundations/BodyText.jsx";
+import RegisterForm from "../components/RegisterForm.jsx";
+const title = "Inscription - Académie Stéphanoise";
+import {
+  CursorArrowRaysIcon,
+  ClipboardDocumentCheckIcon,
+} from "@heroicons/react/24/outline";
+const description =
+  "Inscrivez-vous à l'Académie Stéphanoise pour commencer votre aventure martiale.";
+const keywords = "inscription, Académie Stéphanoise, aventure martiale";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <Navbar client:only="react" />
+  <div class="bg-neutral-900 py-12 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="space-y-4">
+        <Heading level={2} white>
+          Inscrivez-vous facilement à nos activités
+        </Heading>
+        <BodyText variant="headline" whiteText className="max-w-prose">
+          Que vous soyez intéressé par les sports de combat, le cross training
+          ou la préparation physique, nous avons simplifié le processus
+          d'inscription pour vous. Choisissez l'option qui vous convient :
+          <span class="font-semibold">en ligne</span> ou
+          <span class="font-semibold">en présentiel</span>.
+        </BodyText>
+      </div>
+    </div>
+  </div>
+  <RegisterForm client:load />
+  <Footer />
+</Layout>

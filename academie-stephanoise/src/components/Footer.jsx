@@ -11,7 +11,7 @@ const navigation = {
     { name: "Blog", href: "#" },
   ],
   join: [
-    { name: "S'inscrire", href: "#" },
+    { name: "S'inscrire", href: "/inscription" },
     { name: "Contact", href: "/contact" },
   ],
   social: [

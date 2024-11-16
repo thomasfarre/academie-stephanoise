@@ -22,14 +22,15 @@ export default function CallToActionSection() {
           </BodyText>
 
           <div className="mt-12 flex items-center justify-center gap-x-6">
-            <Button
-              variant="primary"
-              className="px-6 py-4"
-              label="Contactez-nous"
-              onClick={() => console.log("Get started clicked")}
-            >
-              <PhoneIcon className="size-6 mr-2 text-emerald-100" />
-            </Button>
+            <a href="/contact">
+              <Button
+                variant="primary"
+                className="px-6 py-4"
+                label="Contactez-nous"
+              >
+                <PhoneIcon className="size-6 mr-2 text-emerald-100" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>

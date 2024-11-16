@@ -5,7 +5,7 @@ export const Heading = ({ level, children, white = false, className = '', ...pro
   const styles = {
     1: 'md:text-7xl text-5xl tracking-tight font-protestStrike',
     2: 'md:text-5xl text-3xl tracking-tight font-protestStrike',
-    3: 'md:text-3xl text-2xl tracking-tight font-protestStrike',
+    3: 'md:text-4xl text-2xl tracking-tight font-protestStrike',
     default: 'md:text-2xl text-lg font-protestStrike'
   };
   const headingStyle = styles[level] || styles.default;

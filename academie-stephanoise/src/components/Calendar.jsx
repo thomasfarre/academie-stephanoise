@@ -155,6 +155,10 @@ export default function Calendar() {
           .fc .fc-event-time {
             display: block;
           }
+          .fc .fc-view,
+          .fc .fc-daygrid-day {
+            background-color: white;
+          }
 
           :root {
             @media (max-width: 1024px) {

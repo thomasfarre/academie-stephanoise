@@ -16,9 +16,6 @@ const description =
 const keywords =
   "Académie Stéphanoise, Saint-Étienne, arts martiaux, fitness, Krav Maga, MMA, Luta Livre, CrossFit, Pilates, remise en forme";
 
-const handleSignUp = () => {
-  console.log("S'inscrire au cours");
-};
 
 ---
 
@@ -37,7 +34,6 @@ const handleSignUp = () => {
             schedule="Plusieurs fois par semaine"
             icon="/assets/icons/boxe_picto.png"
             activityUrl="boxe-pied-poing"
-            onSignUp={handleSignUp}
           />
           <ActivityCard
             name="Krav Maga"
@@ -48,7 +44,6 @@ const handleSignUp = () => {
             schedule="Une fois par semaine"
             icon="/assets/icons/krav_picto.png"
             activityUrl="krav-maga"
-            onSignUp={handleSignUp}
           />
           <ActivityCard
             name="MMA (Mixed Martial Arts)"
@@ -59,7 +54,6 @@ const handleSignUp = () => {
             schedule="Deux fois par semaine"
             icon="/assets/icons/mma_picto.png"
             activityUrl="mma"
-            onSignUp={handleSignUp}
           />
           <ActivityCard
             name="Tolpar (Escrime lame courte)"
@@ -70,7 +64,6 @@ const handleSignUp = () => {
             schedule="Hebdomadaire"
             icon="/assets/icons/tolpar_picto.png"
             activityUrl="tolpar"
-            onSignUp={handleSignUp}
           />
           <ActivityCard
             name="Luta Livre"
@@ -81,7 +74,6 @@ const handleSignUp = () => {
             schedule="Deux fois par semaine"
             icon="/assets/icons/lutalivre_picto.png"
             activityUrl="lutalivre"
-            onSignUp={handleSignUp}
           />
           <ActivityCard
             name="Cross Training / Prépa Physique"
@@ -92,7 +84,6 @@ const handleSignUp = () => {
             schedule="Trois fois par semaine"
             icon="/assets/icons/crosstraining_picto.png"
             activityUrl="cross-training"
-            onSignUp={handleSignUp}
           />
         </div>
       </div>
@@ -102,7 +93,7 @@ const handleSignUp = () => {
     </div>
     <div class="bg-neutral-900 pt-28 pb-96">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <Heading level={2} white={true}> Nos coachs </Heading>
+        <Heading level={3} white={true}> Nos coachs </Heading>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
           <CoachCard
             name="Luc Hernandez"
@@ -146,7 +137,7 @@ const handleSignUp = () => {
     </div>
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <Heading level={2}> Notre instagram </Heading>
+        <Heading level={3}> Notre instagram </Heading>
         <InstagramFeed client:only="react" />
       </div>
     </div>

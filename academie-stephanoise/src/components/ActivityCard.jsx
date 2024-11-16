@@ -4,7 +4,7 @@ import { Button } from './foundations/Button';
 import { Heading } from './foundations/Heading';
 import { BodyText } from './foundations/BodyText';
 
-const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', activityUrl, duration, schedule, icon, onSignUp }) => {
+const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', activityUrl, duration, schedule, icon }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
@@ -41,14 +41,15 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', ac
             <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
           </Button>
         </a>
-        <Button
-          onClick={onSignUp}
-          variant="secondary"
+        <a href="/inscription">
+          <Button
+            variant="secondary"
           label="S'inscrire"
-          className="w-1/2"
-        >
-          <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
-        </Button>
+            className="w-1/2"
+          >
+            <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
+          </Button>
+        </a>
       </div>
     </div>
   );
@@ -61,7 +62,6 @@ ActivityCard.propTypes = {
   duration: PropTypes.string.isRequired,
   schedule: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  onSignUp: PropTypes.func.isRequired,
 };
 
 export default ActivityCard;

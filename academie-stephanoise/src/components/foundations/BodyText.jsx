@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /**
  * BodyText component for displaying paragraphs, blockquotes, and other body text elements.
  */
-export const BodyText = ({ variant, children, className, whiteText = false, ...props }) => {
+export const BodyText = ({ variant, children, className = null, whiteText = false, ...props }) => {
   const variantStyle = {
     headline: `md:text-xl text-lg ${whiteText ? 'text-neutral-50' : 'text-neutral-800'}`,
     paragraph: `${whiteText ? 'text-neutral-100' : 'text-neutral-700'}`,

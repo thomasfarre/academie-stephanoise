@@ -44,7 +44,7 @@ const ButtonVariants = {
   },
 };
 
-export const Button = ({ variant = 'primary', onClick, className, label, children, ...props }) => {
+export const Button = ({ variant = 'primary', onClick = null, className = null, label, children, ...props }) => {
   const { className: variantClassName, content } = ButtonVariants[variant];
   const baseStyle = 'rounded focus:outline-none focus:ring-2 transition ease-out duration-300';
 
