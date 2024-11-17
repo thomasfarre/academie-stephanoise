@@ -48,7 +48,7 @@ const Header = () => {
             <Link href="/planning" label="Planning" />
             <Link href="/contact" label="Contact" />
             <Link href="/inscription" label="S'inscrire" />
-            <Link href="#" label="Blog" />
+            <Link href="/blog" label="Blog" />
           </div>
         </nav>
         {menuOpen && (
@@ -99,7 +99,7 @@ const Header = () => {
                     </div>
                     <div>
                       <Link
-                        href="#"
+                        href="/blog"
                         label="Blog"
                       />
                     </div>

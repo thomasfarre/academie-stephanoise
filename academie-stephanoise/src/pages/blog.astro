@@ -1,0 +1,31 @@
+---
+import BlogList from "../components/BlogList.jsx";
+import Navbar from "../components/Navbar.jsx";
+import BodyText from "../components/foundations/BodyText.jsx";
+import Heading from "../components/foundations/Heading.jsx";
+import { getBlogPosts } from "../../contentful.js";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.jsx";
+const blogPosts = await getBlogPosts();
+console.log(blogPosts); // Log the blog posts to the console
+const title = "Blog - Académie Stéphanoise";
+const description = "Blog de l'Académie Stéphanoise";
+const keywords = "blog, Académie Stéphanoise, articles";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <Navbar client:only="react" />
+  <div class="bg-neutral-900 py-12 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="space-y-4">
+        <Heading level={2} white> Le blog de l'Académie Stéphanoise </Heading>
+        <BodyText variant="headline" whiteText className="max-w-prose">
+          Retrouvez des articles, des conseils pratiques et toutes les
+          actualités autour du sport et de la vie à l’académie.
+        </BodyText>
+      </div>
+    </div>
+  </div>
+  <BlogList posts={blogPosts} />
+  <Footer />
+</Layout>

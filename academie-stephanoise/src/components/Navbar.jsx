@@ -41,7 +41,7 @@ const Navbar = () => {
             <Link whiteText href="/planning" label="Planning" />
             <Link whiteText href="/contact" label="Contact" />
             <Link whiteText href="/inscription" label="S'inscrire" />
-            <Link whiteText href="#" label="Blog" />
+            <Link whiteText href="/blog" label="Blog" />
           </div>
         </nav>
         {menuOpen && (
@@ -91,7 +91,7 @@ const Navbar = () => {
                     </div>
                     <div>
                       <Link
-                        href="#"
+                        href="/blog"
                         label="Blog"
                       />
                     </div>

@@ -8,7 +8,7 @@ const navigation = {
   discover: [
     { name: "Activités", href: "/activités" },
     { name: "Planning", href: "/planning" },
-    { name: "Blog", href: "#" },
+    { name: "Blog", href: "/blog" },
   ],
   join: [
     { name: "S'inscrire", href: "/inscription" },
