@@ -2,7 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import BlogContent from "../../components/BlogContent.jsx"; // React component for Rich Text
 import { contentfulClient } from "../../../contentful.js";
-
+import Heading from "../../components/foundations/Heading.jsx";
+import BodyText from "../../components/foundations/BodyText.jsx";
+import Navbar from "../../components/Navbar.jsx";
+import Footer from "../../components/Footer.jsx";
 // Generate all possible paths for the blog posts
 export async function getStaticPaths() {
   const entries = await contentfulClient.getEntries({
@@ -37,13 +40,17 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <article class="max-w-4xl mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">{post.titre}</h1>
-    <p class="text-sm text-gray-500 mb-4">
+  <Navbar client:only="react" />
+  <article class="max-w-7xl py-12 lg:py-24 mx-auto p-4">
+    <Heading className="max-w-4xl" level={1}>{post.titre}</Heading>
+    <BodyText variant="label" className="my-4">
       {post.auteur} - {new Date(post.datePublication).toLocaleDateString()}
-    </p>
+    </BodyText>
 
     <!-- Render the blog content using a React component -->
-    <BlogContent content={post.contenus} />
+    <div class="max-w-prose">
+      <BlogContent content={post.contenus} />
+    </div>
   </article>
+  <Footer />
 </Layout>
