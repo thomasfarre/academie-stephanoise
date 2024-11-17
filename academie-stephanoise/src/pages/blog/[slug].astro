@@ -29,9 +29,6 @@ if (!entry.items.length) {
 }
 
 const post = entry.items[0].fields;
-const image = entry.includes?.Asset?.find(
-  (asset) => asset.sys.id === post.imagePresentation.sys.id
-);
 
 // Set SEO metadata
 const title = `${post.titre} - Académie Stéphanoise`;
@@ -42,15 +39,6 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
 <Layout title={title} description={description} keywords={keywords}>
   <article class="max-w-4xl mx-auto p-4">
     <h1 class="text-3xl font-bold mb-4">{post.titre}</h1>
-    {
-      image && (
-        <img
-          src={image.fields.file.url}
-          alt={post.titre}
-          class="w-full h-auto mb-4 rounded-lg"
-        />
-      )
-    }
     <p class="text-sm text-gray-500 mb-4">
       {post.auteur} - {new Date(post.datePublication).toLocaleDateString()}
     </p>

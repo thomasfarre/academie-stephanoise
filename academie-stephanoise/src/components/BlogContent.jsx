@@ -10,7 +10,7 @@ const options = {
       return (
         <img
           src={file.url}
-          alt={title || "Embedded Asset"}
+          alt={title || "Untitled Post"}
           className="my-4"
         />
       );
@@ -18,14 +18,14 @@ const options = {
     // Render hyperlinks
     [BLOCKS.HYPERLINK]: (node, children) => (
       <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-        {children}
+        {children || "No description available."}
       </a>
     ),
   },
 };
 
 const BlogContent = ({ content }) => {
-  if (!content) return <p>No content available.</p>;
+  if (!content) return <p>No blog posts available.</p>;
 
   return <div className="blog-content">{documentToReactComponents(content, options)}</div>;
 };
