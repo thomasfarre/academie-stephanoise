@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
-import Heading from './foundations/Heading';
-import BodyText from './foundations/BodyText';
-import Button from './foundations/Button';
-import Link from './foundations/Link';
-import { Bars3Icon, XMarkIcon, UserPlusIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect } from "react";
+import Heading from "./foundations/Heading";
+import BodyText from "./foundations/BodyText";
+import Button from "./foundations/Button";
+import Link from "./foundations/Link";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/outline";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +31,7 @@ const Header = () => {
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
+                loading="lazy"
                 className="h-32 object-cover w-auto"
                 src="/favicon.png"
                 alt=""
@@ -53,12 +58,20 @@ const Header = () => {
         </nav>
         {menuOpen && (
           <div className="lg:hidden" role="dialog" aria-modal="true">
-            <div onClick={toggleMenu} className="fixed inset-0 bg-neutral-900 opacity-80 z-50"></div>
+            <div
+              onClick={toggleMenu}
+              className="fixed inset-0 bg-neutral-900 opacity-80 z-50"
+            ></div>
             <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-neutral-900/10">
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Académie Stéphanoise</span>
-                  <img className="h-28 w-auto" src="/assets/logo.png" alt="" />
+                  <img
+                    loading="lazy"
+                    className="h-28 w-auto"
+                    src="/assets/logo.png"
+                    alt=""
+                  />
                 </a>
                 <Button
                   onClick={toggleMenu}
@@ -74,34 +87,19 @@ const Header = () => {
                 <div className="-my-6 divide-y divide-neutral-500/10">
                   <div className="space-y-4 w-fit px-4 py-8">
                     <div>
-                      <Link
-                        href="/activités"
-                        label="Activités"
-                      />
+                      <Link href="/activités" label="Activités" />
                     </div>
                     <div>
-                      <Link
-                        href="/planning"
-                        label="Planning"
-                      />
+                      <Link href="/planning" label="Planning" />
                     </div>
                     <div>
-                      <Link
-                        href="/contact"
-                        label="Contact"
-                      />
+                      <Link href="/contact" label="Contact" />
                     </div>
                     <div>
-                      <Link
-                        href="/inscription"
-                        label="S'inscrire"
-                      />
+                      <Link href="/inscription" label="S'inscrire" />
                     </div>
                     <div>
-                      <Link
-                        href="/blog"
-                        label="Blog"
-                      />
+                      <Link href="/blog" label="Blog" />
                     </div>
                   </div>
                 </div>
@@ -148,8 +146,14 @@ const Header = () => {
                   <Heading level={1} className="">
                     Académie Stéphanoise
                   </Heading>
-                  <BodyText variant="headline" className="mt-8 text-pretty sm:max-w-md xl:max-w-none">
-                    Un espace de sport et de convivialité à Saint-Etienne, dédié aux arts martiaux et au fitness. Un lieu où débutants et compétiteurs, enfants et adultes, se retrouvent pour partager leur passion et atteindre leurs objectifs ensemble.
+                  <BodyText
+                    variant="headline"
+                    className="mt-8 text-pretty sm:max-w-md xl:max-w-none"
+                  >
+                    Un espace de sport et de convivialité à Saint-Etienne, dédié
+                    aux arts martiaux et au fitness. Un lieu où débutants et
+                    compétiteurs, enfants et adultes, se retrouvent pour
+                    partager leur passion et atteindre leurs objectifs ensemble.
                   </BodyText>
                   <div className="mt-12 xl:mt-20 flex items-center gap-x-8">
                     <Button
@@ -164,9 +168,10 @@ const Header = () => {
                     <Button
                       variant="tertiary"
                       onClick={() => {
-                        const section = document.getElementById('about-section');
+                        const section =
+                          document.getElementById("about-section");
                         if (section) {
-                          section.scrollIntoView({ behavior: 'smooth' });
+                          section.scrollIntoView({ behavior: "smooth" });
                         }
                       }}
                       className="font-semibold text-neutral-900"
@@ -180,6 +185,7 @@ const Header = () => {
                   <div className="ml-auto w-52 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 xl:order-none">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src="/assets/academie_stephanoise_10.png"
                         alt=""
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
@@ -190,6 +196,7 @@ const Header = () => {
                   <div className="mr-auto w-64 flex-none space-y-8 sm:mr-0 sm:pt-52 xl:pt-36">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src="/assets/academie_stephanoise_9.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
@@ -198,6 +205,7 @@ const Header = () => {
                     </div>
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src="/assets/academie_stephanoise_8.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
@@ -208,6 +216,7 @@ const Header = () => {
                   <div className="w-64 flex-none space-y-8 pt-32 sm:pt-0">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src="/assets/academie_stephanoise_7.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
@@ -216,6 +225,7 @@ const Header = () => {
                     </div>
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src="/assets/academie_stephanoise_6.jpg"
                         alt=""
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"

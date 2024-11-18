@@ -65,6 +65,7 @@ export default function Footer({ paddingTop, paddingTopXl }) {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <img
+              loading="lazy"
               alt="Company name"
               src="/assets/logo.png"
               className="h-32 rounded-full"

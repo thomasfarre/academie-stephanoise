@@ -46,6 +46,7 @@ export default function AboutSection() {
         </div>
         <div className="-ml-12 -mt-12 p-12 pb-0 xl:pb-12 xl:sticky xl:top-4 xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:overflow-hidden">
           <img
+            loading="lazy"
             alt=""
             src="/assets/academie_stephanoise_about.png"
             className="w-[38rem] max-w-none rounded-2xl bg-neutral-900 shadow-xl ring-1 ring-neutral-400/10"

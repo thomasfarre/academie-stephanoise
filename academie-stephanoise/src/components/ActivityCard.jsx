@@ -23,7 +23,7 @@ const ActivityCard = ({
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
         <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
-          <img src={icon} alt={`${name} Icon`} className="h-20 w-20" />
+          <img loading="lazy" src={icon} alt={`${name} Icon`} className="h-20 w-20" />
         </div>
         <Heading level={4}>{name}</Heading>
       </div>

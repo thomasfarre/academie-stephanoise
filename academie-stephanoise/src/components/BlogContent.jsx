@@ -9,6 +9,7 @@ const options = {
       const { file, title } = node.data.target.fields;
       return (
         <img
+          loading="lazy"
           src={file.url}
           alt={title || "Untitled Post"}
           className="my-4"

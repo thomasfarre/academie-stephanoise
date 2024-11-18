@@ -25,6 +25,7 @@ const ActivityBlock = ({
       <div className={`flex flex-col max-w-3xl lg:col-span-3 bg-white p-6 xl:p-8 ${invert ? 'mr-auto lg:order-2' : 'ml-auto'}`}>
         <div className="space-y-2">
           <img
+            loading="lazy"
             src={iconSrc}
             alt={iconAlt}
             className={`h-40 w-40 ${iconColor} rounded-2xl`}
@@ -90,6 +91,7 @@ const ActivityBlock = ({
       </div>
       <div className={`hidden lg:block lg:col-span-2 ${invert ? 'lg:order-1' : ''}`}>
         <img
+          loading="lazy"
           className="w-full h-3/4 object-cover rounded-lg shadow-md saturate-0"
           src={imageSrc}
           alt={imageAlt}

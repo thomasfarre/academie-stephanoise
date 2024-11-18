@@ -14,6 +14,7 @@ const ActivityLogo = ({ bgColor, imgSrc, imgAlt, headingText, targetId }) => {
       onClick={handleClick}
     >
       <img
+        loading="lazy"
         className={`max-h-12 w-fit object-contain rounded-2xl ${bgColor}`}
         src={imgSrc}
         alt={imgAlt}
