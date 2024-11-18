@@ -3,6 +3,42 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              color: '#171717',
+              fontWeight: '400',
+              fontFamily: 'Protest Strike, sans-serif',
+              fontSize: '5rem',
+            },
+            h2: {
+              color: '#171717',
+              fontWeight: '400',
+              fontFamily: 'Protest Strike, sans-serif',
+              fontSize: '3rem',
+            },
+            h3: {
+              color: '#171717',
+              fontWeight: '400',
+              fontFamily: 'Protest Strike, sans-serif',
+              fontSize: '2rem',
+            },
+            p: {
+              color: '#171717',
+              fontFamily: 'Open Sans, sans-serif',
+              fontSize: '1rem',
+            },
+            a: {
+              color: '#3b82f6',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+          },
+        },
+      },
 			fontFamily: {
 				protestStrike: ['Protest Strike', 'sans-serif'],
 				openSans: ['Open Sans', 'sans-serif'],
@@ -11,6 +47,7 @@ export default {
 	},
 	plugins: [
 		require('@tailwindcss/forms'),
+		require('@tailwindcss/typography'),
 	],
 	safelist: [
 		'text-[#3b82f6]', // bg-blue-500

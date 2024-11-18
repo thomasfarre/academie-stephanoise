@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 export const Heading = ({ level, children, white = false, className = '', ...props }) => {
   const Tag = `h${level}`;
   const styles = {
-    1: 'md:text-7xl text-5xl tracking-tight font-protestStrike',
-    2: 'md:text-5xl text-3xl tracking-tight font-protestStrike',
-    3: 'md:text-4xl text-2xl tracking-tight font-protestStrike',
-    default: 'md:text-2xl text-lg font-protestStrike'
+    1: 'md:text-7xl text-5xl tracking-tight font-protestStrike text-neutral-900 ',
+    2: 'md:text-5xl text-3xl tracking-tight font-protestStrike text-neutral-900',
+    3: 'md:text-4xl text-2xl tracking-tight font-protestStrike text-neutral-900',
+    default: 'md:text-2xl text-lg font-protestStrike text-neutral-900'
   };
   const headingStyle = styles[level] || styles.default;
   const textColor = white ? 'text-white' : 'text-neutral-900';

@@ -4,6 +4,7 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 
+
 const navigation = {
   discover: [
     { name: "Activités", href: "/activités" },
@@ -57,10 +58,10 @@ const navigation = {
   ],
 };
 
-export default function Footer() {
+export default function Footer({ paddingTop, paddingTopXl }) {
   return (
     <footer className="bg-neutral-900">
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-72  xl:px-8 xl:pt-96">
+      <div className={`mx-auto max-w-7xl px-6 pb-8 ${paddingTop} xl:px-8 ${paddingTopXl}`}>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <img

@@ -5,8 +5,8 @@ import { PhoneIcon } from "@heroicons/react/24/outline";
 
 export default function CallToActionSection() {
   return (
-    <div className="bg-white rounded-2xl shadow-lg max-w-4xl mx-auto">
-      <div className="px-6 py-8 sm:px-6 sm:py-16 xl:px-8">
+    <div className="bg-white border-2 mx-4  border-neutral-200 rounded-2xl shadow-lg max-w-4xl lg:mx-auto">
+      <div className="px-6 py-8 sm:px-6 sm:py-16  xl:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Heading level={2} className="text-balance">
             Prêt à essayer ? Réservez votre première séance !

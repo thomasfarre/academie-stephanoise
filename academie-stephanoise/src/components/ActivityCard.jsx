@@ -1,10 +1,24 @@
-import PropTypes from 'prop-types';
-import { StarIcon, ClockIcon, CalendarDaysIcon, UserPlusIcon } from '@heroicons/react/24/outline';
-import { Button } from './foundations/Button';
-import { Heading } from './foundations/Heading';
-import { BodyText } from './foundations/BodyText';
+import PropTypes from "prop-types";
+import {
+  StarIcon,
+  ClockIcon,
+  CalendarDaysIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/outline";
+import { Button } from "./foundations/Button";
+import { Heading } from "./foundations/Heading";
+import { BodyText } from "./foundations/BodyText";
 
-const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', activityUrl, duration, schedule, icon }) => {
+const ActivityCard = ({
+  name,
+  level,
+  description,
+  bgColor = "bg-neutral-100",
+  activityUrl,
+  duration,
+  schedule,
+  icon,
+}) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
@@ -15,9 +29,10 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', ac
       </div>
 
       <div className="flex-1 space-y-6 pt-4 pb-8">
-        <BodyText variant="paragraph" className="h-32">{description}</BodyText>
+        <BodyText variant="paragraph" className="h-32">
+          {description}
+        </BodyText>
         <div className="space-y-4">
-
           <div className="flex items-center space-x-2">
             <StarIcon className="text-neutral-600 w-5 h-5" />
             <BodyText variant="label">{level}</BodyText>
@@ -36,17 +51,19 @@ const ActivityCard = ({ name, level, description, bgColor = 'bg-neutral-100', ac
       </div>
 
       <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
-        <a href={`/planning?activity=${encodeURIComponent(activityUrl)}`} className="w-1/2">
-          <Button variant="leadingIcon" label="Planning">
+        <a
+          href={`/planning?activity=${encodeURIComponent(activityUrl)}`}
+          className="w-1/2"
+        >
+          <Button variant="leadingIcon" label="Planning" className="w-full">
             <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
           </Button>
         </a>
-        <a href="/inscription">
-          <Button
-            variant="secondary"
-          label="S'inscrire"
-            className="w-1/2"
-          >
+        <a
+          href="/inscription"
+          className="w-1/2"
+        >
+          <Button variant="secondary" label="S'inscrire" className="w-full">
             <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
           </Button>
         </a>

@@ -159,6 +159,12 @@ export default function Calendar() {
           .fc .fc-daygrid-day {
             background-color: white;
           }
+          :root {
+            --fc-button-bg-color: #1a202c;
+            --fc-button-border-color: #1a202c; /* text-neutral-900 */
+            --fc-button-hover-bg-color: #3f3f46; /* tailwind neutral-700 for hover */
+            --fc-button-active-bg-color: #3f3f46; /* tailwind neutral-700 for active */
+          }
 
           :root {
             @media (max-width: 1024px) {
@@ -189,7 +195,6 @@ export default function Calendar() {
               grid-column: span 1;
               }
             }
-          }
           }
         `}
       </style>

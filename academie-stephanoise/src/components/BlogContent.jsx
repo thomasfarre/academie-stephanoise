@@ -27,7 +27,14 @@ const options = {
 const BlogContent = ({ content }) => {
   if (!content) return <p>No blog posts available.</p>;
 
-  return <div className="blog-content prose max-w-none text-neutral-700">{documentToReactComponents(content, options)}</div>;
+  return <div className="prose">{documentToReactComponents(content, options)}</div>;
 };
+
+// <style>
+//   .blog-content h1 {
+//     font-size: 5rem;
+//     font-family: 'Protest Strike', sans-serif;
+//   }
+// </style>
 
 export default BlogContent;

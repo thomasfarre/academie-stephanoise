@@ -6,8 +6,8 @@ import Heading from "../components/foundations/Heading.jsx";
 import { getBlogPosts } from "../../contentful.js";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.jsx";
+import CallToActionSection from "../components/CallToActionSection.jsx";
 const blogPosts = await getBlogPosts();
-console.log(blogPosts); // Log the blog posts to the console
 const title = "Blog - Académie Stéphanoise";
 const description = "Blog de l'Académie Stéphanoise";
 const keywords = "blog, Académie Stéphanoise, articles";
@@ -26,6 +26,9 @@ const keywords = "blog, Académie Stéphanoise, articles";
       </div>
     </div>
   </div>
-  <BlogList posts={blogPosts} />
-  <Footer />
+  <BlogList posts={blogPosts} client:only="react" />
+  <div class="translate-y-1/2 transform">
+    <CallToActionSection />
+  </div>
+  <Footer paddingTop="pt-72" paddingTopXl="xl:pt-96" />
 </Layout>
