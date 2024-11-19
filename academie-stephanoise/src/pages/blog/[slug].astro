@@ -37,11 +37,20 @@ const post = entry.items[0].fields;
 
 // Set SEO metadata
 const title = `${post.titre} - Académie Stéphanoise`;
-const description = post.contenus.content[0]?.content[0]?.value || post.titre;
-const keywords = `${post.titre}, Académie Stéphanoise, articles`;
+const description = post.contenus.content[0]?.content[0]?.value?.slice(0, 155) || post.titre;
+const keywords = `${post.titre}, Académie Stéphanoise, articles, blog`;
+const publishDate = new Date(post.datePublication);
+const formattedDate = publishDate.toISOString();
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}
+  type="article"
+  publishDate={formattedDate}
+  author={post.auteur}
+>
   <Navbar client:load>
     <Image
       src={logoImage}
@@ -50,7 +59,11 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
       height={100}
     />
   </Navbar>
-  <article class="py-12 lg:py-24 p-4 relative isolate overflow-hidden">
+  <article
+    class="py-12 lg:py-24 p-4 relative isolate overflow-hidden"
+    itemscope
+    itemtype="https://schema.org/BlogPosting"
+  >
     <div class="absolute inset-0 -z-10 overflow-visible">
       <svg
         aria-hidden="true"
@@ -81,13 +94,15 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
       </svg>
     </div>
     <div class="max-w-7xl mx-auto">
-      <Heading className="max-w-4xl" level={1}>{post.titre}</Heading>
+      <Heading className="max-w-4xl" level={1} itemProp="headline">{post.titre}</Heading>
       <BodyText variant="label" className="my-4">
-        {post.auteur} - {new Date(post.datePublication).toLocaleDateString()}
+        <span itemProp="author">{post.auteur}</span> -
+        <time itemProp="datePublished" datetime={formattedDate}>
+          {publishDate.toLocaleDateString()}
+        </time>
       </BodyText>
 
-      <!-- Render the blog content using a React component -->
-      <div class="max-w-prose">
+      <div class="max-w-prose" itemprop="articleBody">
         <BlogContent content={post.contenus} client:load />
       </div>
     </div>

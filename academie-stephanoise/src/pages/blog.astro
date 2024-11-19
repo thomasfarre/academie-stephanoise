@@ -10,41 +10,44 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.jsx";
 import CallToActionSection from "../components/CallToActionSection.jsx";
 const blogPosts = await getBlogPosts();
-const title = "Blog - Académie Stéphanoise";
-const description = "Blog de l'Académie Stéphanoise";
-const keywords = "blog, Académie Stéphanoise, articles";
+const title = "Blog | Actualités et Conseils Sportifs | Académie Stéphanoise";
+const description = "Découvrez les dernières actualités, conseils d'entraînement et articles sur le sport à l'Académie Stéphanoise. Expertise et guides pratiques pour votre développement sportif.";
+const keywords = "blog sportif, actualités sport, conseils entraînement, Académie Stéphanoise, Saint-Étienne, formation sportive, articles sport";
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:load>
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Navbar>
-  <div class="bg-neutral-900 py-12 px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="space-y-4">
-        <Heading level={2} white> Le blog de l'Académie Stéphanoise </Heading>
-        <BodyText variant="headline" whiteText className="max-w-prose">
-          Retrouvez des articles, des conseils pratiques et toutes les
-          actualités autour du sport et de la vie à l’académie.
-        </BodyText>
+  <main>
+    <Navbar client:load>
+      <Image
+        src={logoImage}
+        alt="Logo de l'Académie Stéphanoise"
+        width={100}
+        height={100}
+      />
+    </Navbar>
+    <div class="bg-neutral-900 py-12 px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="space-y-4">
+          <h1 class="sr-only">Blog de l'Académie Stéphanoise - Articles et Actualités</h1>
+          <Heading level={2} white> Le blog de l'Académie Stéphanoise </Heading>
+          <BodyText variant="headline" whiteText className="max-w-prose">
+            Retrouvez des articles, des conseils pratiques et toutes les
+            actualités autour du sport et de la vie à l’académie.
+          </BodyText>
+        </div>
       </div>
     </div>
-  </div>
-  <BlogList posts={blogPosts} client:idle />
-  <div class="translate-y-1/2 transform">
-    <CallToActionSection client:visible />
-  </div>
-  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Footer>
+    <BlogList posts={blogPosts} client:idle />
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+    <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+      <Image
+        src={logoImage}
+        alt="Logo de l'Académie Stéphanoise"
+        width={100}
+        height={100}
+      />
+    </Footer>
+  </main>
 </Layout>

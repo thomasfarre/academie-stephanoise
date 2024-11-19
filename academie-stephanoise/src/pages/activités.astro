@@ -24,11 +24,11 @@ import tolparImage from "../assets/tolpar.jpeg";
 import lutaImage from "../assets/luta-livre.png";
 import crossTrainingImage from "../assets/crossfit.webp";
 
-const title = "Activités - Académie Stéphanoise";
+const title = "Activités & Sports de Combat | Académie Stéphanoise Saint-Étienne";
 const description =
-  "En savoir plus sur l'Académie Stéphanoise, un lieu dédié aux arts martiaux et au fitness à Saint-Étienne.";
+  "Découvrez nos cours de boxe, MMA, Krav Maga, Luta Livre, Tolpar et Cross Training à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
 const keywords =
-  "Académie Stéphanoise, arts martiaux, fitness, Saint-Étienne, activités";
+  "Académie Stéphanoise, arts martiaux Saint-Étienne, MMA Saint-Étienne, boxe Saint-Étienne, Krav Maga Loire, Cross Training 42, sports de combat Loire, fitness Saint-Étienne";
 
 const optimizedBoxeIcon = await getImage({ src: boxeIcon, format: "webp", alt: "Icône représentant la boxe" });
 const optimizedBoxeImage = await getImage({ src: boxeImage, format: "webp", alt: "Personne pratiquant la boxe dans une salle d'entraînement" });
@@ -87,7 +87,8 @@ const optimizedImages = {
   </Navbar>
   <div class="bg-neutral-900">
     <div class="max-w-7xl mx-auto pt-20 px-6 lg:px-8">
-      <Heading level={2} white> La liste de nos activités </Heading>
+      <h1 class="sr-only">Sports de Combat et Fitness à Saint-Étienne - Académie Stéphanoise</h1>
+      <Heading level={2} white>La liste de nos activités sportives à Saint-Étienne</Heading>
       <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
         Découvrez nos activités sportives et de remise en forme en détail.
         Consultez notre planning pour trouver les horaires qui vous conviennent,

@@ -5,32 +5,39 @@ import logoImage from "../assets/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactSection from "../components/ContactSection.jsx";
-const title = "Contact - Académie Stéphanoise";
+
+// Improved meta information
+const title = "Contact | Académie Stéphanoise - Arts Martiaux et Sports de Combat à Saint-Étienne";
 const description =
-  "Contactez l'Académie Stéphanoise pour plus d'informations.";
-const keywords = "contact, Académie Stéphanoise, informations, horaires";
+  "Contactez l'Académie Stéphanoise pour plus d'informations sur nos cours de MMA, Boxe, Krav Maga, et Cross Training à Saint-Étienne. Réservez votre cours d'essai gratuit ou renseignez-vous sur nos horaires et tarifs.";
+const keywords = "contact académie stéphanoise, club combat saint-étienne, cours mma loire, inscription boxe, krav maga saint-étienne, sports combat loire, salle arts martiaux";
+
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:load>
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Navbar>
-  <div class="bg-neutral-50">
-    <div>
-      <ContactSection client:load />
+  <main>
+    <Navbar client:load>
+      <Image
+        src={logoImage}
+        alt="Logo Académie Stéphanoise - École d'Arts Martiaux à Saint-Étienne"
+        width={100}
+        height={100}
+      />
+    </Navbar>
+    <div class="bg-neutral-50">
+      <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div>
+          <ContactSection client:load />
+        </div>
+      </div>
     </div>
-  </div>
-  <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Footer>
+    <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
+      <Image
+        src={logoImage}
+        alt="Logo de l'Académie Stéphanoise"
+        width={100}
+        height={100}
+      />
+    </Footer>
+  </main>
 </Layout>

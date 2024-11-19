@@ -22,7 +22,7 @@ const NavigationMenu = ({ logo }) => {
           )}
         </Button>
       </div>
-      <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
+      <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12 xl:ml-40">
         <Link href="/activités" label="Activités" />
         <Link href="/planning" label="Planning" />
         <Link href="/contact" label="Contact" />

@@ -7,44 +7,50 @@ import Footer from "../components/Footer";
 import Heading from "../components/foundations/Heading.jsx";
 import BodyText from "../components/foundations/BodyText.jsx";
 import RegisterForm from "../components/RegisterForm.jsx";
-const title = "Inscription - Académie Stéphanoise";
+
+// Improved meta information
+const title = "Inscription | Académie Stéphanoise - Arts Martiaux et Sports de Combat à Saint-Étienne";
 const description =
-  "Inscrivez-vous à l'Académie Stéphanoise pour commencer votre aventure martiale.";
-const keywords = "inscription, Académie Stéphanoise, aventure martiale";
+  "Inscrivez-vous à l'Académie Stéphanoise pour nos cours de MMA, Boxe, Krav Maga, et Cross Training. Inscription en ligne simple et rapide, cours d'essai gratuit. Tarifs adaptés et planning flexible à Saint-Étienne.";
+const keywords = "inscription arts martiaux saint-étienne, adhésion mma loire, inscription boxe, cours krav maga, tarifs sports combat, académie stéphanoise inscription, cross training saint-étienne";
+
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:load>
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Navbar>
-  <div class="bg-neutral-900 py-12 px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="space-y-4">
-        <Heading level={2} white>
-          Inscrivez-vous facilement à nos activités
-        </Heading>
-        <BodyText variant="headline" whiteText className="max-w-prose">
-          Que vous soyez intéressé par les sports de combat, le cross training
-          ou la préparation physique, nous avons simplifié le processus
-          d'inscription pour vous. Choisissez l'option qui vous convient :
-          <span class="font-semibold">en ligne</span> ou
-          <span class="font-semibold">en présentiel</span>.
-        </BodyText>
+  <main>
+    <Navbar client:load>
+      <Image
+        src={logoImage}
+        alt="Logo Académie Stéphanoise - École d'Arts Martiaux à Saint-Étienne"
+        width={100}
+        height={100}
+      />
+    </Navbar>
+    <div class="bg-neutral-900 py-12 px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="space-y-4">
+          <h1 class="sr-only">Inscription à l'Académie Stéphanoise</h1>
+          <Heading level={2} white>
+            Inscrivez-vous facilement à nos activités
+          </Heading>
+          <BodyText variant="headline" whiteText className="max-w-prose">
+            Que vous soyez intéressé par les sports de combat, le cross training
+            ou la préparation physique, nous avons simplifié le processus
+            d'inscription pour vous. Choisissez l'option qui vous convient :
+            <span class="font-semibold">en ligne</span> ou
+            <span class="font-semibold">en présentiel</span>.
+          </BodyText>
+        </div>
       </div>
     </div>
-  </div>
-  <RegisterForm client:load />
-  <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
-    <Image
-      src={logoImage}
-      alt="Logo de l'Académie Stéphanoise"
-      width={100}
-      height={100}
-    />
-  </Footer>
+    <RegisterForm client:load />
+    <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
+      <Image
+        src={logoImage}
+        alt="Logo Académie Stéphanoise - École d'Arts Martiaux à Saint-Étienne"
+        width={100}
+        height={100}
+      />
+    </Footer>
+  </main>
 </Layout>
