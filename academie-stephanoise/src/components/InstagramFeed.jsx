@@ -37,6 +37,7 @@ const InstagramFeed = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform transform hover:scale-105"
+              aria-label={`Voir ce post Instagram de l'Académie Stéphanoise dans une nouvelle fenêtre`}
             >
               <LazyLoad height={384} offset={100} once>
                 <img
