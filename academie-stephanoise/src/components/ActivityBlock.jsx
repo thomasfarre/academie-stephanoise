@@ -17,7 +17,6 @@ const ActivityBlock = ({
   targetId,
   images
 }) => {
-  console.log(images.image);
 
   return (
     <div id={targetId} className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-20">
