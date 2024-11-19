@@ -58,18 +58,16 @@ const navigation = {
   ],
 };
 
-export default function Footer({ paddingTop, paddingTopXl }) {
+export default function Footer({ paddingTop, paddingTopXl, children }) {
   return (
     <footer className="bg-neutral-900">
       <div className={`mx-auto max-w-7xl px-6 pb-8 ${paddingTop} xl:px-8 ${paddingTopXl}`}>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <img
-              loading="lazy"
-              alt="Company name"
-              src="/assets/logo.png"
-              className="h-32 rounded-full"
-            />
+            <div className="h-28 py-5 px-1 bg-white w-fit rounded-full">
+            {children}
+
+            </div>
             <p className="text-balance text-sm/6 text-neutral-300">
               Il n’y a pas de victoire individuelle dans un lieu où chacun se
               soutient pour avancer.

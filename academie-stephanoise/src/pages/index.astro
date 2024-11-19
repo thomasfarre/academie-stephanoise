@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.jsx";
 import ActivityCard from "../components/ActivityCard";
@@ -8,19 +10,42 @@ import CoachCard from "../components/CoachCard";
 import CallToActionSection from "../components/CallToActionSection";
 import Footer from "../components/Footer";
 import InstagramFeed from "../components/InstagramFeed";
+import aboutImage from "../assets/academie_stephanoise_about.png";
+import lucImage from "../assets/luc_hernandez.webp";
+import noriImage from "../assets/nori_berramdane.webp";
+import headerImage1 from "../assets/academie_stephanoise_10.png";
+import headerImage2 from "../assets/academie_stephanoise_9.jpg";
+import headerImage3 from "../assets/academie_stephanoise_8.jpg";
+import headerImage4 from "../assets/academie_stephanoise_7.jpg";
+import headerImage5 from "../assets/academie_stephanoise_6.jpg";
+import logoImage from "../assets/logo.png";
+import kravIcon from "../assets/icons/krav_picto.png";
+import boxeIcon from "../assets/icons/boxe_picto.png";
+import mmaIcon from "../assets/icons/mma_picto.png";
+import tolparIcon from "../assets/icons/tolpar_picto.png";
+import lutaIcon from "../assets/icons/lutalivre_picto.png";
+import crossTrainingIcon from "../assets/icons/crosstraining_picto.png";
 
-const title =
-  "Académie Stéphanoise - Arts Martiaux, Fitness et Bien-Être pour Tous";
-const description =
-  "Découvrez l'Académie Stéphanoise, un lieu unique à Saint-Étienne dédié aux arts martiaux, au fitness et au bien-être. Rejoignez-nous pour des cours de Krav Maga, MMA, Luta Livre, CrossFit, Pilates, et plus encore. Ouvert à tous, débutants comme compétiteurs.";
-const keywords =
-  "Académie Stéphanoise, Saint-Étienne, arts martiaux, fitness, Krav Maga, MMA, Luta Livre, CrossFit, Pilates, remise en forme";
 
+const title = "Académie Stéphanoise";
+const description = "L'Académie Stéphanoise est une académie de combat qui propose des cours de boxe, de MMA, de luta libre et de krav maga.";
+const keywords = "boxe, mma, luta libre, krav maga, combat, self-defense, défense personnelle, défense personnelle, défense personnelle";
 
+// Pre-optimize images
+const optimizedImages = {
+  logo: await getImage({ src: logoImage, format: "webp" }),
+  gallery: await Promise.all([
+    getImage({ src: headerImage1, format: "webp" }),
+    getImage({ src: headerImage2, format: "webp" }),
+    getImage({ src: headerImage3, format: "webp" }),
+    getImage({ src: headerImage4, format: "webp" }),
+    getImage({ src: headerImage5, format: "webp" }),
+  ]),
+};
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Header client:only="react" />
+  <Header client:load images={optimizedImages} />
   <div>
     <div class="bg-neutral-50 pt-32 pb-24 lg:pb-36 -mt-40">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -32,9 +57,15 @@ const keywords =
             description="Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases."
             duration="1 heure"
             schedule="Plusieurs fois par semaine"
-            icon="/assets/icons/boxe_picto.png"
             activityUrl="boxe-pied-poing"
-          />
+          >
+            <Image
+              src={boxeIcon}
+              alt="Boxe pied poing"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
           <ActivityCard
             name="Krav Maga"
             level="Tous niveaux"
@@ -42,9 +73,15 @@ const keywords =
             description="Apprenez des techniques de défense réalistes pour vous protéger dans des situations de la vie quotidienne. Le Krav Maga est basé sur des mouvements simples et efficaces, parfait pour tous les niveaux."
             duration="1 heure"
             schedule="Une fois par semaine"
-            icon="/assets/icons/krav_picto.png"
             activityUrl="krav-maga"
-          />
+          >
+            <Image
+              src={kravIcon}
+              alt="Krav Maga"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
           <ActivityCard
             name="MMA (Mixed Martial Arts)"
             level="Intermédiaire à avancé"
@@ -52,9 +89,15 @@ const keywords =
             description="Combinez différentes disciplines comme la boxe, la lutte et le jiu-jitsu pour un entraînement complet. Parfait pour les pratiquants souhaitant améliorer leurs compétences globales en combat."
             duration="1 heure 30"
             schedule="Deux fois par semaine"
-            icon="/assets/icons/mma_picto.png"
             activityUrl="mma"
-          />
+          >
+            <Image
+              src={mmaIcon}
+              alt="MMA"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
           <ActivityCard
             name="Tolpar (Escrime lame courte)"
             level="Tous niveaux"
@@ -62,9 +105,15 @@ const keywords =
             description="Maîtrisez l'art de l'escrime à lame courte, une discipline axée sur la précision, l’agilité et la technique. Idéal pour développer la concentration et les réflexes dans des situations de combat rapproché."
             duration="1 heure"
             schedule="Hebdomadaire"
-            icon="/assets/icons/tolpar_picto.png"
             activityUrl="tolpar"
-          />
+          >
+            <Image
+              src={tolparIcon}
+              alt="Tolpar"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
           <ActivityCard
             name="Luta Livre"
             level="Tous niveaux"
@@ -72,9 +121,15 @@ const keywords =
             description="Découvrez l'art du grappling brésilien avec la Luta Livre, une discipline axée sur la lutte au sol et le contrôle du corps. Adapté à tous, ce cours améliore la force, la technique et la résilience mentale."
             duration="1 heure 30"
             schedule="Deux fois par semaine"
-            icon="/assets/icons/lutalivre_picto.png"
             activityUrl="lutalivre"
-          />
+          >
+            <Image
+              src={lutaIcon}
+              alt="Luta Livre"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
           <ActivityCard
             name="Cross Training / Prépa Physique"
             level="Tous niveaux"
@@ -82,14 +137,28 @@ const keywords =
             description="Améliorez votre condition physique avec des exercices fonctionnels, combinant cardio et renforcement musculaire. Idéal pour développer l’endurance, la force et l’agilité."
             duration="1 heure"
             schedule="Trois fois par semaine"
-            icon="/assets/icons/crosstraining_picto.png"
             activityUrl="cross-training"
-          />
+          >
+            <Image
+              src={crossTrainingIcon}
+              alt="Cross Training"
+              width={100}
+              height={100}
+            />
+          </ActivityCard>
         </div>
       </div>
     </div>
     <div>
-      <AboutSection />
+      <AboutSection client:idle>
+        <Image
+          src={aboutImage}
+          alt="About Image"
+          width={600}
+          height={400}
+          class="w-[38rem] max-w-none rounded-2xl bg-neutral-900 shadow-xl ring-1 ring-neutral-400/10"
+        />
+      </AboutSection>
     </div>
     <div class="bg-neutral-900 pt-28 pb-96">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -111,8 +180,15 @@ const keywords =
               "Médaillé tournoi jujitsu combat",
               "Brevet d'état Judo-jujitsu",
             ]}
-            photo="/assets/luc_hernandez.jpg"
-          />
+          >
+            <Image
+              src={lucImage}
+              alt="Photo de Luc Hernandez"
+              width={592}
+              height={336}
+              class="object-cover rounded-t-2xl h-[21rem] w-full object-[10%_23%]"
+            />
+          </CoachCard>
           <CoachCard
             name="Nori Berramdane"
             disciplines="Boxe Pied Poing"
@@ -127,13 +203,20 @@ const keywords =
               "Pratiquant de Luta Livre et de judo",
               "Gant noir de Kick-Boxing",
             ]}
-            photo="/assets/nori_berramdane.jpg"
-          />
+          >
+            <Image
+              src={noriImage}
+              alt="Photo de Nori Berramdane"
+              width={592}
+              height={336}
+              class="object-cover rounded-t-2xl h-[21rem] w-full object-[10%_23%]"
+            />
+          </CoachCard>
         </div>
       </div>
     </div>
     <div class="max-w-7xl mx-auto pb-28 px-6 lg:px-8 -mt-52">
-      <CallToActionSection />
+      <CallToActionSection client:visible />
     </div>
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -142,7 +225,14 @@ const keywords =
       </div>
     </div>
     <div class="-mt-64">
-      <Footer paddingTop="pt-72" paddingTopXl="xl:pt-96" />
+      <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+        <Image
+          src={logoImage}
+          alt="Logo de l'Académie Stéphanoise"
+          width={100}
+          height={100}
+        />
+      </Footer>
     </div>
   </div>
 </Layout>

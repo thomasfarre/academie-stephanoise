@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 
 const InstagramFeed = () => {
   const [images, setImages] = useState([]);
@@ -37,12 +38,14 @@ const InstagramFeed = () => {
               rel="noopener noreferrer"
               className="transition-transform transform hover:scale-105"
             >
-              <img
-                loading="lazy"
-                className="w-full h-96 object-cover rounded-md shadow-md"
-                src={image.media_url}
-                alt="Instagram Post"
-              />
+              <LazyLoad height={384} offset={100} once>
+                <img
+                  loading="lazy"
+                  className="w-full h-96 object-cover rounded-md shadow-md"
+                  src={image.media_url}
+                  alt="Instagram Post"
+                />
+              </LazyLoad>
             </a>
           ))}
         </div>

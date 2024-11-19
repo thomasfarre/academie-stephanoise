@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../../assets/logo.png";
 import BlogContent from "../../components/BlogContent.jsx"; // React component for Rich Text
 import { contentfulClient } from "../../../contentful.js";
 import Heading from "../../components/foundations/Heading.jsx";
@@ -40,7 +42,14 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:only="react" />
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
   <article class="py-12 lg:py-24 p-4 relative isolate overflow-hidden">
     <div class="absolute inset-0 -z-10 overflow-visible">
       <svg
@@ -56,29 +65,39 @@ const keywords = `${post.titre}, Académie Stéphanoise, articles`;
             height={200}
             patternUnits="userSpaceOnUse"
           >
-            <path d="M100 200V.5M.5 .5H200" fill="none" />
+            <path d="M100 200V.5M.5 .5H200" fill="none"></path>
           </pattern>
         </defs>
         <svg x="50%" y={-1} class="overflow-visible fill-red-200">
           <path
             d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
-            stroke-width={0}
-          />
+            stroke-width={0}></path>
         </svg>
-        <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" stroke-width={0} />
+        <rect
+          fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"
+          width="100%"
+          height="100%"
+          stroke-width={0}></rect>
       </svg>
     </div>
     <div class="max-w-7xl mx-auto">
       <Heading className="max-w-4xl" level={1}>{post.titre}</Heading>
       <BodyText variant="label" className="my-4">
-      {post.auteur} - {new Date(post.datePublication).toLocaleDateString()}
-    </BodyText>
+        {post.auteur} - {new Date(post.datePublication).toLocaleDateString()}
+      </BodyText>
 
-    <!-- Render the blog content using a React component -->
-    <div class="max-w-prose">
-      <BlogContent content={post.contenus} />
+      <!-- Render the blog content using a React component -->
+      <div class="max-w-prose">
+        <BlogContent content={post.contenus} client:load />
       </div>
     </div>
   </article>
-  <Footer paddingTop="pt-12" paddingTopXl="xl:pt-24" />
+  <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
 </Layout>

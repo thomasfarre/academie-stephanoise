@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import { AcademicCapIcon } from '@heroicons/react/24/outline';
-import { Heading } from './foundations/Heading';
-import { BodyText } from './foundations/BodyText';
 
-const CoachCard = ({ name, disciplines, bio, qualifications, photo }) => {
+const CoachCard = ({ name, disciplines, bio, qualifications, children }) => {
   return (
     <div className="bg-neutral-800 rounded-2xl shadow-md flex flex-col items-center space-y-4">
-      <img loading="lazy" src={photo} alt={`Photo de ${name}`} className="object-cover rounded-t-2xl h-[21rem] w-full object-[10%_23%]" />
+      {children}
       <div className="flex flex-col items-start px-6 space-y-4 pt-4">
         <span className="text-neutral-200 text-4xl tracking-tight font-semibold">{name}</span>
         <div className="flex items-center space-x-2">
@@ -35,8 +33,7 @@ CoachCard.propTypes = {
   disciplines: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
   qualifications: PropTypes.arrayOf(PropTypes.string).isRequired,
-  recordLink: PropTypes.string,
-  photo: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default CoachCard;

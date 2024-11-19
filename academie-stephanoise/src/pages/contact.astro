@@ -1,21 +1,36 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactSection from "../components/ContactSection.jsx";
 const title = "Contact - Académie Stéphanoise";
 const description =
   "Contactez l'Académie Stéphanoise pour plus d'informations.";
-const keywords =
-  "contact, Académie Stéphanoise, informations, horaires";
+const keywords = "contact, Académie Stéphanoise, informations, horaires";
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:only="react" />
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
   <div class="bg-neutral-50">
     <div>
-      <ContactSection />
+      <ContactSection client:load />
     </div>
   </div>
-  <Footer paddingTop="pt-12" paddingTopXl="xl:pt-24" />
+  <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
 </Layout>

@@ -9,7 +9,7 @@ import {
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
 
-const Header = () => {
+const Header = ({ images }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -31,10 +31,11 @@ const Header = () => {
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
-                loading="lazy"
+                src={images.logo.src}
+                alt="Académie Stéphanoise"
+                width={images.logo.attributes.width}
+                height={images.logo.attributes.height}
                 className="h-32 object-cover w-auto"
-                src="/favicon.png"
-                alt=""
               />
             </a>
           </div>
@@ -67,10 +68,11 @@ const Header = () => {
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Académie Stéphanoise</span>
                   <img
-                    loading="lazy"
+                    src={images.logo.src}
+                    alt="Académie Stéphanoise"
+                    width={112}
+                    height={112}
                     className="h-28 w-auto"
-                    src="/assets/logo.png"
-                    alt=""
                   />
                 </a>
                 <Button
@@ -156,15 +158,16 @@ const Header = () => {
                     partager leur passion et atteindre leurs objectifs ensemble.
                   </BodyText>
                   <div className="mt-12 xl:mt-20 flex items-center gap-x-8">
-                    <Button
-                      variant="primary"
-                      onClick={() => {}}
-                      className="px-6 py-4"
-                      label="Nous rejoindre"
+                    <a href="/inscription">
+                      <Button
+                        variant="primary"
+                        onClick={() => {}}
+                        className="px-6 py-4"
+                        label="Nous rejoindre"
                     >
-                      <UserPlusIcon className="w-5 h-5 mr-2 text-emerald-100" />
-                    </Button>
-
+                        <UserPlusIcon className="w-5 h-5 mr-2 text-emerald-100" />
+                      </Button>
+                    </a>
                     <Button
                       variant="tertiary"
                       onClick={() => {
@@ -185,9 +188,10 @@ const Header = () => {
                   <div className="ml-auto w-52 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 xl:order-none">
                     <div className="relative">
                       <img
-                        loading="lazy"
-                        src="/assets/academie_stephanoise_10.png"
-                        alt=""
+                        src={images.gallery[0].src}
+                        alt="Gallery image 1"
+                        width={images.gallery[0].attributes.width}
+                        height={images.gallery[0].attributes.height}
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/10"></div>
@@ -196,18 +200,20 @@ const Header = () => {
                   <div className="mr-auto w-64 flex-none space-y-8 sm:mr-0 sm:pt-52 xl:pt-36">
                     <div className="relative">
                       <img
-                        loading="lazy"
-                        src="/assets/academie_stephanoise_9.jpg"
-                        alt=""
+                        src={images.gallery[1].src}
+                        alt="Gallery image 2"
+                        width={images.gallery[1].attributes.width}
+                        height={images.gallery[1].attributes.height}
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/10"></div>
                     </div>
                     <div className="relative">
                       <img
-                        loading="lazy"
-                        src="/assets/academie_stephanoise_8.jpg"
-                        alt=""
+                        src={images.gallery[2].src}
+                        alt="Gallery image 3"
+                        width={images.gallery[2].attributes.width}
+                        height={images.gallery[2].attributes.height}
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/10"></div>
@@ -216,18 +222,20 @@ const Header = () => {
                   <div className="w-64 flex-none space-y-8 pt-32 sm:pt-0">
                     <div className="relative">
                       <img
-                        loading="lazy"
-                        src="/assets/academie_stephanoise_7.jpg"
-                        alt=""
+                        src={images.gallery[3].src}
+                        alt="Gallery image 4"
+                        width={images.gallery[3].attributes.width}
+                        height={images.gallery[3].attributes.height}
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/10"></div>
                     </div>
                     <div className="relative">
                       <img
-                        loading="lazy"
-                        src="/assets/academie_stephanoise_6.jpg"
-                        alt=""
+                        src={images.gallery[4].src}
+                        alt="Gallery image 5"
+                        width={images.gallery[4].attributes.width}
+                        height={images.gallery[4].attributes.height}
                         className="aspect-[2/3] w-full rounded-2xl bg-neutral-900/5 object-cover shadow-lg"
                       />
                       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-neutral-900/10"></div>

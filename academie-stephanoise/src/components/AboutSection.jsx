@@ -1,7 +1,7 @@
 import { Heading } from './foundations/Heading';
 import { BodyText } from './foundations/BodyText';
 
-export default function AboutSection() {
+export default function AboutSection({ children }) {
   return (
     <div id="about-section" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 xl:overflow-visible xl:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -45,19 +45,14 @@ export default function AboutSection() {
           </div>
         </div>
         <div className="-ml-12 -mt-12 p-12 pb-0 xl:pb-12 xl:sticky xl:top-4 xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:overflow-hidden">
-          <img
-            loading="lazy"
-            alt=""
-            src="/assets/academie_stephanoise_about.png"
-            className="w-[38rem] max-w-none rounded-2xl bg-neutral-900 shadow-xl ring-1 ring-neutral-400/10"
-          />
+          {children}
         </div>
         <div className="xl:col-span-2 xl:col-start-1 xl:row-start-2 xl:mx-auto xl:grid xl:w-full xl:max-w-7xl xl:grid-cols-2 xl:gap-x-8 xl:px-8">
           <div className="xl:pr-4">
             <div className="max-w-xl xl:max-w-lg">
               <BodyText variant="paragraph">
                 Un lieu vivant où nous espérons que vous prendrez beaucoup de plaisir à venir vous entrainer.
-En 2015, une idée germe petit à petit dans la tête d’une équipe de passionnés : ouvrir une salle de sports de combat et de remise en forme sur Saint-Etienne. Mais bien plus qu’une simple salle de sport telle qu’il en existe tant d’autres. L’idée est de créer un lieu de vie accessible au plus grand nombre, un lieu où le vivre ensemble et la mixité ne sont pas que des slogans creux, un lieu où le sport rassemble : l'Académie Stéphanoise.
+                En 2015, une idée germe petit à petit dans la tête d’une équipe de passionnés : ouvrir une salle de sports de combat et de remise en forme sur Saint-Etienne. Mais bien plus qu’une simple salle de sport telle qu’il en existe tant d’autres. L’idée est de créer un lieu de vie accessible au plus grand nombre, un lieu où le vivre ensemble et la mixité ne sont pas que des slogans creux, un lieu où le sport rassemble : l'Académie Stéphanoise.
 Découvrez notre association dédiée aux arts martiaux et au fitness. Vous pourrez apprendre le Krav maga, le MMA, la Luta Livre, le Full contact, ou pratiquer le CrossFit, le Pilates, et la remise en forme. Que vous soyez débutant ou compétiteur, adulte ou enfant, rejoignez-nous, notre club est ouvert à tous et s’adapte à chaque objectif.
 
               </BodyText>

@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
 import Calendar from "../components/Calendar.jsx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -12,14 +14,28 @@ const keywords =
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:only="react" />
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
   <div class="bg-neutral-50 pt-4">
     <div class="max-w-[150rem] mx-auto lg:pt-16 lg:px-8">
       <Calendar client:only="react" />
     </div>
     <div class="translate-y-1/2 transform">
-      <CallToActionSection />
+      <CallToActionSection client:visible />
     </div>
   </div>
-  <Footer paddingTop="pt-72" paddingTopXl="xl:pt-96" />
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
 </Layout>

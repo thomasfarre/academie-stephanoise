@@ -1,22 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Heading from "../components/foundations/Heading.jsx";
 import BodyText from "../components/foundations/BodyText.jsx";
 import RegisterForm from "../components/RegisterForm.jsx";
 const title = "Inscription - Académie Stéphanoise";
-import {
-  CursorArrowRaysIcon,
-  ClipboardDocumentCheckIcon,
-} from "@heroicons/react/24/outline";
 const description =
   "Inscrivez-vous à l'Académie Stéphanoise pour commencer votre aventure martiale.";
 const keywords = "inscription, Académie Stéphanoise, aventure martiale";
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Navbar client:only="react" />
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
   <div class="bg-neutral-900 py-12 px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="space-y-4">
@@ -34,5 +39,12 @@ const keywords = "inscription, Académie Stéphanoise, aventure martiale";
     </div>
   </div>
   <RegisterForm client:load />
-  <Footer paddingTop="pt-12" paddingTopXl="xl:pt-24" />
+  <Footer client:visible paddingTop="pt-12" paddingTopXl="xl:pt-24">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
 </Layout>

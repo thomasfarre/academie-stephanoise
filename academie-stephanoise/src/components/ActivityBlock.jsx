@@ -4,31 +4,30 @@ import BodyText from '../components/foundations/BodyText';
 import { Button } from '../components/foundations/Button';
 
 const ActivityBlock = ({
-  iconSrc,
-  iconAlt,
-  iconColor = 'bg-neutral-100',
   headingText,
   paragraphs,
   features,
   buttonLabels,
-  imageSrc,
-  imageAlt,
   duration,
+  bgColor,
   level,
   activityUrl,
   schedule,
   invert = false,
-  targetId
+  targetId,
+  images
 }) => {
+  console.log(images.image);
+
   return (
     <div id={targetId} className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-20">
       <div className={`flex flex-col max-w-3xl lg:col-span-3 bg-white p-6 xl:p-8 ${invert ? 'mr-auto lg:order-2' : 'ml-auto'}`}>
         <div className="space-y-2">
           <img
             loading="lazy"
-            src={iconSrc}
-            alt={iconAlt}
-            className={`h-40 w-40 ${iconColor} rounded-2xl`}
+            src={images.icon.src}
+            alt={images.icon.alt}
+            className={`h-40 w-40 ${bgColor} rounded-2xl`}
           />
           <Heading level={2}>{headingText}</Heading>
         </div>
@@ -93,8 +92,8 @@ const ActivityBlock = ({
         <img
           loading="lazy"
           className="w-full h-3/4 object-cover rounded-lg shadow-md saturate-0"
-          src={imageSrc}
-          alt={imageAlt}
+          src={images.image.src}
+          alt={images.image.alt}
         />
       </div>
     </div>

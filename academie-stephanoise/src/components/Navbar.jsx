@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from './foundations/Link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,11 +19,9 @@ const Navbar = () => {
           <div className="flex">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Académie Stéphanoise</span>
-              <img
-                className="h-28 py-5 px-1 bg-white w-auto rounded-full"
-                src="/favicon.png"
-                alt="Académie Stéphanoise Logo"
-              />
+              <div className="h-28 py-5 px-1 bg-white w-fit rounded-full">
+                {children}
+              </div>
             </a>
           </div>
           <div className="flex lg:hidden">

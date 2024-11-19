@@ -17,13 +17,13 @@ const ActivityCard = ({
   activityUrl,
   duration,
   schedule,
-  icon,
+  children,
 }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
       <div className="space-y-3">
         <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
-          <img loading="lazy" src={icon} alt={`${name} Icon`} className="h-20 w-20" />
+          {children}
         </div>
         <Heading level={4}>{name}</Heading>
       </div>
@@ -78,7 +78,7 @@ ActivityCard.propTypes = {
   description: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
   schedule: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ActivityCard;
