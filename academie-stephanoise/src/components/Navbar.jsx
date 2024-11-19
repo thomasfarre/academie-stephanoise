@@ -49,7 +49,7 @@ const Navbar = ({ children }) => {
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Académie Stéphanoise</span>
-                  <img loading="lazy" className="h-28 w-auto" src="/assets/logo.png" alt="Académie Stéphanoise Logo" />
+                  {children}
                 </a>
                 <button
                   onClick={toggleMenu}

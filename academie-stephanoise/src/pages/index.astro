@@ -25,6 +25,7 @@ import mmaIcon from "../assets/icons/mma_picto.png";
 import tolparIcon from "../assets/icons/tolpar_picto.png";
 import lutaIcon from "../assets/icons/lutalivre_picto.png";
 import crossTrainingIcon from "../assets/icons/crosstraining_picto.png";
+import NavigationMenu from "../components/NavigationMenu";
 
 
 const title = "Académie Stéphanoise";
@@ -45,7 +46,29 @@ const optimizedImages = {
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
-  <Header images={optimizedImages} />
+  <div class="bg-white">
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between xl:justify-start xl:space-x-40 p-6 xl:px-8"
+        aria-label="Global"
+      >
+        <div class="flex">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img
+              src={optimizedImages.logo.src}
+              alt="Académie Stéphanoise"
+              width={optimizedImages.logo.attributes.width}
+              height={optimizedImages.logo.attributes.height}
+              class="h-32 object-cover w-auto"
+            />
+          </a>
+        </div>
+        <NavigationMenu client:load logo={optimizedImages.logo} />
+      </nav>
+    </header>
+    <Header images={optimizedImages} />
+  </div>
   <div>
     <div class="bg-neutral-50 pt-32 pb-24 lg:pb-36 -mt-40">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">

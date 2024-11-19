@@ -161,7 +161,7 @@ const RegisterForm = () => {
                 />
               </svg>
             </div>
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl px-6 lg:px-0">
               <div className="py-12 max-w-6xl grid grid-cols-1 md:grid-cols-6 gap-8 lg:pb-24">
                 {/* Carte 1 : Inscription en ligne */}
                 <div className="bg-white shadow-lg rounded-lg col-span-3 p-8 w-full flex flex-col items-center text-center">
