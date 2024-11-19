@@ -25,7 +25,7 @@ const ActivityCard = ({
         <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
           {children}
         </div>
-        <Heading level={4}>{name}</Heading>
+        <span className="md:text-2xl text-lg font-protestStrike text-neutral-900">{name}</span>
       </div>
 
       <div className="flex-1 space-y-6 pt-4 pb-8">

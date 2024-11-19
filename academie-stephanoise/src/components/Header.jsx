@@ -106,6 +106,7 @@ const Header = ({ images }) => {
                   <div className="ml-auto w-52 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 xl:order-none">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src={images.gallery[0].src}
                         alt="Gallery image 1"
                         width={images.gallery[0].attributes.width}
@@ -118,6 +119,7 @@ const Header = ({ images }) => {
                   <div className="mr-auto w-64 flex-none space-y-8 sm:mr-0 sm:pt-52 xl:pt-36">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src={images.gallery[1].src}
                         alt="Gallery image 2"
                         width={images.gallery[1].attributes.width}
@@ -128,6 +130,7 @@ const Header = ({ images }) => {
                     </div>
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src={images.gallery[2].src}
                         alt="Gallery image 3"
                         width={images.gallery[2].attributes.width}
@@ -140,6 +143,7 @@ const Header = ({ images }) => {
                   <div className="w-64 flex-none space-y-8 pt-32 sm:pt-0">
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src={images.gallery[3].src}
                         alt="Gallery image 4"
                         width={images.gallery[3].attributes.width}
@@ -150,6 +154,7 @@ const Header = ({ images }) => {
                     </div>
                     <div className="relative">
                       <img
+                        loading="lazy"
                         src={images.gallery[4].src}
                         alt="Gallery image 5"
                         width={images.gallery[4].attributes.width}
