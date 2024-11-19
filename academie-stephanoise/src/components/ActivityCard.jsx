@@ -21,11 +21,15 @@ const ActivityCard = ({
 }) => {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md flex flex-col">
-      <div className="space-y-3">
+      <div>
         <div className={`rounded-2xl p-1 w-fit ${bgColor}`}>
           {children}
         </div>
-        <span className="md:text-2xl text-lg font-protestStrike text-neutral-900">{name}</span>
+        <div className="pt-2">
+          <span className="md:text-2xl text-lg font-protestStrike text-neutral-900">
+            {name}
+          </span>
+        </div>
       </div>
 
       <div className="flex-1 space-y-6 pt-4 pb-8">
