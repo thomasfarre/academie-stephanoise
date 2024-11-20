@@ -14,6 +14,7 @@ const navigation = {
   join: [
     { name: "S'inscrire", href: "/inscription" },
     { name: "Contact", href: "/contact" },
+    { name: "Tarifs", href: "/tarifs" },
   ],
   social: [
     {

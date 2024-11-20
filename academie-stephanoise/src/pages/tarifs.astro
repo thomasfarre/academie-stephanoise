@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import priceImage from "../assets/tarifs.png";
+import CallToActionSection from "../components/CallToActionSection.jsx";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+
+// Improved meta information
+const title =
+  "Tarifs | Académie Stéphanoise - Prix des cours d'Arts Martiaux à Saint-Étienne";
+const description =
+  "Découvrez nos tarifs et formules d'abonnement pour les cours de MMA, Boxe, Krav Maga et Cross Training à Saint-Étienne. Licences annuelles, forfaits mensuels et options multi-disciplines disponibles à l'Académie Stéphanoise.";
+const keywords =
+  "tarifs arts martiaux saint-étienne, prix cours mma, abonnement boxe loire, licence krav maga, coût cross training, forfait sports combat, prix académie stéphanoise";
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <main>
+    <Navbar client:load>
+      <Image
+        src={logoImage}
+        alt="Logo Académie Stéphanoise - École d'Arts Martiaux à Saint-Étienne"
+        width={100}
+        height={100}
+      />
+    </Navbar>
+    <div>
+      <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <Heading level={1} className="sr-only"
+            >Nos Tarifs et Formules d'Abonnement</Heading
+          >
+          <BodyText variant="paragraph" className="sr-only">
+            Des formules adaptées à tous les profils et toutes les pratiques
+          </BodyText>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          <div class="max-w-prose lg:col-span-2">
+            <Heading level={2}>Détail de nos formules</Heading>
+            <div class="mt-8 space-y-6">
+              <div class="space-y-4">
+                <Heading level={3}>Sports de Combat</Heading>
+                <BodyText variant="paragraph">
+                  340€ pour un engagement d'un an de septembre à juin, donnant
+                  accès à l'ensemble des disciplines "sports de combat"
+                </BodyText>
+              </div>
+
+              <div class="space-y-4">
+                <Heading level={3}>Crosstraining</Heading>
+
+                  <ul class="list-disc pl-5">
+                    <li>
+                      <BodyText variant="paragraph"
+                        >Engagement 1 an : 30€ par mois</BodyText>
+                    </li>
+                    <li>
+                      <BodyText variant="paragraph"
+                        >Engagement 6 mois : 35€ par mois</BodyText>
+                    </li>
+                  </ul>
+              </div>
+
+              <div class="space-y-4">
+                <Heading level={3}>Préparation Physique</Heading>
+                <ul class="list-disc pl-5">
+                  <li>
+                    <BodyText variant="paragraph"
+                      >Engagement 6 mois : 25€ par mois</BodyText>
+                  </li>
+                  <li>
+                    <BodyText variant="paragraph"
+                      >Engagement 3 mois : 30€ par mois</BodyText>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-4">
+                <Heading level={3}>Sports de Combat Féminin</Heading>
+                <BodyText variant="paragraph">
+                  215€ pour un engagement d'un an de septembre à juin
+                </BodyText>
+              </div>
+
+              <div class="space-y-4">
+                <Heading level={3}>Cours Enfants/Ados</Heading>
+                <BodyText variant="paragraph">
+                  230€ pour un engagement d'un an de septembre à juin
+                </BodyText>
+              </div>
+
+              <div class="pt-6 border-t border-neutral-200">
+                <Heading level={3}>Modalités de paiement</Heading>
+                <BodyText variant="paragraph" className="pt-6">Nous acceptons :</BodyText>
+                <ul class="list-disc pl-5 grid grid-cols-2 gap-4 pt-2">
+                  <li>
+                    <BodyText variant="paragraph">Carte bancaire</BodyText>
+                  </li>
+                  <li><BodyText variant="paragraph">Espèces</BodyText></li>
+                  <li>
+                    <BodyText variant="paragraph"
+                      >Chèque (jusqu'à trois fois sans frais)</BodyText>
+                  </li>
+                  <li>
+                    <BodyText variant="paragraph">Chèques vacances</BodyText>
+                  </li>
+                  <li>
+                    <BodyText variant="paragraph">Coupons sport</BodyText>
+                  </li>
+                  <li><BodyText variant="paragraph">Pass'Sport</BodyText></li>
+                  <li><BodyText variant="paragraph">Pass'Région</BodyText></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <Image
+            src={priceImage}
+            alt="Résumé des tarifs"
+            width={1200}
+            height={1200}
+            class="w-full lg:col-span-3"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+    <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+      <Image
+        src={logoImage}
+        alt="Logo de l'Académie Stéphanoise"
+        width={100}
+        height={100}
+      />
+    </Footer>
+  </main>
+</Layout>

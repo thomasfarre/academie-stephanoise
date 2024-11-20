@@ -39,6 +39,7 @@ const Navbar = ({ children }) => {
             <Link whiteText href="/planning" label="Planning" />
             <Link whiteText href="/contact" label="Contact" />
             <Link whiteText href="/inscription" label="S'inscrire" />
+            <Link whiteText href="/tarifs" label="Tarifs" />
             <Link whiteText href="/blog" label="Blog" />
           </div>
         </nav>
@@ -85,6 +86,12 @@ const Navbar = ({ children }) => {
                       <Link
                         href="/inscription"
                         label="S'inscrire"
+                      />
+                    </div>
+                    <div>
+                      <Link
+                        href="/tarifs"
+                        label="Tarifs"
                       />
                     </div>
                     <div>

@@ -27,6 +27,7 @@ const NavigationMenu = ({ logo }) => {
         <Link href="/planning" label="Planning" />
         <Link href="/contact" label="Contact" />
         <Link href="/inscription" label="S'inscrire" />
+        <Link href="/tarifs" label="Tarifs" />
         <Link href="/blog" label="Blog" />
       </div>
 
@@ -72,6 +73,9 @@ const NavigationMenu = ({ logo }) => {
                   </div>
                   <div>
                     <Link href="/inscription" label="S'inscrire" />
+                  </div>
+                  <div>
+                    <Link href="/tarifs" label="Tarifs" />
                   </div>
                   <div>
                     <Link href="/blog" label="Blog" />
