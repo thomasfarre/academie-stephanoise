@@ -3,13 +3,3 @@
   publish = "dist"
   # Command to build your project
   command = "npm run build"
-
-[functions]
-  # Specify the directory for serverless functions
-  node_bundler = "esbuild"
-  directory = "netlify/functions"
-  # Define the function name directly
-  fetchInstagram = { schedule = "0 0 * * *" } # Runs once a day at midnight
-
-[functions.node_version]
-external_node_modules = ["fetch-blob", "formdata-polyfill"]

@@ -33,17 +33,31 @@ export const handler = async () => {
     }));
 
     const filePath = path.join(process.cwd(), "public", "instagram.json");
-    console.log("Writing Instagram data to:", filePath);
+    console.log("Checking if Instagram data needs updating at:", filePath);
 
-    // Ensure the directory exists
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    // Check if the file exists and read its content
+    let existingData = [];
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      existingData = JSON.parse(fileContent);
+    }
 
-    // Write the file
-    fs.writeFileSync(filePath, JSON.stringify(recentMedia, null, 2));
+    // Compare the existing data with the new data
+    if (JSON.stringify(existingData) !== JSON.stringify(recentMedia)) {
+      console.log("Data has changed, updating the file.");
+
+      // Ensure the directory exists
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+
+      // Write the file
+      fs.writeFileSync(filePath, JSON.stringify(recentMedia, null, 2));
+    } else {
+      console.log("Data has not changed, no update needed.");
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Instagram data updated successfully!" }),
+      body: JSON.stringify({ message: "Instagram data checked and updated if necessary!" }),
     };
   } catch (error) {
     console.error("Error in fetchInstagram:", error);
