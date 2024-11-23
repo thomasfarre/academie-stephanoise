@@ -42,9 +42,15 @@ export const handler = async () => {
       existingData = JSON.parse(fileContent);
     }
 
-    // Compare the existing data with the new data
-    if (JSON.stringify(existingData) !== JSON.stringify(recentMedia)) {
-      console.log("Data has changed, updating the file.");
+    // Extract media IDs for comparison
+    const existingMediaIds = existingData.map(item => item.id);
+    const newMediaIds = recentMedia.map(item => item.id);
+
+    // Compare the existing media IDs with the new media IDs
+    const isNewMedia = newMediaIds.some(id => !existingMediaIds.includes(id));
+
+    if (isNewMedia) {
+      console.log("New media detected, updating the file.");
 
       // Ensure the directory exists
       fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -52,7 +58,7 @@ export const handler = async () => {
       // Write the file
       fs.writeFileSync(filePath, JSON.stringify(recentMedia, null, 2));
     } else {
-      console.log("Data has not changed, no update needed.");
+      console.log("No new media, no update needed.");
     }
 
     return {
