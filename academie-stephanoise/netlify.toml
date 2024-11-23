@@ -9,7 +9,7 @@
   node_bundler = "esbuild"
   directory = "netlify/functions"
   # Define the function name directly
-  fetchInstagram = { schedule = "*/5 * * * *" } # Runs every 5 minutes
+  fetchInstagram = { schedule = "0 0 * * *" } # Runs once a day at midnight
 
 [functions.node_version]
 external_node_modules = ["fetch-blob", "formdata-polyfill"]
