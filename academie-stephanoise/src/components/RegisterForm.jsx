@@ -3,7 +3,6 @@ import Heading from "../components/foundations/Heading.jsx";
 import BodyText from "../components/foundations/BodyText.jsx";
 import Button from "../components/foundations/Button.jsx";
 import {
-  ClipboardDocumentCheckIcon,
   UserPlusIcon,
   ArrowDownOnSquareIcon,
   ExclamationTriangleIcon,
@@ -55,7 +54,7 @@ const RegisterForm = () => {
         case "adulte":
           return "https://www.helloasso.com/associations/fclub/adhesions/adhesions-sports-de-combat-adulte";
         case "feminin":
-          return "https://www.helloasso.com/associations/fclub/adhesions/section-feminine";
+          return "https://www.helloasso.com/associations/fclub/adhesions/sports-de-combat-section-feminine-2024";
         case "ado":
           return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-sports-de-combat-ados";
         case "enfant":
@@ -164,7 +163,10 @@ const RegisterForm = () => {
             <div className="mx-auto max-w-7xl px-6 lg:px-0">
               <div className="py-12 max-w-6xl grid grid-cols-1 md:grid-cols-6 gap-8 lg:pb-24">
                 {/* Carte 1 : Inscription en ligne */}
-                <div className="bg-white shadow-lg rounded-lg col-span-3 p-8 w-full flex flex-col items-center text-center">
+                <div
+                  onClick={handleOnlineButtonClick}
+                  className="bg-white shadow-lg rounded-lg col-span-3 p-8 w-full flex flex-col items-center text-center cursor-pointer group transition ease-out duration-300 hover:shadow-xl"
+                >
                   <Heading level={3}>En ligne</Heading>
                   <BodyText
                     variant="paragraph"
@@ -175,15 +177,17 @@ const RegisterForm = () => {
                   </BodyText>
 
                   <Button
-                    className="mt-8"
+                    className="mt-8 group-hover:text-emerald-600"
                     label="Inscription en ligne"
                     variant="tertiary"
-                    onClick={handleOnlineButtonClick}
                   ></Button>
                 </div>
 
                 {/* Carte 2 : Inscription en présentiel */}
-                <div className="bg-white shadow-lg rounded-lg col-span-3 p-8 w-full flex flex-col items-center text-center">
+                <div
+                  onClick={handleInPersonButtonClick}
+                  className="bg-white shadow-lg rounded-lg col-span-3 p-8 w-full flex flex-col items-center text-center cursor-pointer group transition ease-out duration-300 hover:shadow-xl"
+                >
                   <Heading level={3}>En présentiel</Heading>
                   <BodyText
                     variant="paragraph"
@@ -195,10 +199,8 @@ const RegisterForm = () => {
                   <Button
                     label="Inscription en présentiel"
                     variant="tertiary"
-                    className="mt-8"
-                    onClick={handleInPersonButtonClick}
+                    className="mt-8 group-hover:text-emerald-600"
                   >
-                    <ClipboardDocumentCheckIcon className="w-6 h-6 mr-2 text-neutral-200" />
                   </Button>
                 </div>
                 <div className="col-span-3">
@@ -208,9 +210,7 @@ const RegisterForm = () => {
                       ref={onlineFormRef}
                       className="bg-white border-2 border-neutral-200 shadow-lg rounded-lg p-8 w-full"
                     >
-                      <Heading level={3}>
-                        Formulaire en ligne
-                      </Heading>
+                      <Heading level={3}>Formulaire en ligne</Heading>
                       <BodyText
                         variant="paragraph"
                         className="pt-2 italic text-sm"
@@ -437,9 +437,7 @@ const RegisterForm = () => {
                       ref={inPersonFormRef}
                       className="bg-white border-2 border-neutral-200 shadow-lg rounded-lg p-8 w-full"
                     >
-                      <Heading level={3}>
-                        Formulaire présentiel
-                      </Heading>
+                      <Heading level={3}>Formulaire présentiel</Heading>
                       <BodyText
                         variant="paragraph"
                         className="pt-2 italic text-sm"
@@ -519,7 +517,9 @@ const RegisterForm = () => {
                               <Button
                                 label="Télécharger le formulaire"
                                 variant="primary"
-                                onClick={() => (window.location.href = getInPersonLink())}
+                                onClick={() =>
+                                  (window.location.href = getInPersonLink())
+                                }
                               >
                                 <ArrowDownOnSquareIcon className="size-5 mr-2 text-emerald-100" />
                               </Button>
@@ -527,7 +527,10 @@ const RegisterForm = () => {
                             <div className="pt-12">
                               <div className="flex items-end space-x-2">
                                 <ExclamationTriangleIcon className="size-5 flex-shrink-0 text-red-500" />
-                                <BodyText variant="label" className="text-red-600">
+                                <BodyText
+                                  variant="label"
+                                  className="text-red-600"
+                                >
                                   Important
                                 </BodyText>
                               </div>
@@ -538,8 +541,9 @@ const RegisterForm = () => {
                                 </BodyText>
                                 <BodyText variant="paragraph" className="pt-2">
                                   Vous avez jusqu'à un mois à compter de la date
-                                  d'inscription pour fournir un <a
-                                    href="/path/to/certificat-medical.pdf"
+                                  d'inscription pour fournir un{" "}
+                                  <a
+                                    href="/files/certificat-medical.pdf"
                                     download
                                     className="text-emerald-600 underline"
                                   >
@@ -624,6 +628,7 @@ const RegisterForm = () => {
                           Pour plus d'informations, veuillez{" "}
                           <a
                             href="/contact"
+                            target="_blank"
                             className="text-blue-500 underline"
                           >
                             contacter directement le club

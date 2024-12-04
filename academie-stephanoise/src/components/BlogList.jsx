@@ -34,7 +34,7 @@ const BlogList = ({ posts }) => {
           <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" strokeWidth={0} />
         </svg>
       </div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 xl:px-0">
         <div className="space-y-16 pt-10 lg:pt-16">
           {posts.map((post) => {
             const { id, slug, titre, label, descriptionCourte, datePublication, auteur } = post;

@@ -31,11 +31,4 @@ const BlogContent = ({ content }) => {
   return <div className="prose">{documentToReactComponents(content, options)}</div>;
 };
 
-// <style>
-//   .blog-content h1 {
-//     font-size: 5rem;
-//     font-family: 'Protest Strike', sans-serif;
-//   }
-// </style>
-
 export default BlogContent;

@@ -192,8 +192,8 @@ export default function Footer({ paddingTop, paddingTopXl, children }) {
           </div>
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-sm/6 text-neutral-400">
-            &copy; 2024 Made by Omar{" "}
+          <a href="https://www.linkedin.com/in/thomas-farre-5661331ba/" target="_blank" className="text-sm/6 text-neutral-400 transition ease-out duration-300 hover:text-neutral-200">
+            &copy; 2024 Made by Thomas Farre{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlSpace="preserve"
@@ -214,7 +214,7 @@ export default function Footer({ paddingTop, paddingTopXl, children }) {
                 </g>
               </g>
             </svg>
-          </p>
+          </a>
         </div>
       </div>
     </footer>
