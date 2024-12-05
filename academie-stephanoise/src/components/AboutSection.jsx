@@ -53,7 +53,7 @@ export default function AboutSection({ children }) {
               <BodyText variant="paragraph">
                 Un lieu vivant où nous espérons que vous prendrez beaucoup de plaisir à venir vous entrainer.
                 En 2015, une idée germe petit à petit dans la tête d’une équipe de passionnés : ouvrir une salle de sports de combat et de remise en forme sur Saint-Etienne. Mais bien plus qu’une simple salle de sport telle qu’il en existe tant d’autres. L’idée est de créer un lieu de vie accessible au plus grand nombre, un lieu où le vivre ensemble et la mixité ne sont pas que des slogans creux, un lieu où le sport rassemble : l'Académie Stéphanoise.
-Découvrez notre association dédiée aux arts martiaux et au fitness. Vous pourrez apprendre le Krav maga, le MMA, la Luta Livre, le Full contact, ou pratiquer le CrossFit, le Pilates, et la remise en forme. Que vous soyez débutant ou compétiteur, adulte ou enfant, rejoignez-nous, notre club est ouvert à tous et s’adapte à chaque objectif.
+Découvrez notre association dédiée aux arts martiaux et au fitness. Vous pourrez apprendre le Krav maga, le MMA, la Luta Livre, la Boxe pied-poing (kick boxing), ou pratiquer le Cross training, et la préparation physique. Que vous soyez débutant ou compétiteur, adulte ou enfant, rejoignez-nous, notre club est ouvert à tous et s’adapte à chaque objectif.
 
               </BodyText>
               <div className="bg-neutral-800 w-20 h-0.5 mt-6"></div>

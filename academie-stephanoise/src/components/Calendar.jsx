@@ -39,6 +39,7 @@ export default function Calendar() {
     tolpar: '#a855f7', // bg-purple-500
     mma: '#22c55e', // bg-green-500
     'cross-training': '#eab308', // bg-yellow-500
+    prepa: '#10b981', // bg-teal-500
     default: '#6366f1', // bg-neutral-500
   };
 
@@ -239,7 +240,7 @@ export default function Calendar() {
                     <fieldset>
                       <legend className="sr-only">Activités</legend>
                       <div className="space-y-3">
-                        {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'événement'].map((activity) => (
+                        {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'prepa', 'événement'].map((activity) => (
                           <div key={activity} className="relative flex items-center">
                             <div className="flex h-6 items-center">
                               <input
@@ -387,7 +388,7 @@ export default function Calendar() {
                   <fieldset>
                     <legend className="sr-only">Activités</legend>
                     <div className="space-y-3">
-                      {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'événement'].map((activity) => (
+                      {['krav-maga', 'luta-livre', 'boxe-pied-poing', 'tolpar', 'mma', 'cross-training', 'prepa', 'événement'].map((activity) => (
                         <div key={activity} className="relative flex items-center">
                           <div className="flex h-6 items-center">
                             <input
