@@ -4,17 +4,9 @@ exports.handler = async function (event, context) {
     const BASEURL = `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events?${BASEPARAMS}`;
     const finalURL = `${BASEURL}&key=${process.env.CALENDAR_API}`;
 
-    console.log("Final URL:", finalURL);
-    console.log("Environment Variables:", {
-      CALENDAR_API: process.env.CALENDAR_API,
-      CALENDAR_ID: process.env.CALENDAR_ID,
-    });
 
     const response = await fetch(finalURL);
-    console.log("API Response Status:", response.status);
-
     const data = await response.json();
-    console.log("API Response Body:", JSON.stringify(data, null, 2));
 
     if (!Array.isArray(data.items)) {
       console.error("Unexpected Data Format:", data);
