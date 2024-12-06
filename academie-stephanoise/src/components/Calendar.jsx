@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { Heading } from './foundations/Heading';
 import frLocale from '@fullcalendar/core/locales/fr'; // Import French locale
 import { Button } from './foundations/Button';
 import { BodyText } from './foundations/BodyText';
