@@ -1,31 +1,37 @@
-import fetch from "node-fetch";
-const { CALENDAR_API, CALENDAR_ID } = process.env;
-const BASEPARAMS = `orderBy=startTime&singleEvents=true&timeMin=${new Date().toISOString()}`;
-const BASEURL = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?${BASEPARAMS}`;
-const HEADERS = {
-  "Content-Type": "application/json",
-  "Access-Control-Allow-Methods": "GET",
-};
 exports.handler = async function (event, context) {
-  const finalURL = `${BASEURL}&key=${CALENDAR_API}`;
   try {
-    if (event.httpMethod === "GET") {
-      return fetch(finalURL)
-        .then((response) => response.json())
-        .then((data) => ({
-          statusCode: 200,
-          body: JSON.stringify(data.items, null, 2),
-          HEADERS,
-        }));
+    const BASEPARAMS = `orderBy=startTime&singleEvents=true&timeMin=${new Date().toISOString()}`;
+    const BASEURL = `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events?${BASEPARAMS}`;
+    const finalURL = `${BASEURL}&key=${process.env.CALENDAR_API}`;
+
+    const cacheBuster = `&_=${new Date().getTime()}`;
+    const response = await fetch(finalURL + cacheBuster);
+    const data = await response.json();
+
+    if (!Array.isArray(data.items)) {
+      console.error("Unexpected Data Format:", data);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: "Invalid data format" }),
+      };
     }
+
+    console.log("Fetched events:", data.items);
+
     return {
-      statusCode: 401,
+      statusCode: 200,
+      body: JSON.stringify(data.items),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+      },
     };
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error("Error fetching events:", error);
     return {
       statusCode: 500,
-      body: e.toString(),
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };
