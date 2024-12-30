@@ -9,12 +9,75 @@ import CallToActionSection from "../components/CallToActionSection.jsx";
 const title =
   "Planning des Cours | Académie Stéphanoise - MMA, Boxe, Krav Maga à Saint-Étienne";
 const description =
-  "Consultez le planning des cours de l'Académie Stéphanoise : MMA, Boxe, Krav Maga, Luta Livre, Cross Training et Tolpar. Horaires flexibles, cours tous niveaux à Saint-Étienne. Réservez votre créneau dès maintenant.";
-const keywords =
-  "planning académie stéphanoise, horaires mma saint-étienne, cours boxe loire, planning krav maga, emploi du temps sports combat, cross training saint-étienne, cours arts martiaux, horaires luta livre";
+  "Découvrez le planning des cours de l'Académie Stéphanoise à Saint-Étienne, un lieu de vie où le sport rassemble et la mixité s'incarne. Consultez les horaires flexibles pour le MMA, Boxe, Krav Maga, Luta Livre, Cross Training et Tolpar. Rejoignez-nous pour une expérience enrichissante en arts martiaux, adaptée à tous les niveaux.";
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise",
+  "description": "Académie Stéphanoise à Saint-Étienne, plus qu'une salle de sport, un lieu de vie où le sport rassemble. Découvrez notre planning pour le MMA, Boxe, Krav Maga, Luta Livre, Cross Training et Tolpar, avec des horaires flexibles pour tous niveaux.",
+  "url": "https://www.academie-stephanoise.com/planning",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "telephone": "07 68 70 25 56",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "18:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "18:30",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Wednesday",
+      "opens": "14:30",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "17:00",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "17:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "Closed",
+      "closes": "Closed"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "Closed",
+      "closes": "Closed"
+    }
+  ]
+};
+
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonld}>
   <Navbar client:load>
     <Image
       src={logoImage}

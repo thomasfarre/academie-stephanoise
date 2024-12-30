@@ -6,15 +6,79 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactSection from "../components/ContactSection.jsx";
 
-// Improved meta information
-const title = "Contact | Académie Stéphanoise - Arts Martiaux et Sports de Combat à Saint-Étienne";
+// Enhanced meta information for SEO
+const title = "Contactez-nous | Académie Stéphanoise - Votre Centre d'Arts Martiaux à Saint-Étienne";
 const description =
-  "Contactez l'Académie Stéphanoise pour plus d'informations sur nos cours de MMA, Boxe, Krav Maga, et Cross Training à Saint-Étienne. Réservez votre cours d'essai gratuit ou renseignez-vous sur nos horaires et tarifs.";
-const keywords = "contact académie stéphanoise, club combat saint-étienne, cours mma loire, inscription boxe, krav maga saint-étienne, sports combat loire, salle arts martiaux";
+  "Rejoignez l'Académie Stéphanoise, un lieu de vie dédié aux arts martiaux et sports de combat à Saint-Étienne. Contactez-nous pour découvrir nos cours de MMA, Boxe, Krav Maga, et Cross Training. Réservez votre cours d'essai gratuit et explorez nos horaires et tarifs adaptés à tous les niveaux.";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise",
+  "description": "Académie Stéphanoise à Saint-Étienne, un lieu de vie où le sport rassemble. Contactez-nous pour en savoir plus sur nos cours de MMA, Boxe, Krav Maga, et Cross Training.",
+  "url": "https://www.academie-stephanoise.com/contact",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressCountry": "FR"
+  },
+  "telephone": "07 68 70 25 56",
+  "sameAs": [
+    "https://www.facebook.com/academiestephanoise",
+    "https://www.instagram.com/academiestephanoise"
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "18:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "18:30",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Wednesday",
+      "opens": "14:30",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "17:00",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "17:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "Closed",
+      "closes": "Closed"
+    }
+  ]
+};
 
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonLd}>
   <main>
     <Navbar client:load>
       <Image

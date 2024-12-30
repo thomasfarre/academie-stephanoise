@@ -9,16 +9,71 @@ import CallToActionSection from "../components/CallToActionSection.jsx";
 import Heading from "../components/foundations/Heading";
 import BodyText from "../components/foundations/BodyText";
 
-// Improved meta information
+// Optimized meta information for SEO
 const title =
-  "Tarifs | Académie Stéphanoise - Prix des cours d'Arts Martiaux à Saint-Étienne";
+  "Tarifs Académie Stéphanoise | Cours Arts Martiaux à Saint-Étienne";
 const description =
-  "Découvrez nos tarifs et formules d'abonnement pour les cours de MMA, Boxe, Krav Maga et Cross Training à Saint-Étienne. Licences annuelles, forfaits mensuels et options multi-disciplines disponibles à l'Académie Stéphanoise.";
-const keywords =
-  "tarifs arts martiaux saint-étienne, prix cours mma, abonnement boxe loire, licence krav maga, coût cross training, forfait sports combat, prix académie stéphanoise";
+  "Découvrez les tarifs de l'Académie Stéphanoise, un lieu de vie où le sport rassemble et la mixité s'incarne. Nos formules pour les cours de MMA, Boxe, Krav Maga et Cross Training à Saint-Étienne sont adaptées à tous les niveaux.";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Académie Stéphanoise",
+  "description": "Académie Stéphanoise à Saint-Étienne propose des cours de MMA, Boxe, Krav Maga et Cross Training avec des tarifs adaptés à tous les niveaux.",
+  "url": "https://www.academie-stephanoise.com/tarifs",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressCountry": "FR"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Sports de Combat",
+      "price": "340",
+      "priceCurrency": "EUR",
+      "eligibleDuration": "P1Y",
+      "description": "Accès à toutes les disciplines de sports de combat pour un an."
+    },
+    {
+      "@type": "Offer",
+      "name": "Crosstraining",
+      "price": "30",
+      "priceCurrency": "EUR",
+      "eligibleDuration": "P1M",
+      "description": "Engagement d'un an pour le crosstraining."
+    },
+    {
+      "@type": "Offer",
+      "name": "Préparation Physique",
+      "price": "25",
+      "priceCurrency": "EUR",
+      "eligibleDuration": "P1M",
+      "description": "Engagement de six mois pour la préparation physique."
+    },
+    {
+      "@type": "Offer",
+      "name": "Sports de Combat Féminin",
+      "price": "215",
+      "priceCurrency": "EUR",
+      "eligibleDuration": "P1Y",
+      "description": "Engagement d'un an pour les sports de combat féminin."
+    },
+    {
+      "@type": "Offer",
+      "name": "Cours Enfants/Ados",
+      "price": "230",
+      "priceCurrency": "EUR",
+      "eligibleDuration": "P1Y",
+      "description": "Engagement d'un an pour les cours enfants/ados."
+    }
+  ]
+};
+
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonLd}>
   <main>
     <Navbar client:load>
       <Image

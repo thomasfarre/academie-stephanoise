@@ -2,20 +2,19 @@
 interface Props {
   title: string;
   description: string;
-  keywords: string;
   type?: string;
   publishDate?: string;
   author?: string;
+  jsonld?: object;
 }
 
-const { title, description, keywords, type = "website", publishDate, author } = Astro.props;
+const { title, description, type = "website", publishDate, author, jsonld } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -29,30 +28,7 @@ const { title, description, keywords, type = "website", publishDate, author } = 
     <meta name="twitter:image" content="/images/twitter-image.jpg" />
     <!-- Replace with actual Twitter image path -->
     <meta name="generator" content={Astro.generator} />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SportsClub",
-        "name": "L'Académie Stéphanoise",
-        "description": "Club de sports de combat et fitness à Saint-Étienne",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "27 B, rue de Terrenoire",
-          "addressLocality": "Saint-Étienne",
-          "postalCode": "42000",
-          "addressCountry": "FR"
-        },
-        "telephone": "07 68 70 25 56",
-        "email": "fclub.contact@gmail.com",
-        "openingHours": [
-          "Mo 18:00-20:00",
-          "Tu 18:30-19:30",
-          "We 14:30-19:00",
-          "Th 17:00-19:30",
-          "Fr 17:00-19:00"
-        ]
-      }
-    </script>
+    {jsonld && <script type="application/ld+json">{JSON.stringify(jsonld)}</script>}
     <style>
       /* open-sans-regular - latin */
       @font-face {

@@ -11,12 +11,110 @@ import RegisterForm from "../components/RegisterForm.jsx";
 // Improved meta information
 const title = "Inscription | Académie Stéphanoise - Arts Martiaux et Sports de Combat à Saint-Étienne";
 const description =
-  "Inscrivez-vous à l'Académie Stéphanoise pour nos cours de MMA, Boxe, Krav Maga, et Cross Training. Inscription en ligne simple et rapide, cours d'essai gratuit. Tarifs adaptés et planning flexible à Saint-Étienne.";
-const keywords = "inscription arts martiaux saint-étienne, adhésion mma loire, inscription boxe, cours krav maga, tarifs sports combat, académie stéphanoise inscription, cross training saint-étienne";
+  "Inscrivez-vous à l'Académie Stéphanoise pour nos cours de MMA, Boxe, Krav Maga, et Cross Training à Saint-Étienne. Inscription en ligne simple et rapide, cours d'essai gratuit. Tarifs adaptés et planning flexible.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise",
+  "description": "Découvrez l'Académie Stéphanoise à Saint-Étienne, un club dynamique fondé en 2015 par une équipe de passionnés. Nous offrons des cours de MMA, Boxe, Krav Maga, Luta Livre et Cross Training, adaptés à tous les niveaux, dans une salle moderne et équipée.",
+  "image": "https://www.academie-stephanoise.com/assets/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "url": "https://www.academie-stephanoise.com",
+  "telephone": "07 68 70 25 56",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "18:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "18:30",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Wednesday",
+      "opens": "14:30",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "17:00",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "17:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "Closed",
+      "closes": "Closed"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "Closed",
+      "closes": "Closed"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Cours de Boxe pied poing",
+      "description": "Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases.",
+      "url": "https://www.academie-stephanoise.com/activités"
+    },
+    {
+      "@type": "Offer",
+      "name": "Cours de Krav Maga",
+      "description": "Apprenez des techniques de défense réalistes pour vous protéger dans des situations de la vie quotidienne. Le Krav Maga est basé sur des mouvements simples et efficaces, parfait pour tous les niveaux.",
+      "url": "https://www.academie-stephanoise.com/activités"
+    },
+    {
+      "@type": "Offer",
+      "name": "Cours de MMA (Mixed Martial Arts)",
+      "description": "Combinez différentes disciplines comme la boxe, la lutte et le jiu-jitsu pour un entraînement complet. Parfait pour les pratiquants souhaitant améliorer leurs compétences globales en combat.",
+      "url": "https://www.academie-stephanoise.com/activités"
+    },
+    {
+      "@type": "Offer",
+      "name": "Cours de Tolpar (Escrime lame courte)",
+      "description": "Maîtrisez l'art de l'escrime à lame courte, une discipline axée sur la précision, l’agilité et la technique. Idéal pour développer la concentration et les réflexes dans des situations de combat rapproché.",
+      "url": "https://www.academie-stephanoise.com/activités"
+    },
+    {
+      "@type": "Offer",
+      "name": "Cours de Luta Livre",
+      "description": "Découvrez l'art du grappling brésilien avec la Luta Livre, une discipline axée sur la lutte au sol et le contrôle du corps. Adapté à tous, ce cours améliore la force, la technique et la résilience mentale.",
+      "url": "https://www.academie-stephanoise.com/activités"
+    }
+  ],
+  "priceRange": "€€"
+};
 
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonLd}>
   <main>
     <Navbar client:load>
       <Image
@@ -31,7 +129,7 @@ const keywords = "inscription arts martiaux saint-étienne, adhésion mma loire,
         <div class="space-y-4">
           <h1 class="sr-only">Inscription à l'Académie Stéphanoise</h1>
           <Heading level={2} white>
-            Inscrivez-vous facilement à nos activités
+            Inscrivez-vous facilement à nos activités à Saint-Étienne
           </Heading>
           <BodyText variant="headline" whiteText className="max-w-prose">
             Que vous soyez intéressé par les sports de combat, le cross training

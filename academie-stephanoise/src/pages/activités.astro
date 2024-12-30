@@ -24,59 +24,237 @@ import tolparImage from "../assets/tolpar.jpeg";
 import lutaImage from "../assets/luta-livre.png";
 import crossTrainingImage from "../assets/crossfit.webp";
 
-const title = "Activités & Sports de Combat | Académie Stéphanoise Saint-Étienne";
+const title =
+  "Activités & Sports de Combat | Académie Stéphanoise Saint-Étienne";
 const description =
-  "Découvrez nos cours de boxe, MMA, Krav Maga, Luta Livre, Tolpar et Cross Training à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
-const keywords =
-  "Académie Stéphanoise, arts martiaux Saint-Étienne, MMA Saint-Étienne, boxe Saint-Étienne, Krav Maga Loire, Cross Training 42, sports de combat Loire, fitness Saint-Étienne";
+  "Découvrez nos cours de boxe, MMA, Krav Maga, Luta Livre, Tolpar et Cross Training à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés. Rejoignez l'Académie Stéphanoise pour atteindre vos objectifs de fitness et de bien-être.";
 
-const optimizedBoxeIcon = await getImage({ src: boxeIcon, format: "webp", alt: "Icône représentant la boxe" });
-const optimizedBoxeImage = await getImage({ src: boxeImage, format: "webp", alt: "Personne pratiquant la boxe dans une salle d'entraînement" });
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MartialArtsSchool",
+  name: "Académie Stéphanoise",
+  description:
+    "Académie Stéphanoise à Saint-Étienne, un lieu de vie où le sport rassemble. Contactez-nous pour en savoir plus sur nos cours de MMA, Boxe, Krav Maga, et Cross Training.",
+  url: "https://www.academie-stephanoise.com/contact",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "27 B, rue de Terrenoire",
+    addressLocality: "Saint-Étienne",
+    postalCode: "42100",
+    addressRegion: "Auvergne-Rhône-Alpes",
+    addressCountry: "FR"
+  },
+  telephone: "+33768702556",
+  email: "contact@academie-stephanoise.com",
+  sameAs: [
+    "https://www.facebook.com/academiestephanoise",
+    "https://www.instagram.com/academiestephanoise"
+  ],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "45.431092",
+    longitude: "4.410020"
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Monday",
+      opens: "18:00",
+      closes: "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Tuesday",
+      opens: "18:30",
+      closes: "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Wednesday",
+      opens: "14:30",
+      closes: "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Thursday",
+      opens: "17:00",
+      closes: "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Friday",
+      opens: "17:00",
+      closes: "19:00"
+    }
+  ],
+  priceRange: "€€",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.4",
+    reviewCount: "54"
+  },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Boxe pieds-poings",
+      description: "Cours de boxe pieds-poings pour tous niveaux, incluant Full Contact, boxe thaï, boxe française et kick boxing",
+      duration: "PT1H",
+      availability: "Plusieurs fois par semaine"
+    },
+    {
+      "@type": "Offer",
+      name: "Krav Maga",
+      description: "Cours de self-défense et combat au corps à corps basé sur le Krav Maga",
+      duration: "PT1H",
+      availability: "Quotidiennement"
+    },
+    {
+      "@type": "Offer",
+      name: "MMA (Mixed Martial Arts)",
+      description: "Entraînement complet en arts martiaux mixtes combinant techniques de frappe et de sol",
+      duration: "PT1H30M",
+      availability: "Hebdomadaire"
+    },
+    {
+      "@type": "Offer",
+      name: "Tolpar",
+      description: "Sport de combat moderne basé sur le maniement d'armes blanches",
+      duration: "PT1H30M",
+      availability: "Hebdomadaire"
+    },
+    {
+      "@type": "Offer",
+      name: "Luta Livre",
+      description: "Style de lutte brésilienne focalisé sur les techniques de soumission au sol",
+      duration: "PT1H",
+      availability: "Hebdomadaire"
+    },
+    {
+      "@type": "Offer",
+      name: "Cross Training",
+      description: "Sessions d'entraînement fonctionnel mixtes et section 100% féminine",
+      duration: "PT1H",
+      availability: "Plusieurs fois par semaine"
+    }
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Programmes d'arts martiaux",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Cours pour débutants",
+        description: "Programmes d'initiation adaptés aux nouveaux pratiquants"
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Cours avancés",
+        description: "Programmes intensifs pour pratiquants expérimentés"
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Cours privés",
+        description: "Sessions d'entraînement personnalisées"
+      }
+    ]
+  }
+};
 
-const optimizedKravIcon = await getImage({ src: kravIcon, format: "webp", alt: "Icône représentant le Krav Maga" });
-const optimizedKravImage = await getImage({ src: kravImage, format: "webp", alt: "Pratiquants s'entraînant aux techniques de Krav Maga" });
+const optimizedBoxeIcon = await getImage({
+  src: boxeIcon,
+  format: "webp",
+  alt: "Icône représentant la boxe",
+});
+const optimizedBoxeImage = await getImage({
+  src: boxeImage,
+  format: "webp",
+  alt: "Personne pratiquant la boxe dans une salle d'entraînement",
+});
 
-const optimizedMmaIcon = await getImage({ src: mmaIcon, format: "webp", alt: "Icône représentant le MMA" });
-const optimizedMmaImage = await getImage({ src: mmaImage, format: "webp", alt: "Combattants pratiquant le MMA sur le tatami" });
+const optimizedKravIcon = await getImage({
+  src: kravIcon,
+  format: "webp",
+  alt: "Icône représentant le Krav Maga",
+});
+const optimizedKravImage = await getImage({
+  src: kravImage,
+  format: "webp",
+  alt: "Pratiquants s'entraînant aux techniques de Krav Maga",
+});
 
-const optimizedTolparIcon = await getImage({ src: tolparIcon, format: "webp", alt: "Icône représentant le Tolpar" });
-const optimizedTolparImage = await getImage({ src: tolparImage, format: "webp", alt: "Pratiquants s'exerçant aux techniques de Tolpar" });
+const optimizedMmaIcon = await getImage({
+  src: mmaIcon,
+  format: "webp",
+  alt: "Icône représentant le MMA",
+});
+const optimizedMmaImage = await getImage({
+  src: mmaImage,
+  format: "webp",
+  alt: "Combattants pratiquant le MMA sur le tatami",
+});
 
-const optimizedLutaIcon = await getImage({ src: lutaIcon, format: "webp", alt: "Icône représentant la Luta Livre" });
-const optimizedLutaImage = await getImage({ src: lutaImage, format: "webp", alt: "Personnes pratiquant la Luta Livre au sol" });
+const optimizedTolparIcon = await getImage({
+  src: tolparIcon,
+  format: "webp",
+  alt: "Icône représentant le Tolpar",
+});
+const optimizedTolparImage = await getImage({
+  src: tolparImage,
+  format: "webp",
+  alt: "Pratiquants s'exerçant aux techniques de Tolpar",
+});
 
-const optimizedCrossTrainingIcon = await getImage({ src: crossTrainingIcon, format: "webp", alt: "Icône représentant le Cross Training" });
-const optimizedCrossTrainingImage = await getImage({ src: crossTrainingImage, format: "webp", alt: "Athlètes effectuant des exercices de Cross Training" });
+const optimizedLutaIcon = await getImage({
+  src: lutaIcon,
+  format: "webp",
+  alt: "Icône représentant la Luta Livre",
+});
+const optimizedLutaImage = await getImage({
+  src: lutaImage,
+  format: "webp",
+  alt: "Personnes pratiquant la Luta Livre au sol",
+});
+
+const optimizedCrossTrainingIcon = await getImage({
+  src: crossTrainingIcon,
+  format: "webp",
+  alt: "Icône représentant le Cross Training",
+});
+const optimizedCrossTrainingImage = await getImage({
+  src: crossTrainingImage,
+  format: "webp",
+  alt: "Athlètes effectuant des exercices de Cross Training",
+});
 
 const optimizedImages = {
   boxe: {
     icon: optimizedBoxeIcon,
-    image: optimizedBoxeImage
+    image: optimizedBoxeImage,
   },
   krav: {
     icon: optimizedKravIcon,
-    image: optimizedKravImage
+    image: optimizedKravImage,
   },
   mma: {
     icon: optimizedMmaIcon,
-    image: optimizedMmaImage
+    image: optimizedMmaImage,
   },
   tolpar: {
     icon: optimizedTolparIcon,
-    image: optimizedTolparImage
+    image: optimizedTolparImage,
   },
   luta: {
     icon: optimizedLutaIcon,
-    image: optimizedLutaImage
+    image: optimizedLutaImage,
   },
   crossTraining: {
     icon: optimizedCrossTrainingIcon,
-    image: optimizedCrossTrainingImage
-  }
+    image: optimizedCrossTrainingImage,
+  },
 };
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonLd}>
   <Navbar client:load>
     <Image
       src={logoImage}
@@ -87,8 +265,12 @@ const optimizedImages = {
   </Navbar>
   <div class="bg-neutral-900">
     <div class="max-w-7xl mx-auto pt-20 px-6 lg:px-8">
-      <h1 class="sr-only">Sports de Combat et Fitness à Saint-Étienne - Académie Stéphanoise</h1>
-      <Heading level={2} white>La liste de nos activités sportives à Saint-Étienne</Heading>
+      <h1 class="sr-only">
+        Sports de Combat et Arts Martiaux à Saint-Étienne - Académie Stéphanoise
+      </h1>
+      <Heading level={2} white
+        >La liste de nos activités sportives à Saint-Étienne</Heading
+      >
       <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
         Découvrez nos activités sportives et de remise en forme en détail.
         Consultez notre planning pour trouver les horaires qui vous conviennent,
@@ -114,7 +296,7 @@ const optimizedImages = {
             alt="Boxe"
             width={100}
             height={100}
-            class=" bg-orange-100 w-20 h-20 object-contain rounded-2xl"
+            class="bg-orange-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
         <ActivityLogo client:idle headingText="Krav Maga" targetId="krav-maga">
@@ -123,7 +305,7 @@ const optimizedImages = {
             alt="Krav Maga"
             width={100}
             height={100}
-            class=" bg-blue-100 w-20 h-20  object-contain rounded-2xl"
+            class="bg-blue-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
 
@@ -133,7 +315,7 @@ const optimizedImages = {
             alt="MMA"
             width={100}
             height={100}
-            class=" bg-green-100 w-20 h-20  object-contain rounded-2xl"
+            class="bg-green-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
         <ActivityLogo client:idle headingText="Tolpar" targetId="tolpar">
@@ -142,7 +324,7 @@ const optimizedImages = {
             alt="Tolpar"
             width={100}
             height={100}
-            class=" bg-purple-100 w-20 h-20  object-contain rounded-2xl"
+            class="bg-purple-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
         <ActivityLogo
@@ -155,7 +337,7 @@ const optimizedImages = {
             alt="Luta Livre"
             width={100}
             height={100}
-            class=" bg-red-100 w-20 h-20  object-contain rounded-2xl"
+            class="bg-red-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
         <ActivityLogo
@@ -168,7 +350,7 @@ const optimizedImages = {
             alt="Cross Training"
             width={100}
             height={100}
-            class=" bg-yellow-100 w-20 h-20  object-contain rounded-2xl"
+            class="bg-yellow-100 w-20 h-20 object-contain rounded-2xl"
           />
         </ActivityLogo>
       </div>
@@ -184,9 +366,9 @@ const optimizedImages = {
           headingText="Boxe pieds poing"
           images={optimizedImages.boxe}
           paragraphs={[
-            "Le Full Contact, la boxe thaï, la boxe française et le kick boxing sont autant de disciplines regroupées sous l’appellation de boxes pied-poing. Ces sports de combat allient frappes des poings et des pieds, offrant une palette technique riche et variée, adaptée à différents styles et objectifs.",
+            "Le Full Contact, la boxe thaï, la boxe française et le kick boxing sont autant de disciplines regroupées sous l'appellation de boxes pied-poing. Ces sports de combat allient frappes des poings et des pieds, offrant une palette technique riche et variée, adaptée à différents styles et objectifs.",
             "Alliance parfaite entre physique et mental, ces disciplines demandent bien plus que de la force brute. Elles sollicitent agilité, maîtrise de soi, intelligence stratégique, courage et une excellente condition physique.",
-            "A l'Académie Stéphanoise, nous vous accompagnons dans l’apprentissage des bases indispensables de la boxe pied-poing, que ce soit pour vous préparer à la compétition, compléter vos compétences en MMA, ou améliorer votre pratique de la self-défense.",
+            "A l'Académie Stéphanoise, nous vous accompagnons dans l'apprentissage des bases indispensables de la boxe pied-poing, que ce soit pour vous préparer à la compétition, compléter vos compétences en MMA, ou améliorer votre pratique de la self-défense.",
           ]}
           duration="1h"
           level="Débutant"
@@ -212,8 +394,8 @@ const optimizedImages = {
           schedule="Quotidiennement"
           paragraphs={[
             "Le Krav-Maga se compose en deux parties :",
-            "La self-défense. Elle renferme des techniques variées visant à permettre aux initiés de se défendre contre une attaque, éviter les blessures et venir à bout d’un assaillant. Cette partie contient des parades contre une grande diversité d’attaques armées ou non et dans des positions de base différentes : debout, assis, couché.",
-            "Le combat au corps à corps, qui constitue une phase plus avancée du Krav-Maga. Il regroupe des éléments ayant trait au combat proprement dit : les tactiques, les feintes, la combinaison d’attaques différentes, la dimension psychologique du combat... et autant d’exercices permettant de renforcer son esprit et de développer une capacité à gérer des confrontations violentes dans un état de stress.",
+            "La self-défense. Elle renferme des techniques variées visant à permettre aux initiés de se défendre contre une attaque, éviter les blessures et venir à bout d'un assaillant. Cette partie contient des parades contre une grande diversité d'attaques armées ou non et dans des positions de base différentes : debout, assis, couché.",
+            "Le combat au corps à corps, qui constitue une phase plus avancée du Krav-Maga. Il regroupe des éléments ayant trait au combat proprement dit : les tactiques, les feintes, la combinaison d'attaques différentes, la dimension psychologique du combat... et autant d'exercices permettant de renforcer son esprit et de développer une capacité à gérer des confrontations violentes dans un état de stress.",
           ]}
           features={[
             { text: "Techniques variées pour se défendre" },
@@ -262,9 +444,9 @@ const optimizedImages = {
           level="Tous niveaux"
           schedule="Hebdomadaire"
           paragraphs={[
-            "Le Tolpar est un sport de combat moderne qui puise son origine dans les duels ancestraux à l’arme blanche.",
-            "Le système enseigné au F-club s’appuie sur le travail de l’école russe TOLPAR.",
-            "L’élève peut en toute sécurité apprendre le maniement du couteau et s’affronter avec différents partenaires. Le Tolpar revêt un aspect ludique adapté à tous les physiques.",
+            "Le Tolpar est un sport de combat moderne qui puise son origine dans les duels ancestraux à l'arme blanche.",
+            "Le système enseigné au F-club s'appuie sur le travail de l'école russe TOLPAR.",
+            "L'élève peut en toute sécurité apprendre le maniement du couteau et s'affronter avec différents partenaires. Le Tolpar revêt un aspect ludique adapté à tous les physiques.",
           ]}
           features={[
             { text: "Apprentissage sécurisé du maniement du couteau" },
@@ -286,9 +468,9 @@ const optimizedImages = {
           level="Tous niveaux"
           schedule="Hebdomadaire"
           paragraphs={[
-            "La Luta Livre est un style de lutte venant du Brésil. Elle consiste à amener son adversaire au sol pour le faire abandonner grâce à des finalisations comme des clés de bras, clés d’épaules, étranglements, clés de chevilles, compressions musculaires, et bien d’autres.",
-            "C’est un sport indispensable pour se perfectionner au sol pour les pratiquants de MMA et de Krav Maga.",
-            "C’est aussi un sport extrêmement ludique pour commencer les sports de combats car les frappes sont absentes. Les enfants et les adolescents en raffolent également !",
+            "La Luta Livre est un style de lutte venant du Brésil. Elle consiste à amener son adversaire au sol pour le faire abandonner grâce à des finalisations comme des clés de bras, clés d'épaules, étranglements, clés de chevilles, compressions musculaires, et bien d'autres.",
+            "C'est un sport indispensable pour se perfectionner au sol pour les pratiquants de MMA et de Krav Maga.",
+            "C'est aussi un sport extrêmement ludique pour commencer les sports de combats car les frappes sont absentes. Les enfants et les adolescents en raffolent également !",
             "Ce sport se pratique en rashguard, short ou pantalon.",
           ]}
           features={[

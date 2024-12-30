@@ -27,10 +27,10 @@ import lutaIcon from "../assets/icons/lutalivre_picto.png";
 import crossTrainingIcon from "../assets/icons/crosstraining_picto.png";
 import NavigationMenu from "../components/NavigationMenu";
 
-
-const title = "Académie Stéphanoise | École d'Arts Martiaux et Sports de Combat à Saint-Étienne";
-const description = "L'Académie Stéphanoise propose des cours de MMA, Boxe, Krav Maga, Luta Livre, et Cross Training à Saint-Étienne. Entraînez-vous avec des coachs expérimentés dans une salle moderne et équipée.";
-const keywords = "académie stéphanoise, mma saint-étienne, boxe saint-étienne, krav maga loire, luta livre, cross training, arts martiaux saint-étienne, sports de combat loire, tolpar, préparation physique";
+const title =
+  "Académie Stéphanoise | École d'Arts Martiaux et Sports de Combat à Saint-Étienne";
+const description =
+  "Découvrez l'Académie Stéphanoise à Saint-Étienne, un club dynamique fondé en 2015 par une équipe de passionnés. Nous offrons des cours de MMA, Boxe, Krav Maga, Luta Livre et Cross Training, adaptés à tous les niveaux, dans une salle moderne et équipée. Rejoignez notre communauté inclusive où le sport rassemble et la mixité s'incarne, et améliorez votre condition physique avec des coachs expérimentés.";
 
 // Pre-optimize images
 const optimizedImages = {
@@ -43,9 +43,217 @@ const optimizedImages = {
     getImage({ src: headerImage5, format: "webp" }),
   ]),
 };
+
+// JSON-LD data
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "@id": "https://www.academie-stephanoise.com",
+  name: "Académie Stéphanoise",
+  alternateName: "École d'Arts Martiaux Saint-Étienne",
+  description: description,
+  image: [optimizedImages.logo.src],
+  logo: optimizedImages.logo.src,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "27 B, rue de Terrenoire",
+    addressLocality: "Saint-Étienne",
+    postalCode: "42100",
+    addressCountry: "FR",
+    addressRegion: "Auvergne-Rhône-Alpes"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "45.4397",
+    longitude: "4.4026"
+  },
+  url: "https://www.academie-stephanoise.com",
+  telephone: "+33768702556",
+  email: "contact@academie-stephanoise.com",
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
+  paymentAccepted: "Cash, Credit Card",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Monday",
+      opens: "18:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Tuesday",
+      opens: "18:30",
+      closes: "19:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Wednesday",
+      opens: "14:30",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Thursday",
+      opens: "17:00",
+      closes: "19:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Friday",
+      opens: "17:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "00:00",
+      description: "Fermé"
+    }
+  ],
+  sameAs: [
+    "https://www.facebook.com/academiestephanoise",
+    "https://www.instagram.com/academiestephanoise",
+  ],
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: "45.4397",
+      longitude: "4.4026"
+    },
+    geoRadius: "30000"
+  },
+  amenityFeature: [
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Parking gratuit",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Vestiaires",
+      value: true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      name: "Douches",
+      value: true
+    }
+  ],
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Cours de Boxe pied poing",
+      description:
+        "Cours de boxe dynamique et technique, conçu pour améliorer la forme physique générale, la coordination et la confiance en soi. Idéal pour ceux qui souhaitent apprendre les bases.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+    {
+      "@type": "Offer",
+      name: "Cours de Krav Maga",
+      description:
+        "Apprenez des techniques de défense réalistes pour vous protéger dans des situations de la vie quotidienne. Le Krav Maga est basé sur des mouvements simples et efficaces, parfait pour tous les niveaux.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+    {
+      "@type": "Offer",
+      name: "Cours de MMA (Mixed Martial Arts)",
+      description:
+        "Combinez différentes disciplines comme la boxe, la lutte et le jiu-jitsu pour un entraînement complet. Parfait pour les pratiquants souhaitant améliorer leurs compétences globales en combat.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+    {
+      "@type": "Offer",
+      name: "Cours de Tolpar (Escrime lame courte)",
+      description:
+        "Maîtrisez l'art de l'escrime à lame courte, une discipline axée sur la précision, l'agilité et la technique. Idéal pour développer la concentration et les réflexes dans des situations de combat rapproché.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+    {
+      "@type": "Offer",
+      name: "Cours de Luta Livre",
+      description:
+        "Découvrez l'art du grappling brésilien avec la Luta Livre, une discipline axée sur la lutte au sol et le contrôle du corps. Adapté à tous, ce cours améliore la force, la technique et la résilience mentale.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+    {
+      "@type": "Offer",
+      name: "Cours de Cross Training / Prépa Physique",
+      description:
+        "Améliorez votre condition physique avec des exercices fonctionnels, combinant cardio et renforcement musculaire. Idéal pour développer l'endurance, la force et l'agilité.",
+      url: "https://www.academie-stephanoise.com/activités",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "EUR"
+    },
+  ],
+  employee: [
+    {
+      "@type": "Person",
+      name: "Luc Hernandez",
+      jobTitle: "Coach de Luta Livre et MMA",
+      description:
+        "Passionné d'arts martiaux depuis sa plus tendre enfance, Luc Hernandez a consacré sa vie à l'entraînement, au perfectionnement et à la transmission de ses connaissances. Devenu un pédagogue hors pair, il possède un talent unique pour faire aimer le combat au sol et le MMA, en instillant à ses élèves confiance, technique et discipline.",
+      image: lucImage,
+      sameAs: [
+        "https://www.facebook.com/luc.hernandez",
+        "https://www.instagram.com/luchernandez"
+      ],
+      knowsAbout: ["MMA", "Luta Livre", "Arts Martiaux", "Sports de Combat"]
+    },
+    {
+      "@type": "Person",
+      name: "Nori Berramdane",
+      jobTitle: "Coach de Boxe Pied Poing",
+      description:
+        "L'équipe de l'Académie Stéphanoise est heureuse de compter Nori parmi le staff enseignant ! Initié très tôt à la pratique martiale, il obtiendra une ceinture marron en full contact et plusieurs titres de champion de la Loire. Amoureux de sports de combat, c'est tout naturellement que Nori s'oriente vers le MMA et la Luta Livre où il obtient le grade de ceinture jaune.",
+      image: noriImage,
+      knowsAbout: ["Boxe", "Full Contact", "MMA", "Sports de Combat"]
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Cours d'Arts Martiaux",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Sports de Combat",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Cours de MMA",
+              description: "Mixed Martial Arts pour tous niveaux"
+            }
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Cours de Boxe",
+              description: "Boxe pieds poings tous niveaux"
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} jsonld={jsonld}>
   <div class="bg-white">
     <header class="absolute inset-x-0 top-0 z-50">
       <nav
@@ -98,12 +306,7 @@ const optimizedImages = {
             schedule="Plusieurs fois par semaine"
             activityUrl="krav-maga"
           >
-            <Image
-              src={kravIcon}
-              alt="Krav Maga"
-              width={100}
-              height={100}
-            />
+            <Image src={kravIcon} alt="Krav Maga" width={100} height={100} />
           </ActivityCard>
           <ActivityCard
             name="MMA (Mixed Martial Arts)"
@@ -114,28 +317,18 @@ const optimizedImages = {
             schedule="Plusieurs fois par semaine"
             activityUrl="mma"
           >
-            <Image
-              src={mmaIcon}
-              alt="MMA"
-              width={100}
-              height={100}
-            />
+            <Image src={mmaIcon} alt="MMA" width={100} height={100} />
           </ActivityCard>
           <ActivityCard
             name="Tolpar (Escrime lame courte)"
             level="Tous niveaux"
             bgColor="bg-purple-100"
-            description="Maîtrisez l'art de l'escrime à lame courte, une discipline axée sur la précision, l’agilité et la technique. Idéal pour développer la concentration et les réflexes dans des situations de combat rapproché."
+            description="Maîtrisez l'art de l'escrime à lame courte, une discipline axée sur la précision, l'agilité et la technique. Idéal pour développer la concentration et les réflexes dans des situations de combat rapproché."
             duration="1 heure"
             schedule="Hebdomadaire"
             activityUrl="tolpar"
           >
-            <Image
-              src={tolparIcon}
-              alt="Tolpar"
-              width={100}
-              height={100}
-            />
+            <Image src={tolparIcon} alt="Tolpar" width={100} height={100} />
           </ActivityCard>
           <ActivityCard
             name="Luta Livre"
@@ -146,18 +339,13 @@ const optimizedImages = {
             schedule="Deux fois par semaine"
             activityUrl="lutalivre"
           >
-            <Image
-              src={lutaIcon}
-              alt="Luta Livre"
-              width={100}
-              height={100}
-            />
+            <Image src={lutaIcon} alt="Luta Livre" width={100} height={100} />
           </ActivityCard>
           <ActivityCard
             name="Cross Training / Prépa Physique"
             level="Tous niveaux"
             bgColor="bg-yellow-100"
-            description="Améliorez votre condition physique avec des exercices fonctionnels, combinant cardio et renforcement musculaire. Idéal pour développer l’endurance, la force et l’agilité."
+            description="Améliorez votre condition physique avec des exercices fonctionnels, combinant cardio et renforcement musculaire. Idéal pour développer l'endurance, la force et l'agilité."
             duration="1 heure"
             schedule="Presque quotidien"
             activityUrl="cross-training"
