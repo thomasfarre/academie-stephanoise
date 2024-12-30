@@ -28,7 +28,7 @@ const { title, description, type = "website", publishDate, author, jsonld } = As
     <meta name="twitter:image" content="/images/twitter-image.jpg" />
     <!-- Replace with actual Twitter image path -->
     <meta name="generator" content={Astro.generator} />
-    {jsonld && <script type="application/ld+json">{JSON.stringify(jsonld)}</script>}
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
     <style>
       /* open-sans-regular - latin */
       @font-face {
