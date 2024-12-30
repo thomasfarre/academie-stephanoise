@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://academie-stephanoise.netlify.app/sitemap-index.xml
+Sitemap: https://academiestephanoise.fr/sitemap-index.xml
