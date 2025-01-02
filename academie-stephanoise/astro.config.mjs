@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://academie-stephanoise.netlify.app',
+  site: 'https://academiestephanoise.fr',
   integrations: [
     sitemap(),
     react(),
