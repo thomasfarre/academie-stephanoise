@@ -12,10 +12,9 @@ import CallToActionSection from "../components/CallToActionSection.jsx";
 const blogPosts = await getBlogPosts();
 const title = "Blog | Actualités et Conseils Sportifs | Académie Stéphanoise";
 const description = "Découvrez les dernières actualités, conseils d'entraînement et articles sur le sport à l'Académie Stéphanoise. Expertise et guides pratiques pour votre développement sportif.";
-const keywords = "blog sportif, actualités sport, conseils entraînement, Académie Stéphanoise, Saint-Étienne, formation sportive, articles sport";
 ---
 
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description}>
   <main>
     <Navbar client:load>
       <Image
