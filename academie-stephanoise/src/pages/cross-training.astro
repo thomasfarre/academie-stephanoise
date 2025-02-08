@@ -1,0 +1,127 @@
+---
+import Layout from "../layouts/Layout.astro";
+import logoImage from "../assets/logo.png";
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import crossTrainingIcon from "../assets/icons/crosstraining_picto.png";
+import crossTrainingImage from "../assets/crossfit.webp";
+
+const title = "Cross Training Saint-Étienne | Inspiré du Cross Fit";
+const description =
+  "Participez à nos cours de Cross Training à Saint-Étienne : un entraînement fonctionnel mêlant force, endurance et explosivité. Inspiré des méthodes du Cross Fit, sans affiliation officielle.";
+
+const optimizedCrossTrainingIcon = await getImage({
+  src: crossTrainingIcon,
+  format: "webp",
+  alt: "Icône représentant le Cross Training",
+});
+const optimizedCrossTrainingImage = await getImage({
+  src: crossTrainingImage,
+  format: "webp",
+  alt: "Athlètes effectuant des exercices de Cross Training",
+});
+
+const optimizedImages = {
+  icon: optimizedCrossTrainingIcon,
+  image: optimizedCrossTrainingImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Nos cours de Cross Training à Saint-Étienne sont inspirés des méthodes du Cross Fit, sans affiliation officielle. Entraînements fonctionnels adaptés à tous niveaux.",
+  "url": "https://yourwebsite.com/cross-training",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "priceRange": "€€",
+  "offers": {
+    "@type": "Offer",
+    "name": "Cross Training",
+    "description": "Entraînement fonctionnel inspiré du Cross Fit, sans affiliation officielle.",
+    "duration": "PT1H",
+    "availability": "Plusieurs fois par semaine"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>Cross Training à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Rejoignez nos <strong>cours de Cross Training à Saint-Étienne</strong>, une discipline inspirée des méthodes du <strong>Cross Fit*</strong>, mêlant renforcement musculaire, cardio et explosivité.
+        Nos sessions sont adaptées à tous les niveaux et encadrées par des coachs expérimentés.
+      </BodyText>
+      <BodyText variant="body" className="mt-4 max-w-prose text-gray-400">
+        *Cross Fit est une marque déposée. Nos cours sont inspirés de cette méthode, mais nous ne sommes pas affiliés officiellement à Cross Fit Inc.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-yellow-100"
+        targetId="cross-training"
+        activityUrl="cross-training"
+        headingText="Cross Training Saint-Étienne"
+        images={optimizedImages}
+        paragraphs={[
+          "Découvrez le Cross Training à Saint-Étienne, une discipline complète qui associe renforcement musculaire, cardio et travail fonctionnel pour une progression physique optimale.",
+          "Nos entraînements sont inspirés des méthodes du Cross Fit*, offrant un entraînement de haute intensité axé sur la force, l'endurance et l'explosivité.",
+          "Que vous soyez débutant ou confirmé, nos coachs vous accompagnent pour adapter chaque séance à vos besoins et vous aider à atteindre vos objectifs.",
+          "En complément d'autres disciplines sportives ou simplement pour se remettre en forme, le Cross Training est un excellent moyen d'améliorer ses performances globales.",
+        ]}
+        duration="1h"
+        level="Tous niveaux"
+        schedule="Plusieurs fois par semaine"
+        features={[
+          { text: "Entraînement adapté à tous les niveaux" },
+          { text: "Travail combiné : force, cardio et explosivité" },
+          { text: "Programme évolutif et accessible" },
+          { text: "Coaching professionnel et suivi personnalisé" },
+          { text: "Salle équipée pour des entraînements performants" },
+        ]}
+        buttonLabels={["Voir le planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

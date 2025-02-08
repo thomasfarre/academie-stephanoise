@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import tolparIcon from "../assets/icons/tolpar_picto.png";
+import tolparImage from "../assets/tolpar.jpeg";
+
+const title = "Tolpar | Académie Stéphanoise Saint-Étienne";
+const description = "Découvrez nos cours de Tolpar à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
+
+const optimizedTolparIcon = await getImage({
+  src: tolparIcon,
+  format: "webp",
+  alt: "Icône représentant le Tolpar",
+});
+const optimizedTolparImage = await getImage({
+  src: tolparImage,
+  format: "webp",
+  alt: "Pratiquants s'exerçant aux techniques de Tolpar",
+});
+
+const optimizedImages = {
+  icon: optimizedTolparIcon,
+  image: optimizedTolparImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Découvrez nos cours de Tolpar à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.",
+  "url": "https://yourwebsite.com/tolpar",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "priceRange": "€€",
+  "offers": {
+    "@type": "Offer",
+    "name": "Tolpar",
+    "description": "Sport de combat moderne basé sur le maniement d'armes blanches",
+    "duration": "PT1H30M",
+    "availability": "Hebdomadaire"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>Tolpar à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Découvrez nos cours de Tolpar, un sport de combat moderne basé sur le maniement d'armes blanches.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-purple-100"
+        targetId="tolpar"
+        activityUrl="tolpar"
+        headingText="Tolpar"
+        images={optimizedImages}
+        paragraphs={[
+          "Le Tolpar est un sport de combat moderne qui puise son origine dans les duels ancestraux à l'arme blanche.",
+          "Le système enseigné au F-club s'appuie sur le travail de l'école russe TOLPAR.",
+          "L'élève peut en toute sécurité apprendre le maniement du couteau et s'affronter avec différents partenaires. Le Tolpar revêt un aspect ludique adapté à tous les physiques.",
+        ]}
+        duration="1h30"
+        level="Tous niveaux"
+        schedule="Hebdomadaire"
+        features={[
+          { text: "Apprentissage sécurisé du maniement du couteau" },
+          { text: "Basé sur les techniques de l'école TOLPAR" },
+          { text: "Adapté à tous les physiques" },
+          { text: "Développement des compétences tactiques" },
+          { text: "Aspect ludique pour une pratique agréable" },
+        ]}
+        buttonLabels={["Planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

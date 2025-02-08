@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from './foundations/Link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const Navbar = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,17 +36,73 @@ const Navbar = ({ children }) => {
             </button>
           </div>
           <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12">
-            <Link whiteText href="/activités" label="Activités" />
-            <Link whiteText href="/planning" label="Planning" />
-            <Link whiteText href="/contact" label="Contact" />
-            <Link whiteText href="/inscription" label="S'inscrire" />
-            <Link whiteText href="/tarifs" label="Tarifs" />
-            <Link whiteText href="/blog" label="Blog" />
+            <div className="relative group">
+              <button className="transition duration-300 ease-out focus:outline-none font-semibold text-stone-50 hover:text-white flex items-center">
+                Activités
+                <ChevronDownIcon className="ml-1 h-5 w-5" />
+              </button>
+              <div className="absolute hidden group-hover:block bg-neutral-900 border border-neutral-700 z-50 shadow-lg rounded-lg p-4 space-y-2 w-60">
+                <div>
+                  <Link
+                    whiteText
+                    href="/boxe-pieds-poings"
+                    label="Boxe pieds-poings"
+                  />
+                </div>
+                <div>
+                  <Link whiteText href="/krav-maga" label="Krav Maga" />
+                </div>
+                <div>
+                  <Link whiteText href="/mma" label="MMA" />
+                </div>
+                <div>
+                  <Link whiteText href="/tolpar" label="Tolpar" />
+                </div>
+                <div>
+                  <Link whiteText href="/luta-livre" label="Luta Livre" />
+                </div>
+                <div>
+                  <Link
+                    whiteText
+                    href="/cross-training"
+                    label="Cross Training"
+                  />
+                </div>
+              </div>
+            </div>
+            <Link
+              whiteText
+              href="/planning"
+              label="Planning"
+              className="px-4 py-2"
+            />
+            <Link
+              whiteText
+              href="/contact"
+              label="Contact"
+              className="px-4 py-2"
+            />
+            <Link
+              whiteText
+              href="/inscription"
+              label="S'inscrire"
+              className="px-4 py-2"
+            />
+            <Link
+              whiteText
+              href="/tarifs"
+              label="Tarifs"
+              className="px-4 py-2"
+            />
+            <Link whiteText href="/blog" label="Blog" className="px-4 py-2" />
           </div>
         </nav>
         {menuOpen && (
           <div className="lg:hidden" role="dialog" aria-modal="true">
-            <div onClick={toggleMenu} className="fixed inset-0 bg-neutral-900 opacity-80 z-50"></div>
+            <div
+              onClick={toggleMenu}
+              className="fixed inset-0 bg-neutral-900 opacity-80 z-50"
+            ></div>
             <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-neutral-900/10">
               <div className="flex items-center justify-between">
                 <a href="#" className="-m-1.5 p-1.5">
@@ -66,39 +123,39 @@ const Navbar = ({ children }) => {
                   <div className="space-y-4 w-fit px-4 py-8">
                     <div>
                       <Link
-                        href="#"
-                        label="Activités"
+                        href="/boxe-pieds-poings"
+                        label="Boxe pieds-poings"
                       />
                     </div>
                     <div>
-                      <Link
-                        href="/planning"
-                        label="Planning"
-                      />
+                      <Link href="/krav-maga" label="Krav Maga" />
                     </div>
                     <div>
-                      <Link
-                        href="/contact"
-                        label="Contact"
-                      />
+                      <Link href="/mma" label="MMA" />
                     </div>
                     <div>
-                      <Link
-                        href="/inscription"
-                        label="S'inscrire"
-                      />
+                      <Link href="/tolpar" label="Tolpar" />
                     </div>
                     <div>
-                      <Link
-                        href="/tarifs"
-                        label="Tarifs"
-                      />
+                      <Link href="/luta-livre" label="Luta Livre" />
                     </div>
                     <div>
-                      <Link
-                        href="/blog"
-                        label="Blog"
-                      />
+                      <Link href="/cross-training" label="Cross Training" />
+                    </div>
+                    <div>
+                      <Link href="/planning" label="Planning" />
+                    </div>
+                    <div>
+                      <Link href="/contact" label="Contact" />
+                    </div>
+                    <div>
+                      <Link href="/inscription" label="S'inscrire" />
+                    </div>
+                    <div>
+                      <Link href="/tarifs" label="Tarifs" />
+                    </div>
+                    <div>
+                      <Link href="/blog" label="Blog" />
                     </div>
                   </div>
                 </div>

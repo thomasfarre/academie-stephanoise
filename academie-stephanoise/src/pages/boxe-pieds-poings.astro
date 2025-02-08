@@ -1,0 +1,158 @@
+---
+import Layout from "../layouts/Layout.astro";
+import logoImage from "../assets/logo.png";
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import boxeIcon from "../assets/icons/boxe_picto.png";
+import boxeImage from "../assets/boxe.jpg";
+
+const title = "Boxe pieds-poings | Académie Stéphanoise Saint-Étienne";
+const description = "Découvrez nos cours de boxe pieds-poings à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
+
+const optimizedBoxeIcon = await getImage({
+  src: boxeIcon,
+  format: "webp",
+  alt: "Icône représentant la boxe",
+});
+const optimizedBoxeImage = await getImage({
+  src: boxeImage,
+  format: "webp",
+  alt: "Personne pratiquant la boxe dans une salle d'entraînement",
+});
+
+const optimizedImages = {
+  icon: optimizedBoxeIcon,
+  image: optimizedBoxeImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Découvrez nos cours de boxe pieds-poings à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.",
+  "url": "https://yourwebsite.com/boxe-pieds-poings",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "18:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "18:30",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Wednesday",
+      "opens": "14:30",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "17:00",
+      "closes": "19:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "17:00",
+      "closes": "19:00"
+    }
+  ],
+  "priceRange": "€€",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.4",
+    "reviewCount": "54"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "Boxe pieds-poings",
+    "description": "Cours de boxe pieds-poings pour tous niveaux, incluant Full Contact, boxe thaï, boxe française et kick boxing",
+    "duration": "PT1H",
+    "availability": "Plusieurs fois par semaine"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>Boxe pieds-poings à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Découvrez nos cours de boxe pieds-poings, incluant Full Contact, boxe thaï, boxe française et kick boxing.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-orange-100"
+        targetId="boxe"
+        activityUrl="boxe-pied-poing"
+        headingText="Boxe pieds poing"
+        images={optimizedImages}
+        paragraphs={[
+          "Le Full Contact, la boxe thaï, la boxe française et le kick boxing sont autant de disciplines regroupées sous l'appellation de boxes pied-poing. Ces sports de combat allient frappes des poings et des pieds, offrant une palette technique riche et variée, adaptée à différents styles et objectifs.",
+          "Alliance parfaite entre physique et mental, ces disciplines demandent bien plus que de la force brute. Elles sollicitent agilité, maîtrise de soi, intelligence stratégique, courage et une excellente condition physique.",
+          "A l'Académie Stéphanoise, nous vous accompagnons dans l'apprentissage des bases indispensables de la boxe pied-poing, que ce soit pour vous préparer à la compétition, compléter vos compétences en MMA, ou améliorer votre pratique de la self-défense.",
+        ]}
+        duration="1h"
+        level="Débutant"
+        schedule="Plusieurs fois par semaine"
+        features={[
+          { text: "Développement physique complet" },
+          { text: "Confiance en soi et maîtrise de soi" },
+          { text: "Respect et valeurs sportives" },
+          { text: "Gestion du stress" },
+          { text: "Défoulement et discipline" },
+        ]}
+        buttonLabels={["Planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
+
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import kravIcon from "../assets/icons/krav_picto.png";
+import kravImage from "../assets/krav.jpg";
+
+const title = "Krav Maga | Académie Stéphanoise Saint-Étienne";
+const description =
+  "Découvrez nos cours de Krav Maga à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
+
+const optimizedKravIcon = await getImage({
+  src: kravIcon,
+  format: "webp",
+  alt: "Icône représentant le Krav Maga",
+});
+const optimizedKravImage = await getImage({
+  src: kravImage,
+  format: "webp",
+  alt: "Pratiquants s'entraînant aux techniques de Krav Maga",
+});
+
+const optimizedImages = {
+  icon: optimizedKravIcon,
+  image: optimizedKravImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Découvrez nos cours de Krav Maga à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.",
+  "url": "https://yourwebsite.com/krav-maga",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "priceRange": "€€",
+  "offers": {
+    "@type": "Offer",
+    "name": "Krav Maga",
+    "description": "Cours de self-défense et combat au corps à corps basé sur le Krav Maga",
+    "duration": "PT1H",
+    "availability": "Quotidiennement"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>Krav Maga à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Découvrez nos cours de Krav Maga, une méthode de self-défense et de
+        combat au corps à corps.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-blue-100"
+        targetId="krav-maga"
+        activityUrl="krav-maga"
+        headingText="Krav-Maga"
+        images={optimizedImages}
+        paragraphs={[
+          "Le Krav-Maga se compose en deux parties :",
+          "La self-défense. Elle renferme des techniques variées visant à permettre aux initiés de se défendre contre une attaque, éviter les blessures et venir à bout d'un assaillant. Cette partie contient des parades contre une grande diversité d'attaques armées ou non et dans des positions de base différentes : debout, assis, couché.",
+          "Le combat au corps à corps, qui constitue une phase plus avancée du Krav-Maga. Il regroupe des éléments ayant trait au combat proprement dit : les tactiques, les feintes, la combinaison d'attaques différentes, la dimension psychologique du combat... et autant d'exercices permettant de renforcer son esprit et de développer une capacité à gérer des confrontations violentes dans un état de stress.",
+        ]}
+        duration="1h"
+        level="Débutant"
+        schedule="Quotidiennement"
+        features={[
+          { text: "Techniques variées pour se défendre" },
+          { text: "Parades contre les attaques armées et non armées" },
+          { text: "Développement de la dimension psychologique" },
+          { text: "Renforcement de l'esprit face au stress" },
+          { text: "Capacité à gérer les confrontations violentes" },
+        ]}
+        buttonLabels={["Planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

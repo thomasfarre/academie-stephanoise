@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "./foundations/Button";
 import Link from "./foundations/Link";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const NavigationMenu = ({ logo }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,7 +23,32 @@ const NavigationMenu = ({ logo }) => {
         </Button>
       </div>
       <div className="hidden lg:flex lg:flex-row space-x-2 lg:gap-x-12 xl:ml-40">
-        <Link href="/activités" label="Activités" />
+        <div className="relative group">
+          <button className="transition duration-300 ease-out focus:outline-none font-semibold text-stone-950 hover:text-stone-700 flex items-center">
+            Activités
+            <ChevronDownIcon className="ml-1 h-5 w-5" />
+          </button>
+          <div className="absolute hidden group-hover:block bg-white border border-neutral-300 z-50 shadow-lg rounded-lg p-4 space-y-2 w-60">
+            <div>
+              <Link href="/boxe-pieds-poings" label="Boxe pieds-poings" />
+            </div>
+            <div>
+              <Link href="/krav-maga" label="Krav Maga" />
+            </div>
+            <div>
+              <Link href="/mma" label="MMA" />
+            </div>
+            <div>
+              <Link href="/tolpar" label="Tolpar" />
+            </div>
+            <div>
+              <Link href="/luta-livre" label="Luta Livre" />
+            </div>
+            <div>
+              <Link href="/cross-training" label="Cross Training" />
+            </div>
+          </div>
+        </div>
         <Link href="/planning" label="Planning" />
         <Link href="/contact" label="Contact" />
         <Link href="/inscription" label="S'inscrire" />

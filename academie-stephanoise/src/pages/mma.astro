@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import mmaIcon from "../assets/icons/mma_picto.png";
+import mmaImage from "../assets/mma.jpeg";
+
+const title = "MMA | Académie Stéphanoise Saint-Étienne";
+const description = "Découvrez nos cours de MMA à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
+
+const optimizedMmaIcon = await getImage({
+  src: mmaIcon,
+  format: "webp",
+  alt: "Icône représentant le MMA",
+});
+const optimizedMmaImage = await getImage({
+  src: mmaImage,
+  format: "webp",
+  alt: "Combattants pratiquant le MMA sur le tatami",
+});
+
+const optimizedImages = {
+  icon: optimizedMmaIcon,
+  image: optimizedMmaImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Découvrez nos cours de MMA à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.",
+  "url": "https://yourwebsite.com/mma",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "priceRange": "€€",
+  "offers": {
+    "@type": "Offer",
+    "name": "MMA",
+    "description": "Entraînement complet en arts martiaux mixtes combinant techniques de frappe et de sol",
+    "duration": "PT1H30M",
+    "availability": "Hebdomadaire"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>MMA à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Découvrez nos cours de MMA, un sport de combat complet associant pugilat et lutte au corps à corps.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-green-100"
+        targetId="mma"
+        activityUrl="mma"
+        headingText="Mixed Martial Arts (MMA)"
+        images={optimizedImages}
+        paragraphs={[
+          "Le mixed martial arts (MMA), littéralement « arts martiaux mixtes », est un sport de combat complet associant pugilat et lutte au corps à corps dans lequel les deux combattants peuvent utiliser de nombreuses techniques.",
+          "Selon les fédérations, sont autorisées des techniques de percussion telles que coups de pied, de poing, de genou et de coude, des techniques de projections et de soumission (Luta Livre) et parfois certaines techniques de percussion au sol.",
+          "Le combat libre existe en réalité depuis fort longtemps et on en retrouve des traces dans de nombreux arts anciens.",
+        ]}
+        duration="1h30"
+        level="Intermédiaire à avancé"
+        schedule="Hebdomadaire"
+        features={[
+          {
+            text: "Combinaison de techniques variées (pied, poing, projections, soumissions)",
+          },
+          { text: "Adapté au combat debout et au sol" },
+          { text: "Héritage de nombreux arts martiaux anciens" },
+          { text: "Idéal pour développer force, agilité et stratégie" },
+          { text: "Rigueur et contrôle dans les combats" },
+        ]}
+        buttonLabels={["Planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

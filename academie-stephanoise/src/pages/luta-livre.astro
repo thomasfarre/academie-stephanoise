@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
+import { getImage } from "astro:assets";
+import Navbar from "../components/Navbar";
+import Heading from "../components/foundations/Heading";
+import BodyText from "../components/foundations/BodyText";
+import ActivityBlock from "../components/ActivityBlock";
+import CallToActionSection from "../components/CallToActionSection";
+import Footer from "../components/Footer";
+import lutaIcon from "../assets/icons/lutalivre_picto.png";
+import lutaImage from "../assets/luta-livre.png";
+
+const title = "Luta Livre | Académie Stéphanoise Saint-Étienne";
+const description =
+  "Découvrez nos cours de Luta Livre à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.";
+
+const optimizedLutaIcon = await getImage({
+  src: lutaIcon,
+  format: "webp",
+  alt: "Icône représentant la Luta Livre",
+});
+const optimizedLutaImage = await getImage({
+  src: lutaImage,
+  format: "webp",
+  alt: "Personnes pratiquant la Luta Livre au sol",
+});
+
+const optimizedImages = {
+  icon: optimizedLutaIcon,
+  image: optimizedLutaImage,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Académie Stéphanoise Saint-Étienne",
+  "description": "Découvrez nos cours de Luta Livre à Saint-Étienne. Cours pour tous niveaux, encadrés par des professionnels qualifiés.",
+  "url": "https://yourwebsite.com/luta-livre",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 B, rue de Terrenoire",
+    "addressLocality": "Saint-Étienne",
+    "postalCode": "42100",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33768702556",
+  "email": "contact@academie-stephanoise.com",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.431092",
+    "longitude": "4.410020"
+  },
+  "priceRange": "€€",
+  "offers": {
+    "@type": "Offer",
+    "name": "Luta Livre",
+    "description": "Style de lutte brésilienne focalisé sur les techniques de soumission au sol",
+    "duration": "PT1H",
+    "availability": "Hebdomadaire"
+  }
+};
+---
+
+<Layout title={title} description={description} jsonld={jsonLd}>
+  <Navbar client:load>
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Navbar>
+  <div class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-20 px-6 lg:px-8">
+      <Heading level={2} white>Luta Livre à Saint-Étienne</Heading>
+      <BodyText variant="headline" whiteText className="mt-4 max-w-prose">
+        Découvrez nos cours de Luta Livre, un style de lutte brésilienne
+        focalisé sur les techniques de soumission au sol.
+      </BodyText>
+    </div>
+  </div>
+  <div class="bg-neutral-50 pt-12">
+    <div class="max-w-[120rem] mx-auto px-6 lg:px-8">
+      <ActivityBlock
+        bgColor="bg-red-100"
+        targetId="luta-livre"
+        activityUrl="luta-livre"
+        headingText="Luta Livre"
+        images={optimizedImages}
+        paragraphs={[
+          "La Luta Livre est un style de lutte venant du Brésil. Elle consiste à amener son adversaire au sol pour le faire abandonner grâce à des finalisations comme des clés de bras, clés d'épaules, étranglements, clés de chevilles, compressions musculaires, et bien d'autres.",
+          "C'est un sport indispensable pour se perfectionner au sol pour les pratiquants de MMA et de Krav Maga.",
+          "C'est aussi un sport extrêmement ludique pour commencer les sports de combats car les frappes sont absentes. Les enfants et les adolescents en raffolent également !",
+          "Ce sport se pratique en rashguard, short ou pantalon.",
+        ]}
+        duration="1h"
+        level="Tous niveaux"
+        schedule="Hebdomadaire"
+        features={[
+          { text: "Perfectionnement au sol avec des techniques variées" },
+          { text: "Absence de frappes, idéal pour débutants et enfants" },
+          { text: "Pratique complémentaire pour le MMA et le Krav Maga" },
+          { text: "Ludique et accessible à tous" },
+          { text: "Équipement simple : rashguard et short ou pantalon" },
+        ]}
+        buttonLabels={["Planning", "S'inscrire"]}
+      />
+    </div>
+    <div class="translate-y-1/2 transform">
+      <CallToActionSection client:visible />
+    </div>
+  </div>
+  <Footer client:visible paddingTop="pt-72" paddingTopXl="xl:pt-96">
+    <Image
+      src={logoImage}
+      alt="Logo de l'Académie Stéphanoise"
+      width={100}
+      height={100}
+    />
+  </Footer>
+</Layout>

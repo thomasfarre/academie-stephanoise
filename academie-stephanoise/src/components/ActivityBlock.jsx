@@ -76,14 +76,16 @@ const ActivityBlock = ({
               <CalendarDaysIcon className="w-5 h-5 mr-2 text-neutral-600" />
             </Button>
           </a>
+          <a href="/inscription" className="w-1/2">
           <Button
             onClick={() => {}}
             variant="secondary"
             label={buttonLabels[1]}
-            className="w-1/2"
+            className="w-full"
           >
-            <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
-          </Button>
+              <UserPlusIcon className="w-5 h-5 mr-2 text-neutral-200" />
+            </Button>
+          </a>
         </div>
 
       </div>

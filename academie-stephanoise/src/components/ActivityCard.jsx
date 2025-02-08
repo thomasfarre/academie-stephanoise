@@ -57,6 +57,7 @@ const ActivityCard = ({
       <div className="flex space-x-8 items-center pt-8 border-t border-neutral-200">
         <a
           href={`/planning?activity=${encodeURIComponent(activityUrl)}`}
+          rel="nofollow"
           className="w-1/2"
         >
           <Button variant="leadingIcon" label="Planning" className="w-full">
