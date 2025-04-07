@@ -407,7 +407,7 @@ const RegisterForm = () => {
                                   htmlFor="crossfit-prepa-1an"
                                   className="ml-3 block text-sm font-medium text-neutral-900"
                                 >
-                                  Crossfit et Prépa 1 an
+                                  Cross Training et Prépa 1 an
                                 </label>
                               </label>
                             </div>
