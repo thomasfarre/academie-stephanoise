@@ -1,12 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import Heading from "../components/foundations/Heading.jsx";
-import BodyText from "../components/foundations/BodyText.jsx";
-import Button from "../components/foundations/Button.jsx";
 import {
-  UserPlusIcon,
   ArrowDownOnSquareIcon,
   ExclamationTriangleIcon,
+  UserPlusIcon,
 } from "@heroicons/react/24/outline";
+import { useEffect, useRef, useState } from "react";
+import BodyText from "../components/foundations/BodyText.jsx";
+import Button from "../components/foundations/Button.jsx";
+import Heading from "../components/foundations/Heading.jsx";
 
 const RegisterForm = () => {
   const [showOnlineForm, setShowOnlineForm] = useState(false);
@@ -52,13 +52,13 @@ const RegisterForm = () => {
     if (category && activity === "sports") {
       switch (category) {
         case "adulte":
-          return "https://www.helloasso.com/associations/fclub/adhesions/adhesions-sports-de-combat-adulte";
+          return "https://www.helloasso.com/associations/fclub/adhesions/adhesions-sports-de-combat-adulte-1";
         case "feminin":
           return "https://www.helloasso.com/associations/fclub/adhesions/sports-de-combat-section-feminine-2024";
         case "ado":
-          return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-sports-de-combat-ados";
+          return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-sports-de-combat-ados-2025-2026";
         case "enfant":
-          return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-sports-de-combat-enfants";
+          return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-2025-2026-sport-combat-enfant";
         default:
           return null;
       }
@@ -66,13 +66,13 @@ const RegisterForm = () => {
     if (duration && activity === "cross-training") {
       switch (duration) {
         case "cross-training-6mois":
-          return "https://www.helloasso.com/associations/fclub/adhesions/cross-training-6-mois";
+          return "https://www.helloasso.com/associations/fclub/adhesions/cross-training-6-mois-aout-2025";
         case "prepa-3mois":
           return "https://www.helloasso.com/associations/fclub/adhesions/prepa-physique-6-mois";
         case "prepa-6mois":
           return "https://www.helloasso.com/associations/fclub/adhesions/prepa-physique-6-mois";
         case "crossfit-prepa-1an":
-          return "https://www.helloasso.com/associations/fclub/adhesions/prepa-physique-et-cross-training-1-an-machine";
+          return "https://www.helloasso.com/associations/fclub/adhesions/cross-training-1-an-aout-2025";
         default:
           return null;
       }
