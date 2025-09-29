@@ -112,16 +112,17 @@ const RegisterForm = () => {
   };
 
   const getInPersonLink = () => {
-    switch (category) {
-      case "adulte":
-        return "/adulte-form.pdf";
-      case "feminin":
-        return "/feminin-form.pdf";
-      case "enfant":
-        return "/enfant-form.pdf";
-      default:
-        return null;
-    }
+    // switch (category) {
+    //   case "adulte":
+    //     return "/adulte-form.pdf";
+    //   case "feminin":
+    //     return "/feminin-form.pdf";
+    //   case "enfant":
+    //     return "/enfant-form.pdf";
+    //   default:
+    //     return null;
+    // }
+    return "/files/fiche-inscription.pdf";
   };
 
   return (
