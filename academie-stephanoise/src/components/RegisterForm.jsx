@@ -53,8 +53,6 @@ const RegisterForm = () => {
       switch (category) {
         case "adulte":
           return "https://www.helloasso.com/associations/fclub/adhesions/adhesions-sports-de-combat-adulte-1";
-        case "feminin":
-          return "https://www.helloasso.com/associations/fclub/adhesions/sports-de-combat-section-feminine-2024";
         case "ado":
           return "https://www.helloasso.com/associations/fclub/adhesions/adhesion-sports-de-combat-ados-2025-2026";
         case "enfant":
@@ -85,8 +83,6 @@ const RegisterForm = () => {
       switch (category) {
         case "adulte":
           return 340;
-        case "feminin":
-          return 215;
         case "ado":
           return 230;
         case "enfant":
@@ -115,8 +111,6 @@ const RegisterForm = () => {
     // switch (category) {
     //   case "adulte":
     //     return "/adulte-form.pdf";
-    //   case "feminin":
-    //     return "/feminin-form.pdf";
     //   case "enfant":
     //     return "/enfant-form.pdf";
     //   default:
@@ -283,22 +277,6 @@ const RegisterForm = () => {
                                   className="ml-3 block text-sm font-medium text-neutral-900"
                                 >
                                   Adulte
-                                </label>
-                              </label>
-                              <label className="inline-flex items-center ">
-                                <input
-                                  type="radio"
-                                  id="feminin"
-                                  name="category"
-                                  value="feminin"
-                                  className="size-4 border-neutral-300 text-emerald-600 focus:ring-emerald-600"
-                                  onChange={() => setCategory("feminin")}
-                                />
-                                <label
-                                  htmlFor="feminin"
-                                  className="ml-3 block text-sm font-medium text-neutral-900"
-                                >
-                                  Féminin
                                 </label>
                               </label>
                               <label className="inline-flex items-center ">
@@ -474,25 +452,6 @@ const RegisterForm = () => {
                             <label className="inline-flex items-center">
                               <input
                                 type="radio"
-                                id="feminin"
-                                name="category"
-                                value="feminin"
-                                className="size-4 border-neutral-300 text-emerald-600 focus:ring-emerald-600"
-                                onChange={() => {
-                                  setCategory("feminin");
-                                  setActivity("sports");
-                                }}
-                              />
-                              <label
-                                htmlFor="feminin"
-                                className="ml-3 block text-sm font-medium text-neutral-900"
-                              >
-                                Féminin
-                              </label>
-                            </label>
-                            <label className="inline-flex items-center">
-                              <input
-                                type="radio"
                                 id="enfant"
                                 name="category"
                                 value="enfant"
@@ -576,8 +535,6 @@ const RegisterForm = () => {
                               catégorie{" "}
                               {category === "adulte"
                                 ? "adulte"
-                                : category === "feminin"
-                                ? "féminin"
                                 : category === "ado"
                                 ? "ado"
                                 : "enfant"}{" "}
